@@ -22,6 +22,11 @@ class MealCompositionViewController: UIViewController {
         self.view.addSubview(fakeNavBar)
         setupCollectionViewConstraint()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
 }
 //MARK: Extension
 //Collection View Extension
@@ -75,8 +80,14 @@ extension MealCompositionViewController: MealCompositionCollectionViewCellDelega
     func pushNext() {
         
         //PUSH TO NEXT VIEW CODE
-        let mainTabBarCon = MainTabBarController() as UIViewController
-        self.navigationController?.pushViewController(mainTabBarCon, animated: true)
+//        self.navigationController?.popViewController(animated: false)
+//
+//        //Send data to the main tab bar controller pls🙏
+//        let mainTabBarCon = MainTabBarController() as UIViewController
+//        self.present(mainTabBarCon, animated: true, completion: nil)
+        
+        let mealScheduleVC = MealScheduleViewController()
+        self.navigationController?.pushViewController(mealScheduleVC, animated: true)
         
     }
 }

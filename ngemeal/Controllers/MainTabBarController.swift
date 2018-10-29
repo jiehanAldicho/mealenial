@@ -25,8 +25,8 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     accountView.tabBarItem.title = "Account"
     
     //For testing
-//    let scheduleView = createTabBarItem(ScheduleViewController(), "calendar")
-//    scheduleView.tabBarItem.title = "Schedule"
+    let scheduleView = createTabBarItem(ScheduleViewController(), "calendar")
+    scheduleView.tabBarItem.title = "Schedule"
     
     
     //Tab bar style setup
@@ -39,7 +39,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     self.tabBar.tintColor = .white
     
     //Add tab bar views
-    self.setViewControllers([foodJournalView, homeView, accountView], animated: true)
+    self.setViewControllers([foodJournalView, homeView, scheduleView], animated: true)
     self.selectedIndex = 1
     
     print(self.tabBar.subviews[0])
