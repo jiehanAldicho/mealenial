@@ -8,82 +8,6 @@
 
 import UIKit
 
-class EditPopupView: UIView {
-    
-    var editLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.text = "Edit"
-        lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir", size: 14)
-        return lbl
-    }()
-    
-    var deleteLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.text = "Delete"
-        lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir", size: 14)
-        return lbl
-    }()
-    
-    var editButton: UIButton = {
-        let btn = UIButton()
-        let editImg = UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate)
-        btn.setImage(editImg, for: .normal)
-        btn.tintColor = Colors.mainOrange
-        return btn
-    }()
-    
-    var deleteButton: UIButton = {
-        let btn = UIButton()
-        let delImg = UIImage(named: "close")?.withRenderingMode(.alwaysTemplate)
-        btn.setImage(delImg, for: .normal)
-        btn.tintColor = Colors.mainOrange
-        return btn
-    }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-        
-        self.frame = CGRect(x: 0, y: 0, width: 135, height: 90)
-        
-        self.addSubview(editLabel)
-        self.addSubview(editButton)
-        self.addSubview(deleteLabel)
-        self.addSubview(deleteButton)
-        
-        setupLabelsConstraints()
-        setupButtonsConstraints()
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
-    func setupLabelsConstraints() {
-        editLabel.translatesAutoresizingMaskIntoConstraints = false
-        editLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5).isActive = true
-        editButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
-        
-        deleteLabel.translatesAutoresizingMaskIntoConstraints = false
-        deleteLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5).isActive = true
-        deleteLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
-    }
-    
-    func setupButtonsConstraints() {
-        editButton.translatesAutoresizingMaskIntoConstraints = false
-        editButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5).isActive = true
-        editButton.topAnchor.constraint(equalTo: self.topAnchor, constant: 5).isActive = true
-        editButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        editButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
-        
-        deleteButton.translatesAutoresizingMaskIntoConstraints = false
-        deleteButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5).isActive = true
-        deleteButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
-        deleteButton.widthAnchor.constraint(equalToConstant: 25).isActive = true
-        deleteButton.heightAnchor.constraint(equalToConstant: 25).isActive = true
-    }
-}
 
 class MoreOptionButton: UIButton {
     
@@ -93,8 +17,12 @@ class MoreOptionButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = Colors.mainOrange
-        self.setTitle("POP", for: .normal)
+        
+        let editImg = UIImage(named: "more")?.withRenderingMode(.alwaysTemplate)
+        self.setImage(editImg, for: .normal)
+        self.tintColor = Colors.mainOrange
+        
+        
         
         optView = OptionsView.init(frame: CGRect.zero)
     }
@@ -119,10 +47,10 @@ class MoreOptionButton: UIButton {
             menuIsOpen = true
             
             NSLayoutConstraint.deactivate([self.height])
-            self.height.constant = 80
+            self.height.constant = 90
             NSLayoutConstraint.activate([self.height])
             
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: {
                 self.optView.layoutIfNeeded()
                 self.optView.center.y += self.optView.frame.height / 2
             }, completion: nil)
@@ -133,7 +61,7 @@ class MoreOptionButton: UIButton {
             self.height.constant = 0
             NSLayoutConstraint.activate([self.height])
             
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.5, initialSpringVelocity: 0, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 self.optView.center.y -= self.optView.frame.height / 2
                 self.optView.layoutIfNeeded()
             }, completion: nil)
@@ -158,6 +86,8 @@ class OptionsView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.dataSource = self
         tableView.register(MenuCell.self, forCellReuseIdentifier: "menuCell")
         tableView.backgroundColor = .clear
+        tableView.separatorStyle = .none
+        tableView.isScrollEnabled = false
         
         self.addSubview(tableView)
         
@@ -166,6 +96,22 @@ class OptionsView: UIView, UITableViewDelegate, UITableViewDataSource {
         tableView.rightAnchor.constraint(equalTo: self.rightAnchor).isActive = true
         tableView.topAnchor.constraint(equalTo: self.topAnchor).isActive = true
         tableView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+    }
+    
+    override func layoutSubviews() {
+        self.clipsToBounds = true
+        self.layoutMargins = UIEdgeInsets(top: 30, left: 30, bottom: 30, right: 30)
+        self.layer.cornerRadius = 10
+        self.layer.masksToBounds = false
+        self.layer.shadowColor = UIColor.darkGray.cgColor
+        self.layer.shadowOpacity = 0.3
+        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.layer.shadowRadius = 2
+        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 10).cgPath
+        
+        tableView.layer.cornerRadius = 10
+        tableView.layer.masksToBounds = true
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -190,6 +136,11 @@ class OptionsView: UIView, UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //Add handler here
+        let cell = tableView.cellForRow(at: indexPath) as! MenuCell
+        print(cell.opt)
+    }
 }
 
 class MenuCell: UITableViewCell {
@@ -218,23 +169,16 @@ class MenuCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
+        self.clipsToBounds = true
+        self.layer.masksToBounds = true
         self.selectionStyle = .none
         self.backgroundColor = .clear
-        self.clipsToBounds = true
-        self.layer.cornerRadius = 5
+        
         
         let gradientBG = CAGradientLayer().menuCellGradientLayer()
         gradientBG.frame = self.bounds
         self.layer.insertSublayer(gradientBG, at: 0)
         
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.3
-        self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.layer.shadowRadius = 2
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 5).cgPath
         
         optionLabel.text = opt
         let img = UIImage(named: opt!)?.withRenderingMode(.alwaysTemplate)

@@ -14,7 +14,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "01:00" //Shoud be from date object
         lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir-Black", size: 35)
+        lbl.font = UIFont(name: "Avenir-Black", size: 40)
         return lbl
     }()
     
@@ -49,19 +49,21 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     func setupTimeLabelConstraint() {
         timeLabel.translatesAutoresizingMaskIntoConstraints = false
         timeLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 10).isActive = true
-        timeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
+        timeLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
     }
     
     func setupPopoverButtonConstraint() {
         popoverButton.translatesAutoresizingMaskIntoConstraints = false
         popoverButton.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor, constant: 0).isActive = true
-        popoverButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        popoverButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+        popoverButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        popoverButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
     
     func setupToggleButtonConstraint() {
         toggleButton.translatesAutoresizingMaskIntoConstraints = false
         toggleButton.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor, constant: 0).isActive = true
-        toggleButton.trailingAnchor.constraint(equalTo: popoverButton.leadingAnchor, constant: -20).isActive = true
+        toggleButton.trailingAnchor.constraint(equalTo: popoverButton.leadingAnchor, constant: -10).isActive = true
     }
     
     func setupCellStyle() {

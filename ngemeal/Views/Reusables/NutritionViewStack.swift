@@ -138,68 +138,6 @@ class ChartNutritionStackView: UIStackView {
 }
 
 //Nutrition stackview v1
-class NutritionStackView: UIStackView {
+class NutritionView: UIView {
     
-    var vegVal: Int = 0
-    var proVal: Int = 0
-    var stapVal: Int = 0
-    
-    convenience init(_ vegPercent: Int, _ proPercent: Int, _ stapPercent: Int) {
-        self.init(frame: CGRect(x: 0, y: 0, width: 120, height: 65))
-        
-        self.vegVal = vegPercent
-        self.proVal = proPercent
-        self.stapVal = stapPercent
-        
-        let veg = generateNutrition(#colorLiteral(red: 0.1764705882, green: 0.7137254902, blue: 0.7058823529, alpha: 1), "Vegetable", vegVal)
-        let pro = generateNutrition(#colorLiteral(red: 0.3843137255, green: 0.8039215686, blue: 0.8, alpha: 1), "Protein", proVal)
-        let stap = generateNutrition(#colorLiteral(red: 0.6823529412, green: 0.9137254902, blue: 0.9098039216, alpha: 1), "Staple", stapVal)
-        
-        self.addArrangedSubview(veg)
-        self.addArrangedSubview(pro)
-        self.addArrangedSubview(stap)
-        self.axis = .vertical
-        self.distribution = .fillEqually
-        self.spacing = 3
-    }
-    
-    private func generateNutrition(_ color: UIColor, _ type: String, _ value: Int) -> UIView {
-        let v = UIView()
-        v.frame = CGRect(x: 0, y: 0, width: 120, height: 20)
-        
-        
-        let colBox = UIView()
-        colBox.layer.cornerRadius = 3
-        colBox.backgroundColor = color
-        
-        let typeLbl = UILabel()
-        typeLbl.text = type
-        typeLbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        typeLbl.font = UIFont(name: "AvenirNext-Medium", size: 17)
-        
-        let valLbl = UILabel()
-        valLbl.text = ": \(value)%"
-        valLbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        valLbl.font = UIFont(name: "AvenirNext-Medium", size: 17)
-        
-        v.addSubview(colBox)
-        v.addSubview(typeLbl)
-        v.addSubview(valLbl)
-        
-        colBox.translatesAutoresizingMaskIntoConstraints = false
-        colBox.centerYAnchor.constraint(equalTo: v.centerYAnchor).isActive = true
-        colBox.leadingAnchor.constraint(equalTo: v.leadingAnchor).isActive = true
-        colBox.widthAnchor.constraint(equalToConstant: 14).isActive = true
-        colBox.heightAnchor.constraint(equalToConstant: 14).isActive = true
-        
-        typeLbl.translatesAutoresizingMaskIntoConstraints = false
-        typeLbl.centerYAnchor.constraint(equalTo: v.centerYAnchor).isActive = true
-        typeLbl.leadingAnchor.constraint(equalTo: colBox.trailingAnchor, constant: 7).isActive = true
-        
-        valLbl.translatesAutoresizingMaskIntoConstraints = false
-        valLbl.centerYAnchor.constraint(equalTo: v.centerYAnchor).isActive = true
-        valLbl.trailingAnchor.constraint(equalTo: v.trailingAnchor, constant: 0).isActive = true
-        
-        return v
-    }
 }

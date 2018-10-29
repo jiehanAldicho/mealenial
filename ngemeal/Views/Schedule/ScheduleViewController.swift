@@ -20,7 +20,7 @@ class ScheduleViewController: UIViewController {
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
-        layout.minimumLineSpacing = 20
+        layout.minimumLineSpacing = 25
         
         scheduleCollectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
         scheduleCollectionView.dataSource = self
