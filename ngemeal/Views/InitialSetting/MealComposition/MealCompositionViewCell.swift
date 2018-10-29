@@ -32,7 +32,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
     
     var sliderView: UIControl = {
         
-        let slider   = MultiSlider()
+        let slider = MultiSlider()
         slider.minimumValue = 0    // default is 0.0
         slider.maximumValue = 100    // default is 1.0
         slider.snapStepSize = 1  // default is 0.0, i.e. don't snap
@@ -66,7 +66,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
     }()
     
     //Nutrition Variables
-    var nutritionLabel = ChartNutritionStackView(50,17,33)
+    var nutritionLabel = ChartNutritionStackView(0, 0, 0)
     
     //Other Label2 Variables
     var otherLabel2: UILabel = {
@@ -90,8 +90,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         
         btn.setTitle("Done!", for: .normal)
         btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 25)
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = btn.bounds.size.width / 8
         btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
@@ -185,12 +184,12 @@ extension MealCompositionCollectionViewCell {
     @objc func sliderChanged(slider: MultiSlider) {
         //        print("\(slider.value)")
         
-        nutritionLabel.vegVal = Int(slider.value[0])
-        nutritionLabel.proVal = Int(slider.value[1] - slider.value[0])
-        nutritionLabel.stapVal = 100 - Int(slider.value[1])
-        print("\(nutritionLabel.vegVal)")
-        print("\(nutritionLabel.proVal)")
-        print("\(nutritionLabel.stapVal)")
+        nutritionLabel.vegLabel.text = "\(Int(slider.value[0]))%"
+        nutritionLabel.proLabel.text = "\(Int(slider.value[1] - slider.value[0]))%"
+        nutritionLabel.stapLabel.text = "\(100 - Int(slider.value[1]))%"
+//        print("\(nutritionLabel.vegVal)")
+//        print("\(nutritionLabel.proVal)")
+//        print("\(nutritionLabel.stapVal)")
         
     }
     

@@ -75,6 +75,8 @@ extension MealCompositionViewController: MealCompositionCollectionViewCellDelega
     func pushNext() {
         
         //PUSH TO NEXT VIEW CODE
-        print("Delegated")
+        let mainTabBarCon = MainTabBarController() as UIViewController
+        self.navigationController?.pushViewController(mainTabBarCon, animated: true)
+        
     }
 }
