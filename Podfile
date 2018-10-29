@@ -10,6 +10,5 @@ target 'ngemeal' do
   pod 'Firebase/Auth'
   pod 'GoogleSignIn'
   pod 'Charts'
-  pod 'MultiSlider'
   
 end

@@ -15,6 +15,7 @@
 		<dict>
 			<key>FooterText</key>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 			<string>The MIT License (MIT)
 
@@ -46,6 +47,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
 		<dict>
 			<key>FooterText</key>
 >>>>>>> ced781024e99546feb0bfe483dfaab715b61a2de
+=======
+>>>>>>> parent of 0d28bda... Adding Initial Setting Main Page
 			<string>Apache License
                            Version 2.0, January 2004
                         http://www.apache.org/licenses/
@@ -1793,6 +1796,7 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
 		<dict>
 			<key>FooterText</key>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 			<string>The MIT License (MIT)
 
@@ -1853,6 +1857,8 @@ CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.</stri
 		<dict>
 			<key>FooterText</key>
 >>>>>>> ced781024e99546feb0bfe483dfaab715b61a2de
+=======
+>>>>>>> parent of 0d28bda... Adding Initial Setting Main Page
 			<string>Copyright (c) 2011 Petteri Aimonen &lt;jpa at nanopb.mail.kapsi.fi&gt;
 
 This software is provided 'as-is', without any express or 

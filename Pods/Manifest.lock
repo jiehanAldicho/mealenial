@@ -1,8 +1,11 @@
 PODS:
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   - AvailableHapticFeedback (1.0.0)
 >>>>>>> ced781024e99546feb0bfe483dfaab715b61a2de
+=======
+>>>>>>> parent of 0d28bda... Adding Initial Setting Main Page
   - Charts (3.2.1):
     - Charts/Core (= 3.2.1)
   - Charts/Core (3.2.1)
@@ -77,12 +80,15 @@ PODS:
   - GTMSessionFetcher/Full (1.2.0):
     - GTMSessionFetcher/Core (= 1.2.0)
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
   - MiniLayout (1.3.0)
   - MultiSlider (1.8.1):
     - AvailableHapticFeedback
     - MiniLayout
 >>>>>>> ced781024e99546feb0bfe483dfaab715b61a2de
+=======
+>>>>>>> parent of 0d28bda... Adding Initial Setting Main Page
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -95,6 +101,7 @@ DEPENDENCIES:
   - Firebase/Core
   - GoogleSignIn
 <<<<<<< HEAD
+<<<<<<< HEAD
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -105,6 +112,11 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - AvailableHapticFeedback
 >>>>>>> ced781024e99546feb0bfe483dfaab715b61a2de
+=======
+
+SPEC REPOS:
+  https://github.com/cocoapods/specs.git:
+>>>>>>> parent of 0d28bda... Adding Initial Setting Main Page
     - Charts
     - Firebase
     - FirebaseAnalytics
@@ -119,6 +131,7 @@ SPEC REPOS:
     - GTMOAuth2
     - GTMSessionFetcher
 <<<<<<< HEAD
+<<<<<<< HEAD
     - nanopb
 
 SPEC CHECKSUMS:
@@ -130,6 +143,11 @@ SPEC CHECKSUMS:
 SPEC CHECKSUMS:
   AvailableHapticFeedback: dbd483684e693281b85e671d95ac3593dfbad34f
 >>>>>>> ced781024e99546feb0bfe483dfaab715b61a2de
+=======
+    - nanopb
+
+SPEC CHECKSUMS:
+>>>>>>> parent of 0d28bda... Adding Initial Setting Main Page
   Charts: f122fb70b19847fa5817d018b77d6c5a2296ab25
   Firebase: 75ea9e232eefa158c1049028030b8f661a2ccb62
   FirebaseAnalytics: 993577e91157feb40945abedd6ab346d8a4b6ac8
@@ -144,6 +162,7 @@ SPEC CHECKSUMS:
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
 <<<<<<< HEAD
+<<<<<<< HEAD
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
 PODFILE CHECKSUM: fa2fc70f9ac524faec9055292e45d710ffd9def2
@@ -154,5 +173,10 @@ PODFILE CHECKSUM: fa2fc70f9ac524faec9055292e45d710ffd9def2
 
 PODFILE CHECKSUM: 74dd5fb245b187a1f1e906834eb3b3d20e6013e8
 >>>>>>> ced781024e99546feb0bfe483dfaab715b61a2de
+=======
+  nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
+
+PODFILE CHECKSUM: fa2fc70f9ac524faec9055292e45d710ffd9def2
+>>>>>>> parent of 0d28bda... Adding Initial Setting Main Page
 
 COCOAPODS: 1.5.3

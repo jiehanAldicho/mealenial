@@ -2,6 +2,7 @@
 This application makes use of the following third party libraries:
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 ## AvailableHapticFeedback
 
@@ -27,6 +28,8 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 >>>>>>> ced781024e99546feb0bfe483dfaab715b61a2de
+=======
+>>>>>>> parent of 0d28bda... Adding Initial Setting Main Page
 ## Charts
 
 Apache License
@@ -1696,6 +1699,7 @@ Copyright 2018 Google
 
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 ## MiniLayout
 
@@ -1744,6 +1748,8 @@ IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 >>>>>>> ced781024e99546feb0bfe483dfaab715b61a2de
+=======
+>>>>>>> parent of 0d28bda... Adding Initial Setting Main Page
 ## nanopb
 
 Copyright (c) 2011 Petteri Aimonen <jpa at nanopb.mail.kapsi.fi>
