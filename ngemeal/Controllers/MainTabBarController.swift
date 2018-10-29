@@ -28,6 +28,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
 //    let scheduleView = createTabBarItem(ScheduleViewController(), "calendar")
 //    scheduleView.tabBarItem.title = "Schedule"
     
+    
     //Tab bar style setup
     self.tabBar.backgroundColor = .white
     

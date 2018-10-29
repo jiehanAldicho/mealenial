@@ -72,6 +72,9 @@ PODS:
   - GTMSessionFetcher/Core (1.2.0)
   - GTMSessionFetcher/Full (1.2.0):
     - GTMSessionFetcher/Core (= 1.2.0)
+  - MiniLayout (1.3.0)
+  - MultiSlider (1.7.0):
+    - MiniLayout
   - nanopb (0.3.8):
     - nanopb/decode (= 0.3.8)
     - nanopb/encode (= 0.3.8)
@@ -83,6 +86,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Core
   - GoogleSignIn
+  - MultiSlider
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -99,6 +103,8 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMOAuth2
     - GTMSessionFetcher
+    - MiniLayout
+    - MultiSlider
     - nanopb
 
 SPEC CHECKSUMS:
@@ -115,8 +121,10 @@ SPEC CHECKSUMS:
   GoogleUtilities: 06b66f9567769a7958db20a92f0128b2843e49d5
   GTMOAuth2: c77fe325e4acd453837e72d91e3b5f13116857b2
   GTMSessionFetcher: 0c4baf0a73acd0041bf9f71ea018deedab5ea84e
+  MiniLayout: 57c42e7e44cb47a9ef95650970ee1d2718725518
+  MultiSlider: 582336f12874cd58c6e72cb413382f9fcd6a658b
   nanopb: 5601e6bca2dbf1ed831b519092ec110f66982ca3
 
-PODFILE CHECKSUM: fa2fc70f9ac524faec9055292e45d710ffd9def2
+PODFILE CHECKSUM: 74dd5fb245b187a1f1e906834eb3b3d20e6013e8
 
 COCOAPODS: 1.5.3
