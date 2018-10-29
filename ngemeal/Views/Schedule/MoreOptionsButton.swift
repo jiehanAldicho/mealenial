@@ -47,7 +47,7 @@ class MoreOptionButton: UIButton {
             menuIsOpen = true
             
             NSLayoutConstraint.deactivate([self.height])
-            self.height.constant = 90
+            self.height.constant = 88
             NSLayoutConstraint.activate([self.height])
             
             UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 0.3, options: .curveEaseIn, animations: {
@@ -139,7 +139,7 @@ class OptionsView: UIView, UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //Add handler here
         let cell = tableView.cellForRow(at: indexPath) as! MenuCell
-        print(cell.opt)
+//        print(cell.opt)
     }
 }
 

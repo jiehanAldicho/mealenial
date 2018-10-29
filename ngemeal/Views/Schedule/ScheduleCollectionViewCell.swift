@@ -14,7 +14,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "01:00" //Shoud be from date object
         lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir-Black", size: 40)
+        lbl.font = UIFont(name: "Avenir-Black", size: 35)
         return lbl
     }()
     
@@ -26,7 +26,21 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         return swtch
     }()
     
+    var bottomView: UIView = {
+        let v = UIView()
+        v.backgroundColor = UIColor.clear
+        return v
+    }()
+    
     var popoverButton = MoreOptionButton()
+    
+    var mealTypeLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Breakfast" //Shoud be from the model
+        lbl.textColor = Colors.textBlack
+        lbl.font = UIFont(name: "Avenir", size: 18)
+        return lbl
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -35,6 +49,8 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         
         popoverButton = MoreOptionButton.init(frame: CGRect.zero)
         
+        self.addSubview(bottomView)
+        bottomView.addSubview(mealTypeLabel)
         self.addSubview(timeLabel)
         self.addSubview(toggleButton)
         self.addSubview(popoverButton)
@@ -42,8 +58,14 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         setupTimeLabelConstraint()
         setupPopoverButtonConstraint()
         setupToggleButtonConstraint()
+        setupBottomViewConstraint()
+        setupMealTypeLabelConstraint()
         
         popoverButton.addTarget(self, action: #selector(handleButtonTapped), for: .touchUpInside)
+    }
+    
+    override func layoutSubviews() {
+        
     }
     
     func setupTimeLabelConstraint() {
@@ -64,6 +86,34 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         toggleButton.translatesAutoresizingMaskIntoConstraints = false
         toggleButton.centerYAnchor.constraint(equalTo: timeLabel.centerYAnchor, constant: 0).isActive = true
         toggleButton.trailingAnchor.constraint(equalTo: popoverButton.leadingAnchor, constant: -10).isActive = true
+    }
+    
+    func setupBottomViewConstraint() {
+        bottomView.translatesAutoresizingMaskIntoConstraints = false
+        bottomView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
+        bottomView.bottomAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+//        bottomView.heightAnchor.constraint(equalToConstant: 55).isActive = true
+        bottomView.heightAnchor.constraint(equalToConstant: self.frame.height * 0.45).isActive = true
+        
+        bottomView.layer.cornerRadius = 10
+        bottomView.clipsToBounds = true
+        bottomView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMinXMaxYCorner]
+        
+        let gradientBG = CAGradientLayer().cardBottomGradientLayer()
+        gradientBG.frame = bottomView.bounds
+        bottomView.layer.addSublayer(gradientBG)
+        
+        let topBorder = UIView()
+        let frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 1)
+        topBorder.frame = frame
+        topBorder.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.9647058824, blue: 0.9529411765, alpha: 1)
+        bottomView.addSubview(topBorder)
+    }
+    
+    func setupMealTypeLabelConstraint() {
+        mealTypeLabel.translatesAutoresizingMaskIntoConstraints = false
+        mealTypeLabel.centerYAnchor.constraint(equalTo: bottomView.centerYAnchor).isActive = true
+        mealTypeLabel.leadingAnchor.constraint(equalTo: timeLabel.leadingAnchor).isActive = true
     }
     
     func setupCellStyle() {

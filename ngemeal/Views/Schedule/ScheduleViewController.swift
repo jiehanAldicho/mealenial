@@ -16,7 +16,7 @@ class ScheduleViewController: UIViewController {
         self.tabBarController?.tabBar.isHidden = false
         
         super.viewDidLoad()
-//        self.setCustomNavbar()
+        self.setCustomNavbar()
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)
@@ -36,7 +36,7 @@ class ScheduleViewController: UIViewController {
 
 extension ScheduleViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
