@@ -34,8 +34,17 @@ extension CAGradientLayer {
         let start = UIColor(displayP3Red: 251/255, green: 255/255, blue: 254/255, alpha: 1).cgColor //Create color helper for this
         let end = UIColor(displayP3Red: 245/255, green: 253/255, blue: 251/255, alpha: 1).cgColor//Create color helper for this
         self.colors = [start, end]
-        self.startPoint = CGPoint(x: 0, y: 0.2)
+        self.startPoint = CGPoint(x: 0, y: -0.2)
         self.endPoint = CGPoint(x: 0, y: 1)
+        return self
+    }
+    
+    func cardBottomGradientLayer() -> CAGradientLayer {
+        let start = UIColor(displayP3Red: 251/255, green: 255/255, blue: 254/255, alpha: 1).cgColor //Create color helper for this
+        let end = UIColor(displayP3Red: 245/255, green: 253/255, blue: 251/255, alpha: 1).cgColor//Create color helper for this
+        self.colors = [start, end]
+        self.startPoint = CGPoint(x: 0, y: 0.2)
+        self.endPoint = CGPoint(x: 0, y: 0.7)
         return self
     }
 }
