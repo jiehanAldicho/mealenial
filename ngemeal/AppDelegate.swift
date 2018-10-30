@@ -35,10 +35,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     window = UIWindow.init(frame: UIScreen.main.bounds)
     window?.backgroundColor = .white
     
+
+    let mainTabBarCon = MainTabBarController()
+//    let mainTabBarCon = MealCompositionViewController()
+    
+
     //Testing
     let initialViewCon = UINavigationController(rootViewController: MealCompositionViewController())
     initialViewCon.navigationBar.isHidden = true
-    let mainTabBarCon = MainTabBarController()
+
 //    let navController = UINavigationController(rootViewController: mainTabBarCon)
 //    navController.navigationBar.isHidden = true
     window?.rootViewController = initialViewCon

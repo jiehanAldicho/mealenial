@@ -158,6 +158,10 @@ class ChartNutritionStackView: UIStackView {
         self.addSubview(proLabel)
         self.addSubview(stapLabel)
         
+        self.vegLabel.text = "\(vegVal)%"
+        self.proLabel.text = "\(proVal)%"
+        self.stapLabel.text = "\(stapVal)%"
+        
         setupLabelsConstraint()
     }
     
