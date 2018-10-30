@@ -112,7 +112,7 @@ class ChartNutritionStackView: UIStackView {
         let lbl = UILabel()
         lbl.text = "0%"
         lbl.textColor = Colors.textGreen
-        lbl.font = UIFont(name: "Avenir-Black", size: 23)
+        lbl.font = UIFont(name: "Avenir-Black", size: 20)
         return lbl
     }()
     
@@ -120,7 +120,7 @@ class ChartNutritionStackView: UIStackView {
         let lbl = UILabel()
         lbl.text = "0%"
         lbl.textColor = Colors.textGreen
-        lbl.font = UIFont(name: "Avenir-Black", size: 23)
+        lbl.font = UIFont(name: "Avenir-Black", size: 20)
         return lbl
     }()
     
@@ -128,7 +128,7 @@ class ChartNutritionStackView: UIStackView {
         let lbl = UILabel()
         lbl.text = "0%"
         lbl.textColor = Colors.textGreen
-        lbl.font = UIFont(name: "Avenir-Black", size: 23)
+        lbl.font = UIFont(name: "Avenir-Black", size: 20)
         return lbl
     }()
     
@@ -189,7 +189,7 @@ class ChartNutritionStackView: UIStackView {
         let typeLbl = UILabel()
         typeLbl.text = type
         typeLbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        typeLbl.font = UIFont(name: "Avenir-Heavy", size: 23)
+        typeLbl.font = UIFont(name: "Avenir-Medium", size: 20)
         
 //        let percentLbl = UILabel()
 //        percentLbl.text = "\(value)%"
