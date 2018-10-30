@@ -38,6 +38,28 @@ class MealScheduleViewController: UIViewController {
         return lbl
     }()
     
+    var nextButton: UIButton = {
+        let btn = UIButton()
+        
+        btn.frame = CGRect(x: 0, y: 0, width: 198, height: 56)
+        
+        btn.setTitle("I'm set!", for: .normal)
+        btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
+        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
+        btn.setTitleColor(.white, for: .normal)
+        btn.layer.cornerRadius = btn.bounds.size.width / 8
+        btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
+        
+        //Shadow
+        btn.layer.masksToBounds = false
+        btn.layer.shadowColor = UIColor.black.cgColor
+        btn.layer.shadowOpacity = 0.5
+        btn.layer.shadowOffset = CGSize(width: 1, height: 1)
+        btn.layer.shadowRadius = 2
+        
+        return btn
+    }()
+    
     var mealScheduleTableView: UITableView!
     
     override func viewDidLoad() {
@@ -51,20 +73,25 @@ class MealScheduleViewController: UIViewController {
         mealScheduleTableView = UITableView()
         mealScheduleTableView.delegate = self
         mealScheduleTableView.dataSource = self
-        mealScheduleTableView.separatorColor = #colorLiteral(red: 0.8980392157, green: 0.9647058824, blue: 0.9529411765, alpha: 1)
+        mealScheduleTableView.separatorStyle = .none
         mealScheduleTableView.backgroundColor = .clear
+        mealScheduleTableView.register(MealScheduleCell.self, forCellReuseIdentifier: "mealSchedule")
         
         //Adding subviews
         view.addSubview(titleLabel)
         view.addSubview(addScheduleButton)
         view.addSubview(descriptionLabel)
         view.addSubview(mealScheduleTableView)
+        view.addSubview(nextButton)
         
         //Setting constraints
         setupTitleConstraints()
         setupAddButtonConstraints()
         setupDescriptionConstraints()
         setupTableViewConstraint()
+        setupButtonConstraint()
+        
+        nextButton.addTarget(self, action: #selector(navigateToMain), for: .touchUpInside)
     }
     
     func setupTitleConstraints() {
@@ -95,6 +122,20 @@ class MealScheduleViewController: UIViewController {
         mealScheduleTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30).isActive = true
         mealScheduleTableView.heightAnchor.constraint(equalToConstant: 400).isActive = true
     }
+    
+    func setupButtonConstraint() {
+        nextButton.translatesAutoresizingMaskIntoConstraints = false
+        nextButton.topAnchor.constraint(equalTo: mealScheduleTableView.bottomAnchor, constant: 20).isActive = true
+        nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        nextButton.widthAnchor.constraint(equalToConstant: 180).isActive = true
+        nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    @objc func navigateToMain() {
+        self.navigationController?.popViewController(animated: false)
+        let mainTabBarCon = MainTabBarController() as UIViewController
+        self.present(mainTabBarCon, animated: true, completion: nil)
+    }
 }
 
 extension MealScheduleViewController: UITableViewDataSource, UITableViewDelegate {
@@ -107,6 +148,11 @@ extension MealScheduleViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mealSchedule")
+        return cell!
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 50
     }
 }

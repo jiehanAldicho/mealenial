@@ -32,6 +32,7 @@
 		B9325EF621820E7D0087E7AE /* MoreOptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9325EF521820E7D0087E7AE /* MoreOptionsButton.swift */; };
 		B96D2FA72180BC8C0049EC60 /* NutritionViewStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D2FA62180BC8C0049EC60 /* NutritionViewStack.swift */; };
 		B96D2FA92180BDD30049EC60 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D2FA82180BDD30049EC60 /* Colors.swift */; };
+		B99916D62187FAAE00C9EEB4 /* MealScheduleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B99916D52187FAAE00C9EEB4 /* MealScheduleCell.swift */; };
 		B9AF2EB22187606F0047D533 /* MealScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AF2EB12187606F0047D533 /* MealScheduleViewController.swift */; };
 		B9C5D2E92180169B003AFDB7 /* FoodJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5D2E82180169B003AFDB7 /* FoodJournalViewController.swift */; };
 		B9C5D2EB218016B3003AFDB7 /* FoodJournalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5D2EA218016B3003AFDB7 /* FoodJournalCell.swift */; };
@@ -72,6 +73,7 @@
 		B9325EF521820E7D0087E7AE /* MoreOptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreOptionsButton.swift; sourceTree = "<group>"; };
 		B96D2FA62180BC8C0049EC60 /* NutritionViewStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionViewStack.swift; sourceTree = "<group>"; };
 		B96D2FA82180BDD30049EC60 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B99916D52187FAAE00C9EEB4 /* MealScheduleCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealScheduleCell.swift; sourceTree = "<group>"; };
 		B9AF2EB12187606F0047D533 /* MealScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealScheduleViewController.swift; sourceTree = "<group>"; };
 		B9C5D2E82180169B003AFDB7 /* FoodJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJournalViewController.swift; sourceTree = "<group>"; };
 		B9C5D2EA218016B3003AFDB7 /* FoodJournalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJournalCell.swift; sourceTree = "<group>"; };
@@ -231,6 +233,7 @@
 			isa = PBXGroup;
 			children = (
 				B9AF2EB12187606F0047D533 /* MealScheduleViewController.swift */,
+				B99916D52187FAAE00C9EEB4 /* MealScheduleCell.swift */,
 			);
 			path = MealSchedule;
 			sourceTree = "<group>";
@@ -460,6 +463,7 @@
 				A1DE140A2177889C008F7DA8 /* Meal.swift in Sources */,
 				A17E02B12176021600754ABB /* MainTabBarController.swift in Sources */,
 				B9F5C375218701E000EF79B5 /* MealCompositionViewCell.swift in Sources */,
+				B99916D62187FAAE00C9EEB4 /* MealScheduleCell.swift in Sources */,
 				B9C5D2F021801758003AFDB7 /* WeekPickerView.swift in Sources */,
 				B9322C2421818AEA00768592 /* ScheduleCollectionViewCell.swift in Sources */,
 				B9C5D2EB218016B3003AFDB7 /* FoodJournalCell.swift in Sources */,
