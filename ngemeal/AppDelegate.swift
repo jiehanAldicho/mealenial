@@ -35,16 +35,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     window = UIWindow.init(frame: UIScreen.main.bounds)
     window?.backgroundColor = .white
     
-<<<<<<< HEAD
+
     let mainTabBarCon = MainTabBarController()
 //    let mainTabBarCon = MealCompositionViewController()
     
-=======
+
     //Testing
->>>>>>> e0f3a2e8f01f54800407963e82376624aa04719e
+    let initialViewCon = UINavigationController(rootViewController: MealCompositionViewController())
+    initialViewCon.navigationBar.isHidden = true
+
 //    let navController = UINavigationController(rootViewController: mainTabBarCon)
 //    navController.navigationBar.isHidden = true
-    window?.rootViewController = mainTabBarCon
+    window?.rootViewController = initialViewCon
     window?.makeKeyAndVisible()
     
     FirebaseApp.configure()

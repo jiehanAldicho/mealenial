@@ -10,6 +10,8 @@
 		023D4331A8DD8BAD9AA40587 /* Pods_ngemeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C96E2B5885459339CFF26D /* Pods_ngemeal.framework */; };
 		25039C12217ECB7C009F68AD /* InputFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25039C11217ECB7C009F68AD /* InputFoodCell.swift */; };
 		2529B71421784F5400C519B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2529B71321784F5400C519B7 /* GoogleService-Info.plist */; };
+		25B3B52E21880249002291C8 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B3B52C21880249002291C8 /* AccountViewController.swift */; };
+		25B3B52F21880249002291C8 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B3B52D21880249002291C8 /* AccountCollectionViewCell.swift */; };
 		25E70D592178745C00BF273B /* InputFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E70D582178745C00BF273B /* InputFoodViewController.swift */; };
 		94EACA6A216B2EB0007A4539 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EACA69216B2EB0007A4539 /* AppDelegate.swift */; };
 		94EACA6C216B2EB0007A4539 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EACA6B216B2EB0007A4539 /* ViewController.swift */; };
@@ -21,7 +23,6 @@
 		A17E02B12176021600754ABB /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E02B02176021600754ABB /* MainTabBarController.swift */; };
 		A17E02B32176027600754ABB /* CalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E02B22176027600754ABB /* CalendarViewController.swift */; };
 		A17E02B6217602AE00754ABB /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E02B5217602AE00754ABB /* HomeViewController.swift */; };
-		A17E02B8217602B900754ABB /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E02B7217602B900754ABB /* AccountViewController.swift */; };
 		A17E02BC21764E4700754ABB /* calendarViewCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = A17E02BB21764E4700754ABB /* calendarViewCells.swift */; };
 		A1DE140821777F7A008F7DA8 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DE140721777F7A008F7DA8 /* Helper.swift */; };
 		A1DE140A2177889C008F7DA8 /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1DE14092177889C008F7DA8 /* Meal.swift */; };
@@ -45,6 +46,8 @@
 /* Begin PBXFileReference section */
 		25039C11217ECB7C009F68AD /* InputFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFoodCell.swift; sourceTree = "<group>"; };
 		2529B71321784F5400C519B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
+		25B3B52C21880249002291C8 /* AccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		25B3B52D21880249002291C8 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		25E70D582178745C00BF273B /* InputFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFoodViewController.swift; sourceTree = "<group>"; };
 		420D75C38DA8608CB788383D /* Pods-ngemeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ngemeal.release.xcconfig"; path = "Pods/Target Support Files/Pods-ngemeal/Pods-ngemeal.release.xcconfig"; sourceTree = "<group>"; };
 		94EACA66216B2EB0007A4539 /* ngemeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ngemeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,7 +64,6 @@
 		A17E02B02176021600754ABB /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		A17E02B22176027600754ABB /* CalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewController.swift; sourceTree = "<group>"; };
 		A17E02B5217602AE00754ABB /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		A17E02B7217602B900754ABB /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		A17E02BB21764E4700754ABB /* calendarViewCells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = calendarViewCells.swift; sourceTree = "<group>"; };
 		A1DE140721777F7A008F7DA8 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		A1DE14092177889C008F7DA8 /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
@@ -94,6 +96,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		25B3B52B21880249002291C8 /* AccountMainView */ = {
+			isa = PBXGroup;
+			children = (
+				25B3B52C21880249002291C8 /* AccountViewController.swift */,
+				25B3B52D21880249002291C8 /* AccountCollectionViewCell.swift */,
+			);
+			path = AccountMainView;
+			sourceTree = "<group>";
+		};
 		25E70D572178741500BF273B /* InputFood */ = {
 			isa = PBXGroup;
 			children = (
@@ -193,7 +204,7 @@
 		A17E02BA217602CB00754ABB /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				A17E02B7217602B900754ABB /* AccountViewController.swift */,
+				25B3B52B21880249002291C8 /* AccountMainView */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -437,6 +448,7 @@
 			files = (
 				B9325EF621820E7D0087E7AE /* MoreOptionsButton.swift in Sources */,
 				B9C5D2E92180169B003AFDB7 /* FoodJournalViewController.swift in Sources */,
+				25B3B52E21880249002291C8 /* AccountViewController.swift in Sources */,
 				B96D2FA92180BDD30049EC60 /* Colors.swift in Sources */,
 				A11A8A182177634400CFBAB3 /* NextMealCell.swift in Sources */,
 				A11A8A162177633900CFBAB3 /* LastMealCell.swift in Sources */,
@@ -449,8 +461,8 @@
 				A17E02B6217602AE00754ABB /* HomeViewController.swift in Sources */,
 				A17E02B32176027600754ABB /* CalendarViewController.swift in Sources */,
 				B9C5D2ED218016CC003AFDB7 /* MealCell.swift in Sources */,
-				A17E02B8217602B900754ABB /* AccountViewController.swift in Sources */,
 				B9F5C3772187020400EF79B5 /* MealCompositionViewController.swift in Sources */,
+				25B3B52F21880249002291C8 /* AccountCollectionViewCell.swift in Sources */,
 				94EACA6C216B2EB0007A4539 /* ViewController.swift in Sources */,
 				A1DE140821777F7A008F7DA8 /* Helper.swift in Sources */,
 				B9322C1E2181608300768592 /* FoodDetailCell.swift in Sources */,

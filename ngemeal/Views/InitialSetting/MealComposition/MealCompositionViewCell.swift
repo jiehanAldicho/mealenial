@@ -182,25 +182,18 @@ extension MealCompositionCollectionViewCell {
     }
     
     @objc func sliderChanged(slider: MultiSlider) {
-<<<<<<< HEAD:ngemeal/Views/InitialSetting/MealComposition/MealCompositionCollectionViewCell.swift
 //        print("\(slider.value)")
-=======
         //        print("\(slider.value)")
->>>>>>> e0f3a2e8f01f54800407963e82376624aa04719e:ngemeal/Views/InitialSetting/MealComposition/MealCompositionViewCell.swift
         
         nutritionLabel.vegLabel.text = "\(Int(slider.value[0]))%"
         nutritionLabel.proLabel.text = "\(Int(slider.value[1] - slider.value[0]))%"
-        nutritionLabel.stapLabel.text = "\(100 - Int(slider.value[1]))%"
-<<<<<<< HEAD:ngemeal/Views/InitialSetting/MealComposition/MealCompositionCollectionViewCell.swift
 
         print("\(nutritionLabel.vegVal)")
         print("\(nutritionLabel.proVal)")
         print("\(nutritionLabel.stapVal)")
-=======
 //        print("\(nutritionLabel.vegVal)")
 //        print("\(nutritionLabel.proVal)")
 //        print("\(nutritionLabel.stapVal)")
->>>>>>> e0f3a2e8f01f54800407963e82376624aa04719e:ngemeal/Views/InitialSetting/MealComposition/MealCompositionViewCell.swift
         
     }
     
