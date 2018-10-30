@@ -110,6 +110,10 @@ class ChartNutritionStackView: UIStackView {
     
     var vegLabel: UILabel = {
         let lbl = UILabel()
+<<<<<<< HEAD
+=======
+        lbl.text = "0%"
+>>>>>>> e0f3a2e8f01f54800407963e82376624aa04719e
         lbl.textColor = Colors.textGreen
         lbl.font = UIFont(name: "Avenir-Black", size: 23)
         return lbl
@@ -117,6 +121,10 @@ class ChartNutritionStackView: UIStackView {
     
     var proLabel: UILabel = {
         let lbl = UILabel()
+<<<<<<< HEAD
+=======
+        lbl.text = "0%"
+>>>>>>> e0f3a2e8f01f54800407963e82376624aa04719e
         lbl.textColor = Colors.textGreen
         lbl.font = UIFont(name: "Avenir-Black", size: 23)
         return lbl
@@ -124,6 +132,10 @@ class ChartNutritionStackView: UIStackView {
     
     var stapLabel: UILabel = {
         let lbl = UILabel()
+<<<<<<< HEAD
+=======
+        lbl.text = "0%"
+>>>>>>> e0f3a2e8f01f54800407963e82376624aa04719e
         lbl.textColor = Colors.textGreen
         lbl.font = UIFont(name: "Avenir-Black", size: 23)
         return lbl

@@ -5,9 +5,7 @@
 //  Created by Yuvens Putra Barata on 25/10/18.
 //  Copyright © 2018 Primy Peluncuran Indonesia. All rights reserved.
 //
-
 import UIKit
-
 class MealCompositionViewController: UIViewController {
     
     //Navbar Variables
@@ -15,10 +13,8 @@ class MealCompositionViewController: UIViewController {
     
     //Collection View Variables
     var overviewCollectionView : UICollectionView!
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
         setupTabBar()
         setupNavBar()
         setupCollectionView()
@@ -26,11 +22,13 @@ class MealCompositionViewController: UIViewController {
         self.view.addSubview(fakeNavBar)
         setupCollectionViewConstraint()
     }
-
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+    }
 }
-
 //MARK: Extension
-
 //Collection View Extension
 extension MealCompositionViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     
@@ -48,7 +46,6 @@ extension MealCompositionViewController: UICollectionViewDelegateFlowLayout, UIC
         return CGSize(width: 342, height: 650)
     }
 }
-
 //Setup Function Extension
 extension MealCompositionViewController {
     func setupTabBar() {
@@ -79,11 +76,18 @@ extension MealCompositionViewController {
         overviewCollectionView.layer.zPosition = -1
     }
 }
-
 extension MealCompositionViewController: MealCompositionCollectionViewCellDelegate, UINavigationControllerDelegate {
     func pushNext() {
         
         //PUSH TO NEXT VIEW CODE
-        print("Delegated")
+//        self.navigationController?.popViewController(animated: false)
+//
+//        //Send data to the main tab bar controller pls🙏
+//        let mainTabBarCon = MainTabBarController() as UIViewController
+//        self.present(mainTabBarCon, animated: true, completion: nil)
+        
+        let mealScheduleVC = MealScheduleViewController()
+        self.navigationController?.pushViewController(mealScheduleVC, animated: true)
+        
     }
 }

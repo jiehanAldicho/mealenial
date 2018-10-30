@@ -10,9 +10,6 @@
 		023D4331A8DD8BAD9AA40587 /* Pods_ngemeal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96C96E2B5885459339CFF26D /* Pods_ngemeal.framework */; };
 		25039C12217ECB7C009F68AD /* InputFoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25039C11217ECB7C009F68AD /* InputFoodCell.swift */; };
 		2529B71421784F5400C519B7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2529B71321784F5400C519B7 /* GoogleService-Info.plist */; };
-		25A84B122186AB40005335D6 /* MealCompositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A84B102186AB40005335D6 /* MealCompositionViewController.swift */; };
-		25A84B132186AB40005335D6 /* MealCompositionCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A84B112186AB40005335D6 /* MealCompositionCollectionViewCell.swift */; };
-		25A84B162186FBCB005335D6 /* AccountCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25A84B152186FBCB005335D6 /* AccountCollectionViewCell.swift */; };
 		25E70D592178745C00BF273B /* InputFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25E70D582178745C00BF273B /* InputFoodViewController.swift */; };
 		94EACA6A216B2EB0007A4539 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EACA69216B2EB0007A4539 /* AppDelegate.swift */; };
 		94EACA6C216B2EB0007A4539 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94EACA6B216B2EB0007A4539 /* ViewController.swift */; };
@@ -35,19 +32,19 @@
 		B9325EF621820E7D0087E7AE /* MoreOptionsButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9325EF521820E7D0087E7AE /* MoreOptionsButton.swift */; };
 		B96D2FA72180BC8C0049EC60 /* NutritionViewStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D2FA62180BC8C0049EC60 /* NutritionViewStack.swift */; };
 		B96D2FA92180BDD30049EC60 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B96D2FA82180BDD30049EC60 /* Colors.swift */; };
+		B9AF2EB22187606F0047D533 /* MealScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9AF2EB12187606F0047D533 /* MealScheduleViewController.swift */; };
 		B9C5D2E92180169B003AFDB7 /* FoodJournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5D2E82180169B003AFDB7 /* FoodJournalViewController.swift */; };
 		B9C5D2EB218016B3003AFDB7 /* FoodJournalCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5D2EA218016B3003AFDB7 /* FoodJournalCell.swift */; };
 		B9C5D2ED218016CC003AFDB7 /* MealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5D2EC218016CC003AFDB7 /* MealCell.swift */; };
 		B9C5D2F021801758003AFDB7 /* WeekPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5D2EF21801758003AFDB7 /* WeekPickerView.swift */; };
 		B9C5D2F221801777003AFDB7 /* TimeStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5D2F121801777003AFDB7 /* TimeStampView.swift */; };
+		B9F5C375218701E000EF79B5 /* MealCompositionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F5C374218701E000EF79B5 /* MealCompositionViewCell.swift */; };
+		B9F5C3772187020400EF79B5 /* MealCompositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F5C3762187020400EF79B5 /* MealCompositionViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		25039C11217ECB7C009F68AD /* InputFoodCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFoodCell.swift; sourceTree = "<group>"; };
 		2529B71321784F5400C519B7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
-		25A84B102186AB40005335D6 /* MealCompositionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealCompositionViewController.swift; sourceTree = "<group>"; };
-		25A84B112186AB40005335D6 /* MealCompositionCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MealCompositionCollectionViewCell.swift; sourceTree = "<group>"; };
-		25A84B152186FBCB005335D6 /* AccountCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountCollectionViewCell.swift; sourceTree = "<group>"; };
 		25E70D582178745C00BF273B /* InputFoodViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputFoodViewController.swift; sourceTree = "<group>"; };
 		420D75C38DA8608CB788383D /* Pods-ngemeal.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ngemeal.release.xcconfig"; path = "Pods/Target Support Files/Pods-ngemeal/Pods-ngemeal.release.xcconfig"; sourceTree = "<group>"; };
 		94EACA66216B2EB0007A4539 /* ngemeal.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ngemeal.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,11 +72,14 @@
 		B9325EF521820E7D0087E7AE /* MoreOptionsButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreOptionsButton.swift; sourceTree = "<group>"; };
 		B96D2FA62180BC8C0049EC60 /* NutritionViewStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NutritionViewStack.swift; sourceTree = "<group>"; };
 		B96D2FA82180BDD30049EC60 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B9AF2EB12187606F0047D533 /* MealScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealScheduleViewController.swift; sourceTree = "<group>"; };
 		B9C5D2E82180169B003AFDB7 /* FoodJournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJournalViewController.swift; sourceTree = "<group>"; };
 		B9C5D2EA218016B3003AFDB7 /* FoodJournalCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodJournalCell.swift; sourceTree = "<group>"; };
 		B9C5D2EC218016CC003AFDB7 /* MealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCell.swift; sourceTree = "<group>"; };
 		B9C5D2EF21801758003AFDB7 /* WeekPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPickerView.swift; sourceTree = "<group>"; };
 		B9C5D2F121801777003AFDB7 /* TimeStampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStampView.swift; sourceTree = "<group>"; };
+		B9F5C374218701E000EF79B5 /* MealCompositionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCompositionViewCell.swift; sourceTree = "<group>"; };
+		B9F5C3762187020400EF79B5 /* MealCompositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCompositionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,32 +94,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		25A84B0E2186AB40005335D6 /* InitialSetting */ = {
-			isa = PBXGroup;
-			children = (
-				25A84B0F2186AB40005335D6 /* MealComposition */,
-			);
-			path = InitialSetting;
-			sourceTree = "<group>";
-		};
-		25A84B0F2186AB40005335D6 /* MealComposition */ = {
-			isa = PBXGroup;
-			children = (
-				25A84B102186AB40005335D6 /* MealCompositionViewController.swift */,
-				25A84B112186AB40005335D6 /* MealCompositionCollectionViewCell.swift */,
-			);
-			path = MealComposition;
-			sourceTree = "<group>";
-		};
-		25A84B142186FB9B005335D6 /* AccountMainView */ = {
-			isa = PBXGroup;
-			children = (
-				A17E02B7217602B900754ABB /* AccountViewController.swift */,
-				25A84B152186FBCB005335D6 /* AccountCollectionViewCell.swift */,
-			);
-			path = AccountMainView;
-			sourceTree = "<group>";
-		};
 		25E70D572178741500BF273B /* InputFood */ = {
 			isa = PBXGroup;
 			children = (
@@ -177,7 +151,7 @@
 		A17E02AE217601ED00754ABB /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				25A84B0E2186AB40005335D6 /* InitialSetting */,
+				B9F5C372218701BF00EF79B5 /* InitialSetting */,
 				B9322C1F21817BB100768592 /* Schedule */,
 				B9C5D2F321801794003AFDB7 /* Reusables */,
 				B9C5D2EE21801740003AFDB7 /* FoodJournal */,
@@ -219,7 +193,7 @@
 		A17E02BA217602CB00754ABB /* Account */ = {
 			isa = PBXGroup;
 			children = (
-				25A84B142186FB9B005335D6 /* AccountMainView */,
+				A17E02B7217602B900754ABB /* AccountViewController.swift */,
 			);
 			path = Account;
 			sourceTree = "<group>";
@@ -253,6 +227,14 @@
 			path = Schedule;
 			sourceTree = "<group>";
 		};
+		B9AF2EB0218760510047D533 /* MealSchedule */ = {
+			isa = PBXGroup;
+			children = (
+				B9AF2EB12187606F0047D533 /* MealScheduleViewController.swift */,
+			);
+			path = MealSchedule;
+			sourceTree = "<group>";
+		};
 		B9C5D2EE21801740003AFDB7 /* FoodJournal */ = {
 			isa = PBXGroup;
 			children = (
@@ -270,6 +252,24 @@
 				B96D2FA62180BC8C0049EC60 /* NutritionViewStack.swift */,
 			);
 			path = Reusables;
+			sourceTree = "<group>";
+		};
+		B9F5C372218701BF00EF79B5 /* InitialSetting */ = {
+			isa = PBXGroup;
+			children = (
+				B9AF2EB0218760510047D533 /* MealSchedule */,
+				B9F5C373218701CE00EF79B5 /* MealComposition */,
+			);
+			path = InitialSetting;
+			sourceTree = "<group>";
+		};
+		B9F5C373218701CE00EF79B5 /* MealComposition */ = {
+			isa = PBXGroup;
+			children = (
+				B9F5C374218701E000EF79B5 /* MealCompositionViewCell.swift */,
+				B9F5C3762187020400EF79B5 /* MealCompositionViewController.swift */,
+			);
+			path = MealComposition;
 			sourceTree = "<group>";
 		};
 		E2D30C94C2E5A4932C73C41A /* Pods */ = {
@@ -385,7 +385,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ngemeal/Pods-ngemeal-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AvailableHapticFeedback/AvailableHapticFeedback.framework",
 				"${BUILT_PRODUCTS_DIR}/Charts/Charts.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMOAuth2/GTMOAuth2.framework",
 				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
@@ -397,7 +396,6 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AvailableHapticFeedback.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Charts.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMOAuth2.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
@@ -445,24 +443,24 @@
 				B9C5D2F221801777003AFDB7 /* TimeStampView.swift in Sources */,
 				A17E02BC21764E4700754ABB /* calendarViewCells.swift in Sources */,
 				25E70D592178745C00BF273B /* InputFoodViewController.swift in Sources */,
+				B9AF2EB22187606F0047D533 /* MealScheduleViewController.swift in Sources */,
 				B9322C2221817BE700768592 /* ScheduleViewController.swift in Sources */,
 				25039C12217ECB7C009F68AD /* InputFoodCell.swift in Sources */,
-				25A84B162186FBCB005335D6 /* AccountCollectionViewCell.swift in Sources */,
 				A17E02B6217602AE00754ABB /* HomeViewController.swift in Sources */,
 				A17E02B32176027600754ABB /* CalendarViewController.swift in Sources */,
 				B9C5D2ED218016CC003AFDB7 /* MealCell.swift in Sources */,
 				A17E02B8217602B900754ABB /* AccountViewController.swift in Sources */,
+				B9F5C3772187020400EF79B5 /* MealCompositionViewController.swift in Sources */,
 				94EACA6C216B2EB0007A4539 /* ViewController.swift in Sources */,
 				A1DE140821777F7A008F7DA8 /* Helper.swift in Sources */,
-				25A84B122186AB40005335D6 /* MealCompositionViewController.swift in Sources */,
 				B9322C1E2181608300768592 /* FoodDetailCell.swift in Sources */,
 				94EACA6A216B2EB0007A4539 /* AppDelegate.swift in Sources */,
 				B9322C1A21815EC100768592 /* FoodDetailViewController.swift in Sources */,
 				B96D2FA72180BC8C0049EC60 /* NutritionViewStack.swift in Sources */,
 				A1DE140A2177889C008F7DA8 /* Meal.swift in Sources */,
 				A17E02B12176021600754ABB /* MainTabBarController.swift in Sources */,
+				B9F5C375218701E000EF79B5 /* MealCompositionViewCell.swift in Sources */,
 				B9C5D2F021801758003AFDB7 /* WeekPickerView.swift in Sources */,
-				25A84B132186AB40005335D6 /* MealCompositionCollectionViewCell.swift in Sources */,
 				B9322C2421818AEA00768592 /* ScheduleCollectionViewCell.swift in Sources */,
 				B9C5D2EB218016B3003AFDB7 /* FoodJournalCell.swift in Sources */,
 			);
@@ -612,7 +610,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KD4NSQHDV8;
+				DEVELOPMENT_TEAM = RCS84LVYUK;
 				INFOPLIST_FILE = ngemeal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -631,7 +629,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = KD4NSQHDV8;
+				DEVELOPMENT_TEAM = RCS84LVYUK;
 				INFOPLIST_FILE = ngemeal/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
