@@ -43,7 +43,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     navController.navigationBar.isHidden = true
     
 //    window?.rootViewController = initialViewCon
-    window?.rootViewController = navController
+    window?.rootViewController = initialViewCon
     
     window?.makeKeyAndVisible()
     
