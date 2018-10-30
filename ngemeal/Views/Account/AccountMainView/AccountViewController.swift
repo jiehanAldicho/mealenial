@@ -50,7 +50,7 @@ extension AccountViewController: UICollectionViewDelegateFlowLayout, UICollectio
 //Setup Extension
 extension AccountViewController {
     func setupNavBar() {
-        fakeNavBar = addCustomNavbar("Setting")
+        fakeNavBar = addCustomNavbar("Settings")
     }
     
     func setupCollectionView() {

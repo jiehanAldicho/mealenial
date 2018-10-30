@@ -66,7 +66,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
     }()
     
     //Nutrition Variables
-    var nutritionLabel = ChartNutritionStackView(0, 0, 0)
+    var nutritionLabel = ChartNutritionStackView(50, 33, 17)
     
     //Other Label2 Variables
     var otherLabel2: UILabel = {
@@ -182,19 +182,9 @@ extension MealCompositionCollectionViewCell {
     }
     
     @objc func sliderChanged(slider: MultiSlider) {
-//        print("\(slider.value)")
-        //        print("\(slider.value)")
-        
         nutritionLabel.vegLabel.text = "\(Int(slider.value[0]))%"
         nutritionLabel.proLabel.text = "\(Int(slider.value[1] - slider.value[0]))%"
-
-        print("\(nutritionLabel.vegVal)")
-        print("\(nutritionLabel.proVal)")
-        print("\(nutritionLabel.stapVal)")
-//        print("\(nutritionLabel.vegVal)")
-//        print("\(nutritionLabel.proVal)")
-//        print("\(nutritionLabel.stapVal)")
-        
+        nutritionLabel.stapLabel.text = "\(100 - Int(slider.value[1]))%"
     }
     
     //Other Label Setup
