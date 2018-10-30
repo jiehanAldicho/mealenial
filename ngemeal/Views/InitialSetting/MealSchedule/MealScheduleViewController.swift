@@ -61,6 +61,7 @@ class MealScheduleViewController: UIViewController {
     }()
     
     var mealScheduleTableView: UITableView!
+    var jumlahCell: Int = 4
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -132,7 +133,6 @@ class MealScheduleViewController: UIViewController {
     }
     
     @objc func navigateToMain() {
-        self.navigationController?.popViewController(animated: false)
         let mainTabBarCon = MainTabBarController() as UIViewController
         self.present(mainTabBarCon, animated: true, completion: nil)
     }
@@ -144,7 +144,7 @@ extension MealScheduleViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 4
+        return jumlahCell
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -154,5 +154,14 @@ extension MealScheduleViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("delete")
+            jumlahCell -= 1
+            tableView.deleteRows(at: [indexPath], with: .fade)
+            //TODO: hapus data dari model ya Dary 
+        }
     }
 }

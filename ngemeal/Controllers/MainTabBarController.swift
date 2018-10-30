@@ -39,7 +39,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     self.tabBar.tintColor = .white
     
     //Add tab bar views
-    self.setViewControllers([foodJournalView, homeView, scheduleView], animated: true)
+    self.setViewControllers([foodJournalView, homeView, accountView], animated: true)
     self.selectedIndex = 1
     
     print(self.tabBar.subviews[0])

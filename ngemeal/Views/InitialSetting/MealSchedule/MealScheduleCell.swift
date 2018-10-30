@@ -8,19 +8,22 @@
 
 import UIKit
 
-class MealScheduleCell: UITableViewCell {
-    var mealTitleLabel: UILabel = {
-        let lbl = UILabel()
-        lbl.text = "Meal 1"
-        lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir-Black", size: 20)
-        return lbl
+class MealScheduleCell: UITableViewCell, UITextFieldDelegate {
+    
+    let mealTitleLabel: UITextField = {
+        let textf = UITextField()
+        textf.text = "Meal 1"
+        textf.placeholder = "Add meal"
+        textf.textColor = Colors.textBlack
+        textf.font = UIFont(name: "Avenir-Black", size: 20)
+        return textf
     }()
     
-    var timeLabel: UILabel = {
-        let lbl = UILabel()
+    var timeLabel: UITextField = {
+        let lbl = UITextField()
         lbl.textColor = Colors.textGreen
         lbl.text = "00:00"
+        lbl.placeholder = "Set time"
         lbl.font = UIFont(name: "Avenir-Black", size: 20)
         return lbl
     }()
@@ -48,13 +51,24 @@ class MealScheduleCell: UITableViewCell {
         setupButtonConstraint()
         setupTimeLabelConstraint()
         
+        //Delegation for return button
+        mealTitleLabel.delegate = self
+        timeLabel.delegate = self
+        
         //Adding bottom separator border
         let bottomBorder = UIView()
-        let frame = CGRect(x: 0, y: self.frame.height, width: self.frame.width+10, height: 1.5)
+        let frame = CGRect(x: 0, y: self.frame.height+5, width: self.frame.width, height: 1.5)
         bottomBorder.frame = frame
         bottomBorder.backgroundColor = #colorLiteral(red: 0.8980392157, green: 0.9647058824, blue: 0.9529411765, alpha: 1)
         
         self.addSubview(bottomBorder)
+        
+        editButton.addTarget(self, action: #selector(highlightTextField), for: .touchUpInside)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.endEditing(true)
+        return true
     }
     
     func setupMealTitleConstraint() {
@@ -76,6 +90,21 @@ class MealScheduleCell: UITableViewCell {
         editButton.widthAnchor.constraint(equalToConstant: 23).isActive = true
         editButton.heightAnchor.constraint(equalToConstant: 23).isActive = true
     }
+    
+    @objc func highlightTextField() {
+        mealTitleLabel.text = ""
+        timeLabel.text = ""
+//        if isChoosen == true {
+//            isChoosen = !isChoosen
+//            let btnImg = UIImage(named: "Edit")?.withRenderingMode(.alwaysTemplate)
+//            editButton.setImage(btnImg, for: .normal)
+//        } else {
+//            isChoosen = !isChoosen
+//            let img = UIImage(named: "Delete")?.withRenderingMode(.alwaysTemplate)
+//            editButton.setImage(img, for: .normal)
+//        }
+    }
+    
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
