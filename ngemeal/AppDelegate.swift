@@ -40,6 +40,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 //    let mainTabBarCon = MealCompositionViewController()
     
 =======
+    //Testing
 >>>>>>> e0f3a2e8f01f54800407963e82376624aa04719e
 //    let navController = UINavigationController(rootViewController: mainTabBarCon)
 //    navController.navigationBar.isHidden = true
