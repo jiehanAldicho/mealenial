@@ -191,9 +191,9 @@ extension MealCompositionCollectionViewCell {
     @objc func sliderChanged(slider: MultiSlider) {
 //        print("\(slider.value)")
         
-        nutritionLabel.vegVal = Int(slider.value[0])
-        nutritionLabel.proVal = Int(slider.value[1] - slider.value[0])
-        nutritionLabel.stapVal = 100 - Int(slider.value[1])
+        nutritionLabel.vegLabel.text = "\(Int(slider.value[0]))%"
+        nutritionLabel.proLabel.text = "\(Int(slider.value[1] - slider.value[0]))%"
+        nutritionLabel.stapLabel.text = "\(100 - Int(slider.value[1]))%"
 
         print("\(nutritionLabel.vegVal)")
         print("\(nutritionLabel.proVal)")
