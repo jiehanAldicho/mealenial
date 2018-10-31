@@ -7,9 +7,25 @@
 //
 
 import UIKit
+import Charts
 
 class LastMealCell: UICollectionViewCell {
     
+    //Pie Chart Variables
+    var surveyDataCell = [("Carbs", 50), ("Protein", 25), ("Veggies", 25)]
+    
+    lazy var pieChart: PieChartView = {
+        let p = PieChartView()
+        p.translatesAutoresizingMaskIntoConstraints = false
+        p.noDataText = "No date to display"
+        p.legend.enabled = false
+        p.chartDescription?.text = ""
+        p.drawHoleEnabled = true
+        
+        return p
+    }()
+    
+    //Meal Variables
     var meal: Meal?
     
     var titleLabel: UILabel = {
@@ -31,15 +47,19 @@ class LastMealCell: UICollectionViewCell {
         self.addSubview(titleLabel)
         self.addSubview(nutritionStack)
         self.addSubview(timeStamp)
+        self.addSubview(pieChart)
         
         setupTitleLabelConstraint()
         setupNutritionConstraint()
         setupTimeStampConstraint()
+        setupPieChart()
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
         titleLabel.addBottomBorder()
+        fillChart()
+        
         //MARK: Put updates relating to meal class here 👾
         //    nutritionStack = NutritionStackView(0, 0, 21)
         nutritionStack.proVal = 241
@@ -75,7 +95,7 @@ extension LastMealCell {
     
     func setupNutritionConstraint() {
         nutritionStack.translatesAutoresizingMaskIntoConstraints = false
-        nutritionStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20).isActive = true
+        nutritionStack.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true
         nutritionStack.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         nutritionStack.heightAnchor.constraint(equalToConstant: 30).isActive = true
         nutritionStack.widthAnchor.constraint(equalToConstant: 220).isActive = true
@@ -87,5 +107,48 @@ extension LastMealCell {
         timeStamp.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
         timeStamp.widthAnchor.constraint(equalToConstant: 57).isActive = true
         timeStamp.heightAnchor.constraint(equalToConstant: 22).isActive = true
+    }
+}
+
+//Pie Chart Extension
+extension LastMealCell {
+    func setupPieChart() {
+        pieChart.translatesAutoresizingMaskIntoConstraints = false
+        pieChart.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
+        pieChart.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 16).isActive = true
+        pieChart.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.4).isActive = true
+        pieChart.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.4).isActive = true
+    }
+    
+    func fillChart() {
+        let stapleColor = UIColor(displayP3Red: 243/255, green: 217/255, blue: 2/255, alpha: 1)
+        let proteinColor = UIColor(displayP3Red: 237/255, green: 89/255, blue: 81/255, alpha: 1)
+        let veggieColor = UIColor(displayP3Red: 140/255, green: 224/255, blue: 207/255, alpha: 1)
+        let myColors: [UIColor] = [stapleColor, proteinColor, veggieColor ]
+        
+        
+        
+        var dataEntries = [PieChartDataEntry]()
+        
+        for data in surveyDataCell {
+            let percent = Double(data.1) / 100
+            let entry = PieChartDataEntry(value: percent, label: data.0)
+            dataEntries.append(entry)
+        }
+        
+        
+        let chartDataSet = PieChartDataSet(values: dataEntries, label: "")
+        chartDataSet.colors = myColors as! [NSUIColor]
+        
+        chartDataSet.sliceSpace = 2
+        chartDataSet.selectionShift = 5
+        
+        let chartData = PieChartData(dataSet: chartDataSet)
+        let formatter = NumberFormatter()
+        formatter.numberStyle = .percent
+        formatter.maximumFractionDigits = 0
+        chartData.setValueFormatter(DefaultValueFormatter(formatter: formatter))
+        
+        pieChart.data = chartData
     }
 }
