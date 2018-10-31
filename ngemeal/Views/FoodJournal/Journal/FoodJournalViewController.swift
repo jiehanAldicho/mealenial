@@ -16,6 +16,9 @@ class FoodJournalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestFood {
+            print("requested")
+        }
         view.backgroundColor = Colors.backgroundColor
         fakeNavBar = addCustomNavbar("Food Journal")
         weekPicker = WeekPickerView()
@@ -92,5 +95,36 @@ extension FoodJournalViewController: UICollectionViewDelegateFlowLayout, UIColle
         return CGSize(width: self.view.frame.width - 40, height: 170)
     }
     
-    
+    func requestFood(_ completion: @escaping () -> ()) {
+        let url = "https://mealenial.herokuapp.com/journal/findbydate"
+        let session = URLSession(configuration: .default)
+        let requestURL = URL(string: url)
+        
+        var request = URLRequest(url: requestURL!)
+        
+        let jsonBody = ["username" : "dary",
+                        "date": "20181031"]
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody, options: [])
+        
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData!
+        
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            if let err = error {
+                print(err)
+            } else if let receivedData = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: receivedData, options: .allowFragments)
+                    if let dataTest = json as? [String: Any] {
+                        //Retrieve datanya lama, server lu jelek Dar ☹️
+                        print("🍤Data", dataTest)
+                    }
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        dataTask.resume()
+    }
 }

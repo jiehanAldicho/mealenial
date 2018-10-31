@@ -137,11 +137,11 @@ class MealScheduleViewController: UIViewController {
         nextButton.widthAnchor.constraint(equalToConstant: 180).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-//        let btnGradient = CAGradientLayer().buttonGradientLayer()
-//        btnGradient.frame = nextButton.frame
-//        btnGradient.cornerRadius = nextButton.layer.cornerRadius
-//        nextButton.layer.insertSublayer(btnGradient, at: 0)
-//        nextButton.contentHorizontalAlignment = .center
+        let btnGradient = CAGradientLayer().buttonGradientLayer()
+        btnGradient.frame = nextButton.frame
+        btnGradient.cornerRadius = nextButton.layer.cornerRadius
+        nextButton.layer.insertSublayer(btnGradient, at: 0)
+        nextButton.contentHorizontalAlignment = .center
     }
     
     @objc func navigateToMain() {

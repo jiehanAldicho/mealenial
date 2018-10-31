@@ -180,7 +180,7 @@ extension ScheduleCollectionViewCell: UICollectionViewDelegateFlowLayout, UIColl
 class DayCell: UICollectionViewCell {
     var dayLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont(name: "Avenir-Heavy", size: 14)
+        lbl.font = UIFont(name: "Avenir", size: 15)
         lbl.textColor = Colors.textBlack
         return lbl
     }()
