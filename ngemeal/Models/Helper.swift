@@ -25,7 +25,7 @@ extension CAGradientLayer {
         let yellowStart = Colors.secondaryGradientStart.cgColor //Create color helper for this
         let redEnd = Colors.secondaryGradientEnd.cgColor//Create color helper for this
         self.colors = [yellowStart, redEnd]
-        self.startPoint = CGPoint(x: 0.3, y: 0)
+        self.startPoint = CGPoint(x: 0 , y: 0)
         self.endPoint = CGPoint(x: 1, y: 0)
         return self
     }

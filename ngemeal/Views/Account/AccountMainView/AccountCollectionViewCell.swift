@@ -9,9 +9,15 @@
 import UIKit
 import MultiSlider
 
+protocol MealScheduleDelegate {
+    func navigateToMealSchedule()
+}
+
 class AccountCollectionViewCell: UICollectionViewCell {
     
     //MARK: Variables
+    
+    var delegate: MealScheduleDelegate?
     
     //Title Label Variables
     var titleLabel: UILabel = {
@@ -289,7 +295,8 @@ extension AccountCollectionViewCell {
 //Button Pressed Function
 extension AccountCollectionViewCell {
     @objc func scheduleButtonPressed() {
-        print("Schedule Button Pressed")
+        guard let delegate = delegate else { return }
+        delegate.navigateToMealSchedule()
     }
     
     @objc func signOutButtonPressed() {

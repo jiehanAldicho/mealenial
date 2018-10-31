@@ -29,7 +29,15 @@ class ScheduleViewController: UIViewController {
         scheduleCollectionView.register(ScheduleCollectionViewCell.self, forCellWithReuseIdentifier: "scheduleCell")
         
         view.addSubview(scheduleCollectionView)
-        
+        setupCollectionViewConstraint()
+    }
+    
+    func setupCollectionViewConstraint() {
+        scheduleCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        scheduleCollectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        scheduleCollectionView.widthAnchor.constraint(equalToConstant: view.frame.width).isActive = true
+        scheduleCollectionView.heightAnchor.constraint(equalToConstant: view.frame.height-80).isActive = true
+        scheduleCollectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
     }
 
 }

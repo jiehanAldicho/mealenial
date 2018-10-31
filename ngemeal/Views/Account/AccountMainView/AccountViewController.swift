@@ -18,13 +18,19 @@ class AccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        fakeNavBar = addCustomNavbar("Settings")
         
-        setupNavBar()
-        setupCollectionView()
         self.view.addSubview(fakeNavBar)
+        setupCollectionView()
         self.view.addSubview(overviewCollectionView)
         setupCollectionViewConstraint()
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = true
+        self.tabBarController?.tabBar.isHidden = false
     }
 }
 
@@ -39,6 +45,7 @@ extension AccountViewController: UICollectionViewDelegateFlowLayout, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let inputCell = collectionView.dequeueReusableCell(withReuseIdentifier: "AccountCell", for: indexPath) as! AccountCollectionViewCell
+        inputCell.delegate = self
         return inputCell
     }
     
@@ -48,10 +55,7 @@ extension AccountViewController: UICollectionViewDelegateFlowLayout, UICollectio
 }
 
 //Setup Extension
-extension AccountViewController {
-    func setupNavBar() {
-        fakeNavBar = addCustomNavbar("Settings")
-    }
+extension AccountViewController: MealScheduleDelegate {
     
     func setupCollectionView() {
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -71,5 +75,10 @@ extension AccountViewController {
         //        let tabBarHeight = self.tabBarController?.tabBar.bounds.height
         overviewCollectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: 0).isActive = true
         overviewCollectionView.layer.zPosition = -1
+    }
+    
+    func navigateToMealSchedule() {
+        let mealScheduleVC = ScheduleViewController()
+        self.navigationController?.pushViewController(mealScheduleVC, animated: true)
     }
 }

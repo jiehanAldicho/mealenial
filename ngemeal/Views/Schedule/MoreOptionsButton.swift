@@ -21,24 +21,47 @@ class MoreOptionButton: UIButton {
         let editImg = UIImage(named: "more")?.withRenderingMode(.alwaysTemplate)
         self.setImage(editImg, for: .normal)
         self.tintColor = Colors.mainOrange
-        
+//        self.setBackgroundImage(editImg, for: .normal)
+//        self.imageView?.image = editImg
         
         
         optView = OptionsView.init(frame: CGRect.zero)
     }
     
     override func didMoveToSuperview() {
-        self.superview?.addSubview(optView)
-        self.superview?.bringSubviewToFront(optView)
-        
-        optView.translatesAutoresizingMaskIntoConstraints = false
-        optView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
-//        optView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        optView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
-//        optView.widthAnchor.constraint(equalTo: self.widthAnchor).isActive = true
-        optView.widthAnchor.constraint(equalToConstant: 135).isActive = true
-        height = optView.heightAnchor.constraint(equalToConstant: 0)
+        print("🍤", self.superview)
+        if let spView = self.superview{
+            spView.addSubview(optView)
+            spView.bringSubviewToFront(optView)
+            
+            
+            optView.translatesAutoresizingMaskIntoConstraints = false
+            optView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+            optView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+            optView.widthAnchor.constraint(equalToConstant: 135).isActive = true
+            height = optView.heightAnchor.constraint(equalToConstant: 0)
+        } else {
+            return
+        }
     }
+    
+//    override func willMove(toSuperview newSuperview: UIView?) {
+//        optView.translatesAutoresizingMaskIntoConstraints = false
+//        optView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = false
+//        optView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = false
+//        optView.widthAnchor.constraint(equalToConstant: 135).isActive = false
+//    }
+    
+//    override func layoutSubviews() {
+//        self.superview?.addSubview(optView)
+//        self.superview?.bringSubviewToFront(optView)
+//
+//        optView.translatesAutoresizingMaskIntoConstraints = false
+//        optView.topAnchor.constraint(equalTo: self.bottomAnchor).isActive = true
+//        optView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0).isActive = true
+//        optView.widthAnchor.constraint(equalToConstant: 135).isActive = true
+//        height = optView.heightAnchor.constraint(equalToConstant: 0)
+//    }
     
     var menuIsOpen = false
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {

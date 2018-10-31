@@ -90,9 +90,15 @@ class MealScheduleViewController: UIViewController {
         setupAddButtonConstraints()
         setupDescriptionConstraints()
         setupTableViewConstraint()
-        setupButtonConstraint()
+        
         
         nextButton.addTarget(self, action: #selector(navigateToMain), for: .touchUpInside)
+        addScheduleButton.addTarget(self, action: #selector(addMealScheduleCell), for: .touchUpInside)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        setupButtonConstraint()
     }
     
     func setupTitleConstraints() {
@@ -130,11 +136,22 @@ class MealScheduleViewController: UIViewController {
         nextButton.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         nextButton.widthAnchor.constraint(equalToConstant: 180).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        
+//        let btnGradient = CAGradientLayer().buttonGradientLayer()
+//        btnGradient.frame = nextButton.frame
+//        btnGradient.cornerRadius = nextButton.layer.cornerRadius
+//        nextButton.layer.insertSublayer(btnGradient, at: 0)
+//        nextButton.contentHorizontalAlignment = .center
     }
     
     @objc func navigateToMain() {
         let mainTabBarCon = MainTabBarController() as UIViewController
         self.present(mainTabBarCon, animated: true, completion: nil)
+    }
+    
+    @objc func addMealScheduleCell() {
+        jumlahCell += 1
+        mealScheduleTableView.reloadData()
     }
 }
 
