@@ -16,7 +16,7 @@ class MealScheduleViewController: UIViewController {
         let lbl = UILabel()
         lbl.text = "Meal schedule"
         lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir-Black", size: 25)
+        lbl.font = UIFont(name: "TTNorms-Bold", size: 25)
         return lbl
     }()
     
@@ -34,7 +34,7 @@ class MealScheduleViewController: UIViewController {
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 0
         lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 14)
+        lbl.font = UIFont(name: "TTNorms-Italic", size: 14)
         return lbl
     }()
     
@@ -45,7 +45,7 @@ class MealScheduleViewController: UIViewController {
         
         btn.setTitle("I'm set!", for: .normal)
         btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
+        btn.titleLabel?.font = UIFont(name: "TTNorms-Bold", size: 20)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = btn.bounds.size.width / 8
         btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
@@ -137,11 +137,11 @@ class MealScheduleViewController: UIViewController {
         nextButton.widthAnchor.constraint(equalToConstant: 180).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-//        let btnGradient = CAGradientLayer().buttonGradientLayer()
-//        btnGradient.frame = nextButton.frame
-//        btnGradient.cornerRadius = nextButton.layer.cornerRadius
-//        nextButton.layer.insertSublayer(btnGradient, at: 0)
-//        nextButton.contentHorizontalAlignment = .center
+        let btnGradient = CAGradientLayer().buttonGradientLayer()
+        btnGradient.frame = nextButton.frame
+        btnGradient.cornerRadius = nextButton.layer.cornerRadius
+        nextButton.layer.insertSublayer(btnGradient, at: 0)
+        nextButton.contentHorizontalAlignment = .center
     }
     
     @objc func navigateToMain() {
