@@ -1,13 +1,5 @@
-//
-//  InputFoodCell.swift
-//  ngemeal
-//
-//  Created by Yuvens Putra Barata on 23/10/18.
-//  Copyright © 2018 Primy Peluncuran Indonesia. All rights reserved.
-//
-
 import UIKit
-import Charts
+import MultiSlider
 
 class InputFoodCell: UICollectionViewCell {
     
@@ -22,20 +14,33 @@ class InputFoodCell: UICollectionViewCell {
     
     var imageVarCell: UIImage = UIImage()
     
-    //Pie Chart Variables
-//    var surveyDataCell = [String:Int]()
-    var surveyDataCell = [(String, Int)]()
+    //Slider View Variables
+    var vegVal = Int()
+    var protVal = Int()
+    var stapVal = Int()
     
-    lazy var pieChart: PieChartView = {
-        let p = PieChartView()
-        p.translatesAutoresizingMaskIntoConstraints = false
-        p.noDataText = "No date to display"
-        p.legend.enabled = false
-        p.chartDescription?.text = ""
-        p.drawHoleEnabled = true
-        p.delegate = self
+    var sliderView: UIControl = {
         
-        return p
+        let slider   = MultiSlider()
+        slider.minimumValue = 0    // default is 0.0
+        slider.maximumValue = 100    // default is 1.0
+        slider.snapStepSize = 1  // default is 0.0, i.e. don't snap
+        
+        slider.value = [50, 67]
+        
+        
+        //        slider.addTarget(self, action: #selector(sliderDragEnded(_:)), forControlEvents: . touchUpInside) // sent when drag ends
+        
+        slider.orientation = .horizontal
+        slider.tintColor = UIColor(displayP3Red: 11/255, green: 205/255, blue: 190/255, alpha: 1)
+        slider.trackWidth = 7
+        slider.hasRoundTrackEnds = true
+        slider.showsThumbImageShadow = true
+        
+        slider.valueLabelPosition = .notAnAttribute // .NotAnAttribute = don't show labels
+        slider.isValueLabelRelative = true // shows differences instead of absolute values
+        
+        return slider
     }()
     
     //Save Button Variables
@@ -46,11 +51,10 @@ class InputFoodCell: UICollectionViewCell {
         btn.frame = CGRect(x: 0, y: 0, width: 198, height: 56)
         
         btn.setTitle("Add Meal", for: .normal)
-        btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Heavy", size: 25)
-        btn.titleLabel?.font = UIFont.boldSystemFont(ofSize: 25)
+        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = btn.bounds.size.width / 8
+        btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
         
         //Shadow
         btn.layer.masksToBounds = false
@@ -86,6 +90,47 @@ class InputFoodCell: UICollectionViewCell {
     //Nutrition Variables
     var nutritionLabel = ChartNutritionStackView(50,25,25)
     
+    //Portion Variables
+    enum plate {
+        case small
+        case medium
+        case large
+    }
+    
+    var portion: plate = .medium
+    
+    var portionLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.text = "Portion"
+        lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
+        lbl.font = UIFont(name: "Avenir-Oblique", size: 16)
+        return lbl
+    }()
+    
+    var smallButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Small", for: .normal)
+        btn.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        btn.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
+        return btn
+    }()
+    
+    var mediumButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Medium", for: .normal)
+        btn.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
+        btn.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
+        return btn
+    }()
+    
+    var largeButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("Large", for: .normal)
+        btn.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        btn.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
+        return btn
+    }()
+    
     //Initialization
     override init(frame: CGRect) {
         super.init(frame:frame)
@@ -94,22 +139,18 @@ class InputFoodCell: UICollectionViewCell {
         self.addSubview(imageTarget)
         self.addSubview(time)
         self.addSubview(textLabel)
-        self.addSubview(pieChart)
+        self.addSubview(sliderView)
         self.addSubview(nutritionLabel)
+        self.addSubview(portionLabel)
+        self.addSubview(mediumButton)
+        self.addSubview(smallButton)
+        self.addSubview(largeButton)
         self.addSubview(saveMealButton)
         
-<<<<<<< HEAD
         sliderView.addTarget(self, action: #selector(sliderChanged), for: .valueChanged)
         smallButton.addTarget(self, action: #selector(pushSmallButton), for: .touchUpInside)
         mediumButton.addTarget(self, action: #selector(pushMediumButton), for: .touchUpInside)
         largeButton.addTarget(self, action: #selector(pushLargeButton), for: .touchUpInside)
-<<<<<<< HEAD
-        saveMealButton.addTarget(self, action: #selector(uploadImage), for: .touchUpInside)
-=======
->>>>>>> parent of 0bf93b5... Adding reset button in initial setting
-=======
-        saveMealButton.addTarget(self, action: #selector(saveMeal), for: .touchUpInside)
->>>>>>> parent of 3c411ce... Merge remote-tracking branch 'refs/remotes/origin/master'
     }
     
     override func layoutSubviews() {
@@ -118,9 +159,12 @@ class InputFoodCell: UICollectionViewCell {
         setupImageConstraint()
         setupTime()
         setupTextLabel()
-        fillChart()
-        setupPieChart()
+        setupSliderConstraint()
         setupNutrition()
+        setupPortionLabel()
+        setupMediumButton()
+        setupSmallButton()
+        setupLargeButton()
         setupButtonConstraint()
     }
     
@@ -146,73 +190,15 @@ extension InputFoodCell {
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 5).cgPath
     }
     
-    //Pie Chart Function
-    func setupPieChart() {
-        pieChart.translatesAutoresizingMaskIntoConstraints = false
-        pieChart.centerXAnchor.constraint(equalTo: self.centerXAnchor, constant: 0).isActive = true
-        pieChart.topAnchor.constraint(equalTo: self.textLabel.bottomAnchor, constant: 16).isActive = true
-        pieChart.widthAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
-        pieChart.heightAnchor.constraint(equalTo: self.widthAnchor, multiplier: 0.5).isActive = true
-    }
-    
-    func fillChart() {
-        let stapleColor = UIColor(displayP3Red: 243/255, green: 217/255, blue: 2/255, alpha: 1)
-        let proteinColor = UIColor(displayP3Red: 237/255, green: 89/255, blue: 81/255, alpha: 1)
-        let veggieColor = UIColor(displayP3Red: 140/255, green: 224/255, blue: 207/255, alpha: 1)
-        let myColors: [UIColor] = [stapleColor, proteinColor, veggieColor ]
-        
-        
-        
-        var dataEntries = [PieChartDataEntry]()
-        
-        for data in surveyDataCell {
-            let percent = Double(data.1) / 100
-            let entry = PieChartDataEntry(value: percent, label: data.0)
-            dataEntries.append(entry)
-        }
-        
-        
-        let chartDataSet = PieChartDataSet(values: dataEntries, label: "")
-        chartDataSet.colors = myColors as! [NSUIColor]
-
-        chartDataSet.sliceSpace = 2
-        chartDataSet.selectionShift = 5
-        
-        let chartData = PieChartData(dataSet: chartDataSet)
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .percent
-        formatter.maximumFractionDigits = 0
-        chartData.setValueFormatter(DefaultValueFormatter(formatter: formatter))
-        
-        pieChart.data = chartData
-    }
-    
     //Save Button Setup
     func setupButtonConstraint() {
         saveMealButton.translatesAutoresizingMaskIntoConstraints = false
         saveMealButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        saveMealButton.topAnchor.constraint(equalTo: self.nutritionLabel.bottomAnchor, constant: 16).isActive = true
+        saveMealButton.topAnchor.constraint(equalTo: self.mediumButton.bottomAnchor, constant: 44).isActive = true
         saveMealButton.widthAnchor.constraint(equalToConstant: 180).isActive = true
         saveMealButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
     }
     
-<<<<<<< HEAD
-<<<<<<< HEAD
-    //Upload image
-    @objc func uploadImage() {
-        let jpegCompressionQuality: CGFloat = 0.9
-        let imgToSend = imageTarget.image
-        if let imageData64: Data = imgToSend?.jpegData(compressionQuality: 0.9) {
-            //
-        }
-=======
-    @objc func saveMeal() {
-        print("Meal Saved")
->>>>>>> parent of 3c411ce... Merge remote-tracking branch 'refs/remotes/origin/master'
-    }
-    
-=======
->>>>>>> parent of 0bf93b5... Adding reset button in initial setting
     //Image Setup
     func setupImageConstraint() {
         imageTarget.clipsToBounds = true
@@ -257,7 +243,7 @@ extension InputFoodCell {
     func setupNutrition() {
         nutritionLabel.translatesAutoresizingMaskIntoConstraints = false
         nutritionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-        nutritionLabel.topAnchor.constraint(equalTo: self.pieChart.bottomAnchor, constant: 16).isActive = true
+        nutritionLabel.topAnchor.constraint(equalTo: self.sliderView.bottomAnchor, constant: 16).isActive = true
         nutritionLabel.heightAnchor.constraint(equalToConstant: 160).isActive = true
         nutritionLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
     }
@@ -270,12 +256,82 @@ extension InputFoodCell {
         time.heightAnchor.constraint(equalToConstant: 22).isActive = true
         time.widthAnchor.constraint(equalToConstant: 57).isActive = true
     }
-}
-
-// Chart extension
-extension InputFoodCell: ChartViewDelegate {
-    func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
-        let index = highlight.y
-        print("Selected \(index)")
+    
+    //Slider Function
+    func setupSliderConstraint() {
+        sliderView.translatesAutoresizingMaskIntoConstraints = false
+        sliderView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        sliderView.topAnchor.constraint(equalTo: self.textLabel.bottomAnchor, constant: 20).isActive = true
+        sliderView.widthAnchor.constraint(equalToConstant: 280).isActive = true
+        sliderView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+    
+    @objc func sliderChanged(slider: MultiSlider) {
+        //        print("\(slider.value)")
+        
+        nutritionLabel.vegLabel.text = "\(Int(slider.value[0]))%"
+        nutritionLabel.proLabel.text = "\(Int(slider.value[1] - slider.value[0]))%"
+        nutritionLabel.stapLabel.text = "\(100 - Int(slider.value[1]))%"
+        
+        var vegValue = Int(slider.value[0])
+        var proValue = Int(slider.value[1] - slider.value[0])
+        var stapValue = 100 - Int(slider.value[1])
+        
+        print("\(nutritionLabel.vegVal)")
+        print("\(nutritionLabel.proVal)")
+        print("\(nutritionLabel.stapVal)")
+        
+    }
+    
+    //Portion Setup
+    func setupPortionLabel() {
+        portionLabel.translatesAutoresizingMaskIntoConstraints = false
+        portionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        portionLabel.topAnchor.constraint(equalTo: self.nutritionLabel.bottomAnchor, constant: 20).isActive = true
+    }
+    
+    func setupSmallButton() {
+        smallButton.translatesAutoresizingMaskIntoConstraints = false
+        smallButton.centerXAnchor.constraint(equalTo: self.mediumButton.leadingAnchor, constant: -60).isActive = true
+        smallButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
+        smallButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        smallButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+    
+    func setupMediumButton() {
+        mediumButton.translatesAutoresizingMaskIntoConstraints = false
+        mediumButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        mediumButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
+        mediumButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        mediumButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+    
+    func setupLargeButton() {
+        largeButton.translatesAutoresizingMaskIntoConstraints = false
+        largeButton.centerXAnchor.constraint(equalTo: self.mediumButton.trailingAnchor, constant: 60).isActive = true
+        largeButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
+        largeButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        largeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+    
+    @objc func pushSmallButton() {
+        smallButton.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
+        mediumButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        largeButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        portion = .small
+    }
+    
+    @objc func pushMediumButton() {
+        smallButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        mediumButton.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
+        largeButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        portion = .medium
+    }
+    
+    @objc func pushLargeButton() {
+        smallButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        mediumButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        largeButton.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
+        portion = .large
     }
 }

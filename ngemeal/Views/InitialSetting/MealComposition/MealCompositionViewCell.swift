@@ -17,6 +17,12 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
     //Delegate
     var delegate: MealCompositionCollectionViewCellDelegate?
     
+    //Container Variables
+    
+    var vegValue = Int()
+    var protValue = Int()
+    var stapValue = Int()
+    
     //Title Label Variables
     var titleLabel: UILabel = {
         let lbl = UILabel()
@@ -37,10 +43,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         slider.maximumValue = 100    // default is 1.0
         slider.snapStepSize = 1  // default is 0.0, i.e. don't snap
         
-        slider.value = [50, 67]
-        
-        
-        //        slider.addTarget(self, action: #selector(sliderDragEnded(_:)), forControlEvents: . touchUpInside) // sent when drag ends
+        slider.value = [50,67]
         
         slider.orientation = .horizontal
         slider.tintColor = UIColor(displayP3Red: 11/255, green: 205/255, blue: 190/255, alpha: 1)
@@ -89,17 +92,8 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         btn.frame = CGRect(x: 0, y: 0, width: 198, height: 56)
         
         btn.setTitle("Done!", for: .normal)
-<<<<<<< HEAD
-//        btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
-<<<<<<< HEAD
-        btn.titleLabel?.font = UIFont(name: "TTNorms-Bold", size: 20)
-=======
-        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
->>>>>>> parent of 0bf93b5... Adding reset button in initial setting
-=======
         //        btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
         btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
->>>>>>> parent of 3c411ce... Merge remote-tracking branch 'refs/remotes/origin/master'
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = btn.bounds.size.width / 8
         btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
@@ -114,6 +108,16 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         return btn
     }()
     
+    //Reset Button
+    var resetButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("", for: .normal)
+        //        btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
+        return btn
+    }()
+    
+    var resetImage = UIImageView(image: UIImage(named: "Artboard"))
+    
     //Initialization
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -123,10 +127,13 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         self.addSubview(otherLabel)
         self.addSubview(nutritionLabel)
         self.addSubview(otherLabel2)
+        self.addSubview(resetButton)
+        resetButton.addSubview(resetImage)
         self.addSubview(saveMealButton)
         
         sliderView.addTarget(self, action: #selector(sliderChanged), for: .valueChanged)
         saveMealButton.addTarget(self, action: #selector(pushButton), for: .touchUpInside)
+        resetButton.addTarget(self, action: #selector(reset), for: .touchUpInside)
     }
     
     override func layoutSubviews() {
@@ -134,6 +141,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         setupTitleLabel()
         setupSliderConstraint()
         setupOtherLabel()
+        setupResetButton()
         setupNutritionLabel()
         setupOtherLabel2()
         setupButtonConstraint()
@@ -194,6 +202,10 @@ extension MealCompositionCollectionViewCell {
         nutritionLabel.vegLabel.text = "\(Int(slider.value[0]))%"
         nutritionLabel.proLabel.text = "\(Int(slider.value[1] - slider.value[0]))%"
         nutritionLabel.stapLabel.text = "\(100 - Int(slider.value[1]))%"
+        
+        vegValue = Int(slider.value[0])
+        protValue = Int(slider.value[1] - slider.value[0])
+        stapValue = 100 - Int(slider.value[1])
     }
     
     //Other Label Setup
@@ -203,6 +215,30 @@ extension MealCompositionCollectionViewCell {
         otherLabel.topAnchor.constraint(equalTo: self.sliderView.bottomAnchor, constant: 60).isActive = true
         otherLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         otherLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+    
+    //Reset Button Setup
+    func setupResetButton() {
+        resetButton.translatesAutoresizingMaskIntoConstraints = false
+        resetButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
+        resetButton.topAnchor.constraint(equalTo: self.sliderView.bottomAnchor, constant: 60).isActive = true
+        resetButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
+        resetButton.heightAnchor.constraint(equalToConstant: 26).isActive = true
+    }
+    
+    @objc func reset() {
+        
+        var slider = sliderView as! MultiSlider
+        
+        slider.value = [50,67]
+        
+        nutritionLabel.vegLabel.text = "\(Int(slider.value[0]))%"
+        nutritionLabel.proLabel.text = "\(Int(slider.value[1] - slider.value[0]))%"
+        nutritionLabel.stapLabel.text = "\(100 - Int(slider.value[1]))%"
+        
+        vegValue = Int(slider.value[0])
+        protValue = Int(slider.value[1] - slider.value[0])
+        stapValue = 100 - Int(slider.value[1])
     }
     
     //Nutrition Label Constraint
