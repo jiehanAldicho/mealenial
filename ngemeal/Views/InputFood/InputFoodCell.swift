@@ -103,9 +103,13 @@ class InputFoodCell: UICollectionViewCell {
         smallButton.addTarget(self, action: #selector(pushSmallButton), for: .touchUpInside)
         mediumButton.addTarget(self, action: #selector(pushMediumButton), for: .touchUpInside)
         largeButton.addTarget(self, action: #selector(pushLargeButton), for: .touchUpInside)
+<<<<<<< HEAD
         saveMealButton.addTarget(self, action: #selector(uploadImage), for: .touchUpInside)
 =======
 >>>>>>> parent of 0bf93b5... Adding reset button in initial setting
+=======
+        saveMealButton.addTarget(self, action: #selector(saveMeal), for: .touchUpInside)
+>>>>>>> parent of 3c411ce... Merge remote-tracking branch 'refs/remotes/origin/master'
     }
     
     override func layoutSubviews() {
@@ -193,6 +197,7 @@ extension InputFoodCell {
     }
     
 <<<<<<< HEAD
+<<<<<<< HEAD
     //Upload image
     @objc func uploadImage() {
         let jpegCompressionQuality: CGFloat = 0.9
@@ -200,6 +205,10 @@ extension InputFoodCell {
         if let imageData64: Data = imgToSend?.jpegData(compressionQuality: 0.9) {
             //
         }
+=======
+    @objc func saveMeal() {
+        print("Meal Saved")
+>>>>>>> parent of 3c411ce... Merge remote-tracking branch 'refs/remotes/origin/master'
     }
     
 =======
