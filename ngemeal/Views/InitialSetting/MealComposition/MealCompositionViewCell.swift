@@ -97,6 +97,8 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
 >>>>>>> parent of 0bf93b5... Adding reset button in initial setting
 =======
+        //        btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
+        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
 >>>>>>> parent of 3c411ce... Merge remote-tracking branch 'refs/remotes/origin/master'
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = btn.bounds.size.width / 8
