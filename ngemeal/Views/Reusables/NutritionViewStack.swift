@@ -20,7 +20,7 @@ class NutritionStackView2: UIStackView {
         
         let veg = generateNutrition(Colors.veggie, "Veggie")
         let pro = generateNutrition(Colors.protein, "Protein")
-        let stap = generateNutrition(Colors.staple, "Grains")
+        let stap = generateNutrition(Colors.staple, "Carbs")
         
         self.addArrangedSubview(veg)
         self.addArrangedSubview(pro)
@@ -145,7 +145,7 @@ class ChartNutritionStackView: UIStackView {
         
         vegView = generateNutrition("Veggie")
         proView = generateNutrition("Protein")
-        stapView = generateNutrition("Grains")
+        stapView = generateNutrition("Carbs")
         
         self.addArrangedSubview(vegView)
         self.addArrangedSubview(proView)

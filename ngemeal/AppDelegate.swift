@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     let navController = UINavigationController(rootViewController: MainTabBarController())
     navController.navigationBar.isHidden = true
     
-//    window?.rootViewController = initialViewCon
+//    window?.rootViewController = navController
     window?.rootViewController = initialViewCon
     
     window?.makeKeyAndVisible()
