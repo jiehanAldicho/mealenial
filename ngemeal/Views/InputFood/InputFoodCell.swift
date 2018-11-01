@@ -98,6 +98,7 @@ class InputFoodCell: UICollectionViewCell {
         self.addSubview(nutritionLabel)
         self.addSubview(saveMealButton)
         
+        saveMealButton.addTarget(self, action: #selector(uploadImage), for: .touchUpInside)
     }
     
     override func layoutSubviews() {
@@ -182,6 +183,15 @@ extension InputFoodCell {
         saveMealButton.topAnchor.constraint(equalTo: self.nutritionLabel.bottomAnchor, constant: 16).isActive = true
         saveMealButton.widthAnchor.constraint(equalToConstant: 180).isActive = true
         saveMealButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    }
+    
+    //Upload image
+    @objc func uploadImage() {
+        let jpegCompressionQuality: CGFloat = 0.9
+        let imgToSend = imageTarget.image
+        if let imageData64: Data = imgToSend?.jpegData(compressionQuality: 0.9) {
+            //
+        }
     }
     
     //Image Setup

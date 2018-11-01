@@ -22,7 +22,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Setup your ideal meal composition"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Heavy", size: 28)
+        lbl.font = UIFont(name: "TTNorms-Bold", size: 28)
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 0
         return lbl
@@ -60,7 +60,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Your meal is composed of"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 16)
+        lbl.font = UIFont(name: "TTNorms-Italic", size: 16)
         
         return lbl
     }()
@@ -74,7 +74,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "The ideal plate according to USDA consists of 50% veggies and fruits, 17% proteins, and 33% grains."
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 14)
+        lbl.font = UIFont(name: "TTNorms-Italic", size: 14)
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 0
         
@@ -90,7 +90,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         
         btn.setTitle("Done!", for: .normal)
 //        btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
+        btn.titleLabel?.font = UIFont(name: "TTNorms-Bold", size: 20)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = btn.bounds.size.width / 8
         btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)

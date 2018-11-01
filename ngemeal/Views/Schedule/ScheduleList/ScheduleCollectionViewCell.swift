@@ -14,7 +14,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "01:00" //Shoud be from date object
         lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir-Black", size: 35)
+        lbl.font = UIFont(name: "TTNorms-Bold", size: 35)
         return lbl
     }()
     
@@ -38,7 +38,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Breakfast" //Shoud be from the model
         lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir", size: 18)
+        lbl.font = UIFont(name: "TTNorms-Regular", size: 18)
         return lbl
     }()
     
@@ -180,7 +180,7 @@ extension ScheduleCollectionViewCell: UICollectionViewDelegateFlowLayout, UIColl
 class DayCell: UICollectionViewCell {
     var dayLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont(name: "Avenir", size: 15)
+        lbl.font = UIFont(name: "TTNorms-Regular", size: 15)
         lbl.textColor = Colors.textBlack
         return lbl
     }()
