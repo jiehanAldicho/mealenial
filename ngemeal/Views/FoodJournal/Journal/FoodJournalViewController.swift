@@ -14,10 +14,15 @@ class FoodJournalViewController: UIViewController {
     var weekPicker: WeekPickerView!
     var foodJournalCollectionView: UICollectionView!
     
+    var journalObj = [String: Any]()
+    var journalData = [Any]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         requestFood {
-            print("requested")
+            DispatchQueue.main.sync {
+                self.foodJournalCollectionView.reloadData()
+            }
         }
         view.backgroundColor = Colors.backgroundColor
         fakeNavBar = addCustomNavbar("Food Journal")
@@ -82,7 +87,7 @@ class FoodJournalViewController: UIViewController {
 
 extension FoodJournalViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, MealCellDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return journalData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -96,14 +101,13 @@ extension FoodJournalViewController: UICollectionViewDelegateFlowLayout, UIColle
     }
     
     func requestFood(_ completion: @escaping () -> ()) {
-        let url = "https://mealenial.herokuapp.com/journal/findbydate"
+        let url = "https://mealenial.herokuapp.com/journal/findbyuser"
         let session = URLSession(configuration: .default)
         let requestURL = URL(string: url)
         
         var request = URLRequest(url: requestURL!)
         
-        let jsonBody = ["username" : "dary",
-                        "date": "20181031"]
+        let jsonBody = ["_id" : "5bd9253ebcc45a6196a61369"]
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody, options: [])
         
         request.httpMethod = "POST"
@@ -115,11 +119,14 @@ extension FoodJournalViewController: UICollectionViewDelegateFlowLayout, UIColle
                 print(err)
             } else if let receivedData = data {
                 do {
-                    let json = try JSONSerialization.jsonObject(with: receivedData, options: .allowFragments)
+                    let json = try JSONSerialization.jsonObject(with: receivedData, options: [])
                     if let dataTest = json as? [String: Any] {
                         //Retrieve datanya lama, server lu jelek Dar ☹️
                         print("🍤Data", dataTest)
+                        let journalArr = dataTest["journal"] as! [Any]
+                        self.journalData = journalArr
                     }
+                    completion()
                 } catch {
                     print(error)
                 }
