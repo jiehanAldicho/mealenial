@@ -209,10 +209,6 @@ extension AccountCollectionViewCell {
         nutritionLabel.proLabel.text = "\(Int(slider.value[1] - slider.value[0]))%"
         nutritionLabel.stapLabel.text = "\(100 - Int(slider.value[1]))%"
         
-        var vegValue = Int(slider.value[0])
-        var proValue = Int(slider.value[1] - slider.value[0])
-        var stapValue = 100 - Int(slider.value[1])
-        
         print("\(nutritionLabel.vegVal)")
         print("\(nutritionLabel.proVal)")
         print("\(nutritionLabel.stapVal)")

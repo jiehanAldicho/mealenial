@@ -132,7 +132,7 @@ extension LastMealCell {
         
         for data in surveyDataCell {
             let percent = Double(data.1) / 100
-            let entry = PieChartDataEntry(value: percent)
+            let entry = PieChartDataEntry(value: percent, label: data.0)
             dataEntries.append(entry)
         }
         

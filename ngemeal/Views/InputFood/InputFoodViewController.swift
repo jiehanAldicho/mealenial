@@ -14,10 +14,9 @@ class InputFoodViewController: UIViewController {
     // Image Variables
     var imageVar: UIImage = UIImage()
     
-    //Multi Slider Data Variables
-    var vegVal = 50
-    var protVal = 33
-    var stapVal = 17
+    //Pie Charts Data Variables
+//    let surveyData = ["Carbs": 50, "Protein": 25, "Veggies": 25]
+    var newSurveyData = [("Carbs", 50), ("Protein", 25), ("Veggies", 25)]
     
     //Collection View Variables
     var overviewCollectionView: UICollectionView!
@@ -68,15 +67,13 @@ extension InputFoodViewController: UICollectionViewDelegateFlowLayout, UICollect
         let inputCell = collectionView.dequeueReusableCell(withReuseIdentifier: "inputFoodCell", for: indexPath) as! InputFoodCell
         
         inputCell.imageVarCell = imageVar
-        inputCell.vegVal = vegVal
-        inputCell.protVal = protVal
-        inputCell.stapVal = stapVal
+        inputCell.surveyDataCell = newSurveyData
         
         return inputCell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 342, height: 770)
+        return CGSize(width: 342, height: 805)
     }
     
 }
