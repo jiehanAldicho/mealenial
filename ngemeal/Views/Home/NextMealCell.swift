@@ -43,15 +43,23 @@ class NextMealCell: UICollectionViewCell, UIImagePickerControllerDelegate, UINav
     }()
     
     var addMealButton: UIButton = {
+        
         let btn = UIButton()
-        btn.frame = CGRect(x: 0, y: 0, width: 198, height: 56)
+        btn.frame = CGRect(x: 0, y: 0, width: 144, height: 32)
+        
         btn.setTitle("Add Meal", for: .normal)
-        btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 18)
-        btn.backgroundColor = .white
-        btn.layer.borderWidth = 3
-        btn.layer.borderColor = #colorLiteral(red: 0, green: 0.662745098, blue: 0.4901960784, alpha: 1)
+        //        btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
+        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
+        btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = btn.bounds.size.width / 8
+        btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
+        
+        //Shadow
+        btn.layer.masksToBounds = false
+        btn.layer.shadowColor = UIColor.black.cgColor
+        btn.layer.shadowOpacity = 0.5
+        btn.layer.shadowOffset = CGSize(width: 1, height: 1)
+        btn.layer.shadowRadius = 2
         
         return btn
     }()
@@ -92,8 +100,8 @@ class NextMealCell: UICollectionViewCell, UIImagePickerControllerDelegate, UINav
         addMealButton.translatesAutoresizingMaskIntoConstraints = false
         addMealButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         addMealButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20).isActive = true
-        addMealButton.widthAnchor.constraint(equalToConstant: 180).isActive = true
-        addMealButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        addMealButton.widthAnchor.constraint(equalToConstant: 144).isActive = true
+        addMealButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
     }
     
     required init?(coder aDecoder: NSCoder) {
