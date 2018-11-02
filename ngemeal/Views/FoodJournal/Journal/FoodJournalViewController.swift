@@ -17,6 +17,8 @@ class FoodJournalViewController: UIViewController {
     var journalObj = [String: Any]()
     var journalData = [Any]()
     
+    var INDEXPATH: IndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         requestFood {
@@ -72,20 +74,18 @@ class FoodJournalViewController: UIViewController {
         foodJournalCollectionView.heightAnchor.constraint(equalToConstant: 600).isActive = true
     }
     
-    func navigateToDetail() {
-//        let transition: CATransition = CATransition()
-//        transition.duration = 0.4
-//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-//        transition.type = CATransitionType.fade
-//        self.navigationController!.view.layer.add(transition, forKey: nil)
-        
-        //Pass data to detailVC ya
+    func navigateToDetail(indexPath: IndexPath) {
+        //Pass data to detailVC
+        INDEXPATH = indexPath
         let detailVC = FoodDetailViewController()
+        detailVC.journalData = [journalData[INDEXPATH!.row]]
+        print("INI YAAAAAAA \(detailVC.journalData)")
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
 extension FoodJournalViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, MealCellDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return journalData.count
     }
@@ -93,6 +93,7 @@ extension FoodJournalViewController: UICollectionViewDelegateFlowLayout, UIColle
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dateCell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! FoodJournalDateCell
         dateCell.delegate = self
+        dateCell.journalData = journalData
         return dateCell
     }
     
