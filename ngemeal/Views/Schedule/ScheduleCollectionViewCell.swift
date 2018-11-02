@@ -146,9 +146,9 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.3
-        self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.1
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.layer.shadowRadius = 1
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 10).cgPath
         

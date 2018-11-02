@@ -14,7 +14,9 @@ class FoodJournalDateCell: UICollectionViewCell {
     
     var dateLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Momday, Oct 15, 2018" //Turn this to date later on
+        let attributes = [NSAttributedString.Key.ligature: 0]
+        var title = NSAttributedString(string: "Momday, Oct 15, 2018", attributes: attributes)
+        lbl.attributedText = title
         lbl.font = FontType(size: 20).light
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
         return lbl

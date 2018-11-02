@@ -45,7 +45,7 @@ class WeekPickerView: UIView {
         super.init(frame: frame)
         self.frame = CGRect(x: 0, y: 0, width: 343, height: 50)
         self.clipsToBounds = true
-        self.layer.cornerRadius = 20
+        self.layer.cornerRadius = 8
         
         //Background setups
         setupViewGradientBackground()
@@ -99,7 +99,7 @@ class WeekPickerView: UIView {
         
         //Navbar gradient BG
         gradientBG.frame = self.frame
-        gradientBG.cornerRadius = 20
+        gradientBG.cornerRadius = 8
         self.layer.addSublayer(gradientBG)
         
         //Adding shadow
@@ -109,7 +109,7 @@ class WeekPickerView: UIView {
         self.layer.shadowOffset = CGSize(width: 0, height: 2)
         self.layer.shadowRadius = 2
         //        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 20).cgPath
+        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 8).cgPath
     }
     
     required init?(coder aDecoder: NSCoder) {

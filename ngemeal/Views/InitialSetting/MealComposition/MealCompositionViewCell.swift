@@ -101,8 +101,8 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         //Shadow
         btn.layer.masksToBounds = false
         btn.layer.shadowColor = UIColor.black.cgColor
-        btn.layer.shadowOpacity = 0.5
-        btn.layer.shadowOffset = CGSize(width: 1, height: 1)
+        btn.layer.shadowOpacity = 0.1
+        btn.layer.shadowOffset = CGSize(width: 0, height: 1)
         btn.layer.shadowRadius = 2
         
         return btn
@@ -167,23 +167,24 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
 extension MealCompositionCollectionViewCell {
     //Function Setup Cell
     func setupCellStyle() {
-        self.backgroundColor = .white
+//        self.backgroundColor = .white
         self.layer.cornerRadius = 8
         
         //Shadow
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.layer.shadowRadius = 2
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 8).cgPath
+//        self.layer.masksToBounds = false
+//        self.layer.shadowColor = UIColor.black.cgColor
+//        self.layer.shadowOpacity = 0.1
+//        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+//        self.layer.shadowRadius = 2
+//        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+//        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 8).cgPath
     }
     
     //Title Label Constraint
     func setupTitleLabel() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: self.nutritionLabel.leadingAnchor, constant: 0).isActive = true
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: 240).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
@@ -192,6 +193,7 @@ extension MealCompositionCollectionViewCell {
     //Slider Function
     func setupSliderConstraint() {
         sliderView.translatesAutoresizingMaskIntoConstraints = false
+//        sliderView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         sliderView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         sliderView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 60).isActive = true
         sliderView.widthAnchor.constraint(equalToConstant: 263).isActive = true
@@ -211,7 +213,7 @@ extension MealCompositionCollectionViewCell {
     //Other Label Setup
     func setupOtherLabel() {
         otherLabel.translatesAutoresizingMaskIntoConstraints = false
-        otherLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
+        otherLabel.leadingAnchor.constraint(equalTo: self.nutritionLabel.leadingAnchor, constant: -4).isActive = true
         otherLabel.topAnchor.constraint(equalTo: self.sliderView.bottomAnchor, constant: 60).isActive = true
         otherLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         otherLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
@@ -244,6 +246,7 @@ extension MealCompositionCollectionViewCell {
     //Nutrition Label Constraint
     func setupNutritionLabel() {
         nutritionLabel.translatesAutoresizingMaskIntoConstraints = false
+//        nutritionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         nutritionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         nutritionLabel.topAnchor.constraint(equalTo: self.otherLabel.bottomAnchor, constant: 20).isActive = true
         nutritionLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
@@ -253,7 +256,7 @@ extension MealCompositionCollectionViewCell {
     //Other Label 2 Setup
     func setupOtherLabel2() {
         otherLabel2.translatesAutoresizingMaskIntoConstraints = false
-        otherLabel2.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        otherLabel2.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         otherLabel2.topAnchor.constraint(equalTo: self.nutritionLabel.bottomAnchor, constant: 20).isActive = true
         otherLabel2.widthAnchor.constraint(equalToConstant: 300).isActive = true
         otherLabel2.heightAnchor.constraint(equalToConstant: 68).isActive = true

@@ -55,8 +55,8 @@ class MealScheduleViewController: UIViewController {
         //Shadow
         btn.layer.masksToBounds = false
         btn.layer.shadowColor = UIColor.black.cgColor
-        btn.layer.shadowOpacity = 0.5
-        btn.layer.shadowOffset = CGSize(width: 1, height: 1)
+        btn.layer.shadowOpacity = 0.1
+        btn.layer.shadowOffset = CGSize(width: 0, height: 1)
         btn.layer.shadowRadius = 2
         
         return btn
@@ -70,7 +70,7 @@ class MealScheduleViewController: UIViewController {
         view.backgroundColor = Colors.backgroundColor
         self.navigationController?.navigationBar.isHidden = false
         self.setCustomNavbar()
-        self.navigationItem.title = "Schedule"
+        self.navigationItem.title = ""
         
         //Tableview setup
         mealScheduleTableView = UITableView()

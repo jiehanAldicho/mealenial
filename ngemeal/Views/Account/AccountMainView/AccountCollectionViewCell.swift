@@ -23,7 +23,7 @@ class AccountCollectionViewCell: UICollectionViewCell {
     var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Meal Composition"
-//        lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
+        lbl.textColor = Colors.textBlack
         lbl.font = FontType(size: 20).bold
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 0
@@ -94,6 +94,7 @@ class AccountCollectionViewCell: UICollectionViewCell {
         
         lbl.text = "Meal Schedule"
         lbl.font = FontType(size: 20).bold
+        lbl.textColor = Colors.textBlack
         
         return lbl
     }()
@@ -124,6 +125,7 @@ class AccountCollectionViewCell: UICollectionViewCell {
         
         lbl.text = "Sign Out"
         lbl.font = FontType(size: 20).bold
+        lbl.textColor = Colors.textBlack
         
         return lbl
     }()
@@ -179,8 +181,8 @@ extension AccountCollectionViewCell {
         //Shadow
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowRadius = 2
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 8).cgPath

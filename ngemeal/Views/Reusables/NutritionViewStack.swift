@@ -18,9 +18,9 @@ class NutritionStackView2: UIStackView {
     convenience init() {
         self.init(frame: CGRect(x: 0, y: 0, width: 120, height: 65))
         
-        let veg = generateNutrition(Colors.veggie, "Veggie")
-        let pro = generateNutrition(Colors.protein, "Protein")
-        let stap = generateNutrition(Colors.staple, "Grains")
+        let veg = generateNutrition(Colors.veggie, "Veggies")
+        let pro = generateNutrition(Colors.protein, "Proteins")
+        let stap = generateNutrition(Colors.staple, "Carbs")
         
         self.addArrangedSubview(veg)
         self.addArrangedSubview(pro)
@@ -145,7 +145,7 @@ class ChartNutritionStackView: UIStackView {
         
         vegView = generateNutrition("Veggie")
         proView = generateNutrition("Protein")
-        stapView = generateNutrition("Grains")
+        stapView = generateNutrition("Carbs")
         
         self.addArrangedSubview(vegView)
         self.addArrangedSubview(proView)
@@ -223,8 +223,9 @@ class ChartNutritionStackView: UIStackView {
         
         bottomLine.translatesAutoresizingMaskIntoConstraints = false
         bottomLine.bottomAnchor.constraint(equalTo: v.bottomAnchor, constant: 0).isActive = true
-        bottomLine.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        bottomLine.widthAnchor.constraint(equalToConstant: v.frame.width - 20).isActive = true
+//        bottomLine.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
+        bottomLine.widthAnchor.constraint(equalToConstant: v.frame.width - 60).isActive = true
+        bottomLine.centerXAnchor.constraint(equalTo: v.centerXAnchor, constant: -20).isActive = true
         bottomLine.heightAnchor.constraint(equalToConstant: 1.5).isActive = true
         
         return v
