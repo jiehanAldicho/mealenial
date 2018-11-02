@@ -15,7 +15,7 @@ class TimeStampView: UIView {
     var timeLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = .white
-        lbl.font = UIFont(name: "Avenir-Heavy", size: 12)
+        lbl.font = FontType(size: 12).bold
         lbl.text = "00:00" //Make this dynamic according to the data
         return lbl
     }()

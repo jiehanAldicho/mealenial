@@ -13,15 +13,15 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     var timeLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "01:00" //Shoud be from date object
-        lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir-Black", size: 35)
+        lbl.textColor = #colorLiteral(red: 1, green: 0.6274509804, blue: 0.2784313725, alpha: 1)
+        lbl.font = FontType(size: 35).bold
         return lbl
     }()
     
     let toggleButton: UISwitch = {
         let swtch = UISwitch()
         swtch.setOn(true, animated: true)
-        swtch.onTintColor = Colors.mainOrange
+        swtch.onTintColor = #colorLiteral(red: 1, green: 0.6274509804, blue: 0.2784313725, alpha: 1)
 //        swtch.thumbTintColor = Colors.backgroundColor
         return swtch
     }()
@@ -36,9 +36,11 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     
     var mealTypeLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Breakfast" //Shoud be from the model
-        lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir", size: 18)
+        let attributes = [NSAttributedString.Key.ligature: 0]
+        var title = NSAttributedString(string: "Breakfast", attributes: attributes)
+        lbl.attributedText = title
+        lbl.textColor = #colorLiteral(red: 1, green: 0.6274509804, blue: 0.2784313725, alpha: 1)
+        lbl.font = UIFont(name: "TTNorms-Regular", size: 18)
         return lbl
     }()
     
@@ -49,6 +51,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         self.backgroundColor = Colors.backgroundColor
         setupCellStyle()
+        
         popoverButton = MoreOptionButton.init(frame: CGRect.zero)
         
         let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
@@ -66,7 +69,6 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         self.addSubview(timeLabel)
         self.addSubview(toggleButton)
         self.addSubview(popoverButton)
-        
         
         setupTimeLabelConstraint()
         setupPopoverButtonConstraint()
@@ -144,9 +146,9 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.3
-        self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.layer.shadowRadius = 3
+        self.layer.shadowOpacity = 0.1
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+        self.layer.shadowRadius = 1
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 10).cgPath
         
@@ -175,12 +177,18 @@ extension ScheduleCollectionViewCell: UICollectionViewDelegateFlowLayout, UIColl
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: 10, height: 20)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath) as! DayCell
+        cell.dayLabel.textColor = #colorLiteral(red: 1, green: 0.6274509804, blue: 0.2784313725, alpha: 1)
+        cell.dayLabel.font = FontType(size: 15).bold
+    }
 }
 
 class DayCell: UICollectionViewCell {
     var dayLabel: UILabel = {
         let lbl = UILabel()
-        lbl.font = UIFont(name: "Avenir", size: 15)
+        lbl.font = FontType(size: 15).regular
         lbl.textColor = Colors.textBlack
         return lbl
     }()

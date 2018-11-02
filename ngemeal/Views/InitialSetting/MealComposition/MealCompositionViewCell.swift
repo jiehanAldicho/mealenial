@@ -17,12 +17,18 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
     //Delegate
     var delegate: MealCompositionCollectionViewCellDelegate?
     
+    //Container Variables
+    
+    var vegValue = Int()
+    var protValue = Int()
+    var stapValue = Int()
+    
     //Title Label Variables
     var titleLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Setup your ideal meal composition"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Heavy", size: 28)
+        lbl.font = UIFont(name: "TTNorms-Bold", size: 28)
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 0
         return lbl
@@ -37,10 +43,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         slider.maximumValue = 100    // default is 1.0
         slider.snapStepSize = 1  // default is 0.0, i.e. don't snap
         
-        slider.value = [50, 67]
-        
-        
-        //        slider.addTarget(self, action: #selector(sliderDragEnded(_:)), forControlEvents: . touchUpInside) // sent when drag ends
+        slider.value = [50,67]
         
         slider.orientation = .horizontal
         slider.tintColor = UIColor(displayP3Red: 11/255, green: 205/255, blue: 190/255, alpha: 1)
@@ -60,7 +63,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Your meal is composed of"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 16)
+        lbl.font = UIFont(name: "TTNorms-Italic", size: 16)
         
         return lbl
     }()
@@ -74,7 +77,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "The ideal plate according to USDA consists of 50% veggies and fruits, 17% proteins, and 33% grains."
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 14)
+        lbl.font = UIFont(name: "TTNorms-Italic", size: 14)
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 0
         
@@ -89,8 +92,8 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         btn.frame = CGRect(x: 0, y: 0, width: 198, height: 56)
         
         btn.setTitle("Done!", for: .normal)
-//        btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
+        //        btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
+        btn.titleLabel?.font = UIFont(name: "TTNorms-Bold", size: 20)
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = btn.bounds.size.width / 8
         btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
@@ -98,12 +101,22 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         //Shadow
         btn.layer.masksToBounds = false
         btn.layer.shadowColor = UIColor.black.cgColor
-        btn.layer.shadowOpacity = 0.5
-        btn.layer.shadowOffset = CGSize(width: 1, height: 1)
+        btn.layer.shadowOpacity = 0.1
+        btn.layer.shadowOffset = CGSize(width: 0, height: 1)
         btn.layer.shadowRadius = 2
         
         return btn
     }()
+    
+    //Reset Button
+    var resetButton: UIButton = {
+        let btn = UIButton()
+        btn.setTitle("", for: .normal)
+        //        btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
+        return btn
+    }()
+    
+    var resetImage = UIImageView(image: UIImage(named: "Artboard"))
     
     //Initialization
     override init(frame: CGRect) {
@@ -114,10 +127,13 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         self.addSubview(otherLabel)
         self.addSubview(nutritionLabel)
         self.addSubview(otherLabel2)
+        self.addSubview(resetButton)
+        resetButton.addSubview(resetImage)
         self.addSubview(saveMealButton)
         
         sliderView.addTarget(self, action: #selector(sliderChanged), for: .valueChanged)
         saveMealButton.addTarget(self, action: #selector(pushButton), for: .touchUpInside)
+        resetButton.addTarget(self, action: #selector(reset), for: .touchUpInside)
     }
     
     override func layoutSubviews() {
@@ -125,6 +141,7 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
         setupTitleLabel()
         setupSliderConstraint()
         setupOtherLabel()
+        setupResetButton()
         setupNutritionLabel()
         setupOtherLabel2()
         setupButtonConstraint()
@@ -150,23 +167,24 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
 extension MealCompositionCollectionViewCell {
     //Function Setup Cell
     func setupCellStyle() {
-        self.backgroundColor = .white
+//        self.backgroundColor = .white
         self.layer.cornerRadius = 8
         
         //Shadow
-        self.layer.masksToBounds = false
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = CGSize(width: 1, height: 1)
-        self.layer.shadowRadius = 2
-        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
-        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 8).cgPath
+//        self.layer.masksToBounds = false
+//        self.layer.shadowColor = UIColor.black.cgColor
+//        self.layer.shadowOpacity = 0.1
+//        self.layer.shadowOffset = CGSize(width: 0, height: 1)
+//        self.layer.shadowRadius = 2
+//        self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
+//        self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 8).cgPath
     }
     
     //Title Label Constraint
     func setupTitleLabel() {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+//        titleLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        titleLabel.leadingAnchor.constraint(equalTo: self.nutritionLabel.leadingAnchor, constant: 0).isActive = true
         titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20).isActive = true
         titleLabel.widthAnchor.constraint(equalToConstant: 240).isActive = true
         titleLabel.heightAnchor.constraint(equalToConstant: 80).isActive = true
@@ -175,9 +193,10 @@ extension MealCompositionCollectionViewCell {
     //Slider Function
     func setupSliderConstraint() {
         sliderView.translatesAutoresizingMaskIntoConstraints = false
-        sliderView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        sliderView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+//        sliderView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         sliderView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 60).isActive = true
-        sliderView.widthAnchor.constraint(equalToConstant: 263).isActive = true
+        sliderView.widthAnchor.constraint(equalToConstant: 284).isActive = true
         sliderView.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
@@ -185,20 +204,49 @@ extension MealCompositionCollectionViewCell {
         nutritionLabel.vegLabel.text = "\(Int(slider.value[0]))%"
         nutritionLabel.proLabel.text = "\(Int(slider.value[1] - slider.value[0]))%"
         nutritionLabel.stapLabel.text = "\(100 - Int(slider.value[1]))%"
+        
+        vegValue = Int(slider.value[0])
+        protValue = Int(slider.value[1] - slider.value[0])
+        stapValue = 100 - Int(slider.value[1])
     }
     
     //Other Label Setup
     func setupOtherLabel() {
         otherLabel.translatesAutoresizingMaskIntoConstraints = false
-        otherLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 25).isActive = true
+        otherLabel.leadingAnchor.constraint(equalTo: self.nutritionLabel.leadingAnchor, constant: -4).isActive = true
         otherLabel.topAnchor.constraint(equalTo: self.sliderView.bottomAnchor, constant: 60).isActive = true
         otherLabel.widthAnchor.constraint(equalToConstant: 200).isActive = true
         otherLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
+    //Reset Button Setup
+    func setupResetButton() {
+        resetButton.translatesAutoresizingMaskIntoConstraints = false
+        resetButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -30).isActive = true
+        resetButton.topAnchor.constraint(equalTo: self.sliderView.bottomAnchor, constant: 60).isActive = true
+        resetButton.widthAnchor.constraint(equalToConstant: 26).isActive = true
+        resetButton.heightAnchor.constraint(equalToConstant: 26).isActive = true
+    }
+    
+    @objc func reset() {
+        
+        var slider = sliderView as! MultiSlider
+        
+        slider.value = [50,67]
+        
+        nutritionLabel.vegLabel.text = "\(Int(slider.value[0]))%"
+        nutritionLabel.proLabel.text = "\(Int(slider.value[1] - slider.value[0]))%"
+        nutritionLabel.stapLabel.text = "\(100 - Int(slider.value[1]))%"
+        
+        vegValue = Int(slider.value[0])
+        protValue = Int(slider.value[1] - slider.value[0])
+        stapValue = 100 - Int(slider.value[1])
+    }
+    
     //Nutrition Label Constraint
     func setupNutritionLabel() {
         nutritionLabel.translatesAutoresizingMaskIntoConstraints = false
+//        nutritionLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         nutritionLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         nutritionLabel.topAnchor.constraint(equalTo: self.otherLabel.bottomAnchor, constant: 20).isActive = true
         nutritionLabel.widthAnchor.constraint(equalToConstant: 300).isActive = true
@@ -208,7 +256,7 @@ extension MealCompositionCollectionViewCell {
     //Other Label 2 Setup
     func setupOtherLabel2() {
         otherLabel2.translatesAutoresizingMaskIntoConstraints = false
-        otherLabel2.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        otherLabel2.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
         otherLabel2.topAnchor.constraint(equalTo: self.nutritionLabel.bottomAnchor, constant: 20).isActive = true
         otherLabel2.widthAnchor.constraint(equalToConstant: 300).isActive = true
         otherLabel2.heightAnchor.constraint(equalToConstant: 68).isActive = true

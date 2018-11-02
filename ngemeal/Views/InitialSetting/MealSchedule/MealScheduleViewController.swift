@@ -9,6 +9,8 @@
 import UIKit
 
 class MealScheduleViewController: UIViewController {
+    
+    
 
     var fakeNavBar: UIView?
     
@@ -16,7 +18,7 @@ class MealScheduleViewController: UIViewController {
         let lbl = UILabel()
         lbl.text = "Meal schedule"
         lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir-Black", size: 25)
+        lbl.font = FontType(size: 25).bold
         return lbl
     }()
     
@@ -34,7 +36,7 @@ class MealScheduleViewController: UIViewController {
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 0
         lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 14)
+        lbl.font = FontType(size: 14).italic
         return lbl
     }()
     
@@ -45,7 +47,7 @@ class MealScheduleViewController: UIViewController {
         
         btn.setTitle("I'm set!", for: .normal)
         btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
+        btn.titleLabel?.font = FontType(size: 20).bold
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = btn.bounds.size.width / 8
         btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
@@ -53,8 +55,8 @@ class MealScheduleViewController: UIViewController {
         //Shadow
         btn.layer.masksToBounds = false
         btn.layer.shadowColor = UIColor.black.cgColor
-        btn.layer.shadowOpacity = 0.5
-        btn.layer.shadowOffset = CGSize(width: 1, height: 1)
+        btn.layer.shadowOpacity = 0.1
+        btn.layer.shadowOffset = CGSize(width: 0, height: 1)
         btn.layer.shadowRadius = 2
         
         return btn
@@ -68,7 +70,7 @@ class MealScheduleViewController: UIViewController {
         view.backgroundColor = Colors.backgroundColor
         self.navigationController?.navigationBar.isHidden = false
         self.setCustomNavbar()
-        self.navigationItem.title = "Schedule"
+        self.navigationItem.title = ""
         
         //Tableview setup
         mealScheduleTableView = UITableView()
@@ -137,11 +139,11 @@ class MealScheduleViewController: UIViewController {
         nextButton.widthAnchor.constraint(equalToConstant: 180).isActive = true
         nextButton.heightAnchor.constraint(equalToConstant: 50).isActive = true
         
-        let btnGradient = CAGradientLayer().buttonGradientLayer()
-        btnGradient.frame = nextButton.frame
-        btnGradient.cornerRadius = nextButton.layer.cornerRadius
-        nextButton.layer.insertSublayer(btnGradient, at: 0)
-        nextButton.contentHorizontalAlignment = .center
+//        let btnGradient = CAGradientLayer().buttonGradientLayer()
+//        btnGradient.frame = nextButton.frame
+//        btnGradient.cornerRadius = nextButton.layer.cornerRadius
+//        nextButton.layer.insertSublayer(btnGradient, at: 0)
+//        nextButton.contentHorizontalAlignment = .center
     }
     
     @objc func navigateToMain() {

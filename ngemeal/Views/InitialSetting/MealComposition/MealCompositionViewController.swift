@@ -53,7 +53,7 @@ extension MealCompositionViewController {
     }
     
     func setupNavBar() {
-        fakeNavBar = addCustomNavbar("Personalization")
+        fakeNavBar = addCustomNavbar("")
     }
     
     func setupCollectionView() {

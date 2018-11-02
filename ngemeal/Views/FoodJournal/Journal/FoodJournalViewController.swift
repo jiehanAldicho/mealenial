@@ -122,7 +122,6 @@ extension FoodJournalViewController: UICollectionViewDelegateFlowLayout, UIColle
                 do {
                     let json = try JSONSerialization.jsonObject(with: receivedData, options: [])
                     if let dataTest = json as? [String: Any] {
-                        //Retrieve datanya lama, server lu jelek Dar ☹️
                         print("🍤Data", dataTest)
                         let journalArr = dataTest["journal"] as! [Any]
                         self.journalData = journalArr

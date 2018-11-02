@@ -13,7 +13,7 @@ class FoodJournalTableHeaderCell: UITableViewCell {
   let dateLabel: UILabel = {
     let lbl = UILabel()
     lbl.text = "Your text"
-    lbl.font = UIFont(name: "Avenir-Medium", size: 15)
+    lbl.font = FontType(size: 15).medium
     lbl.textColor = #colorLiteral(red: 0.1280031204, green: 0.1383292377, blue: 0.1528966129, alpha: 1)
     return lbl
   }()
@@ -43,7 +43,7 @@ class FoodJournalTableContentCell: UITableViewCell {
     let lbl = UILabel()
     lbl.text = "Testing"
     lbl.textColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-    lbl.font = UIFont(name: "Avenir", size: 15)
+    lbl.font = FontType(size: 15).regular
     return lbl
   }()
   

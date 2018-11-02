@@ -15,7 +15,7 @@ class FoodDetailCell: UICollectionViewCell {
     var mealTypeLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "Breakfast"
-        lbl.font = UIFont(name: "Avenir-Black", size: 30)
+        lbl.font = FontType(size: 30).bold
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
         return lbl
     }()
@@ -29,7 +29,7 @@ class FoodDetailCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Your meal is composed of"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 16)
+        lbl.font = FontType(size: 16).italic
         return lbl
     }()
     
@@ -69,8 +69,8 @@ class FoodDetailCell: UICollectionViewCell {
         //Shadow
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowRadius = 2
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
     }
