@@ -36,7 +36,9 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     
     var mealTypeLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Breakfast" //Shoud be from the model
+        let attributes = [NSAttributedString.Key.ligature: 0]
+        var title = NSAttributedString(string: "Breakfast", attributes: attributes)
+        lbl.attributedText = title
         lbl.textColor = Colors.textBlack
         lbl.font = UIFont(name: "TTNorms-Regular", size: 18)
         return lbl
