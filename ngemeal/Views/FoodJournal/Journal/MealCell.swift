@@ -9,7 +9,7 @@
 import UIKit
 
 protocol MealCellDelegate {
-    func navigateToDetail()
+    func navigateToDetail(indexPath: IndexPath)
 }
 
 class MealCell: UICollectionViewCell {

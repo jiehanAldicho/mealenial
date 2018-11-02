@@ -7,27 +7,12 @@
 //
 
 import UIKit
-import Firebase
-import GoogleSignIn
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
   
   var window: UIWindow?
   let rootView = ViewController()
-  
-  func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
-    if ((error) != nil) {
-      print(error)
-    } else {
-      print("\(error.localizedDescription)")
-    }
-    
-    guard let authentication = user.authentication else { return }
-    let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken, accessToken: authentication.accessToken)
-  }
-  
-  
   
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
@@ -46,11 +31,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
     window?.rootViewController = initialViewCon
     
     window?.makeKeyAndVisible()
-    
-    FirebaseApp.configure()
-    
-    GIDSignIn.sharedInstance().clientID = FirebaseApp.app()?.options.clientID
-    GIDSignIn.sharedInstance().delegate = self
     return true
   }
   
