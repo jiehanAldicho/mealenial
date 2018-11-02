@@ -198,8 +198,8 @@ class ChartNutritionStackView: UIStackView {
         
         let bottomLine = UIView()
         let gradientBG = CAGradientLayer().primaryGradientLayer()
-        bottomLine.frame = CGRect(x: 0, y: 0, width: v.frame.width, height: 1)
-        gradientBG.frame = CGRect(x: 0, y: 0, width: v.frame.width-20, height: 1.5)
+        bottomLine.frame = CGRect(x: 0, y: 0, width: v.frame.width-50, height: 1)
+        gradientBG.frame = CGRect(x: 0, y: 0, width: v.frame.width-50, height: 1.5)
         bottomLine.layer.addSublayer(gradientBG)
         
         v.addSubview(nutritionImg)
@@ -225,7 +225,7 @@ class ChartNutritionStackView: UIStackView {
         bottomLine.bottomAnchor.constraint(equalTo: v.bottomAnchor, constant: 0).isActive = true
 //        bottomLine.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
         bottomLine.widthAnchor.constraint(equalToConstant: v.frame.width - 60).isActive = true
-        bottomLine.centerXAnchor.constraint(equalTo: v.centerXAnchor, constant: -20).isActive = true
+        bottomLine.centerXAnchor.constraint(equalTo: v.centerXAnchor, constant: -5).isActive = true
         bottomLine.heightAnchor.constraint(equalToConstant: 1.5).isActive = true
         
         return v

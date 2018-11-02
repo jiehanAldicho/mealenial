@@ -111,15 +111,15 @@ class InputFoodCell: UICollectionViewCell {
         let btn = UIButton()
         btn.setTitle("Small", for: .normal)
         btn.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
-        btn.titleLabel?.font = FontType(size: 16).medium
+        btn.titleLabel?.font = FontType(size: 16).regular
         return btn
     }()
     
     var mediumButton: UIButton = {
         let btn = UIButton()
-        btn.setTitle("Medium", for: .normal)
+        btn.setTitle("Regular", for: .normal)
         btn.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
-        btn.titleLabel?.font = FontType(size: 16).medium
+        btn.titleLabel?.font = FontType(size: 16).bold
         return btn
     }()
     
@@ -127,7 +127,7 @@ class InputFoodCell: UICollectionViewCell {
         let btn = UIButton()
         btn.setTitle("Large", for: .normal)
         btn.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
-        btn.titleLabel?.font = FontType(size: 16).medium
+        btn.titleLabel?.font = FontType(size: 16).regular
         return btn
     }()
     
@@ -293,8 +293,9 @@ extension InputFoodCell {
     func setupSmallButton() {
         smallButton.translatesAutoresizingMaskIntoConstraints = false
         smallButton.centerXAnchor.constraint(equalTo: self.mediumButton.leadingAnchor, constant: -60).isActive = true
-        smallButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
-        smallButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+//        smallButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
+        smallButton.centerYAnchor.constraint(equalTo: mediumButton.centerYAnchor).isActive = true
+        smallButton.widthAnchor.constraint(equalToConstant: 65).isActive = true
         smallButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
@@ -302,15 +303,16 @@ extension InputFoodCell {
         mediumButton.translatesAutoresizingMaskIntoConstraints = false
         mediumButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         mediumButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
-        mediumButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        mediumButton.widthAnchor.constraint(equalToConstant: 65).isActive = true
         mediumButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
     func setupLargeButton() {
         largeButton.translatesAutoresizingMaskIntoConstraints = false
         largeButton.centerXAnchor.constraint(equalTo: self.mediumButton.trailingAnchor, constant: 60).isActive = true
-        largeButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
-        largeButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+//        largeButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
+        largeButton.centerYAnchor.constraint(equalTo: mediumButton.centerYAnchor).isActive = true
+        largeButton.widthAnchor.constraint(equalToConstant: 65).isActive = true
         largeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
@@ -318,6 +320,9 @@ extension InputFoodCell {
         smallButton.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
         mediumButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
         largeButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        largeButton.titleLabel?.font = FontType(size: 16).regular
+        mediumButton.titleLabel?.font = FontType(size: 16).regular
+        smallButton.titleLabel?.font = FontType(size: 16).bold
         portion = .small
     }
     
@@ -325,6 +330,9 @@ extension InputFoodCell {
         smallButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
         mediumButton.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
         largeButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        largeButton.titleLabel?.font = FontType(size: 16).regular
+        mediumButton.titleLabel?.font = FontType(size: 16).bold
+        smallButton.titleLabel?.font = FontType(size: 16).regular
         portion = .medium
     }
     
@@ -332,6 +340,15 @@ extension InputFoodCell {
         smallButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
         mediumButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
         largeButton.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
+        largeButton.titleLabel?.font = FontType(size: 16).bold
+        mediumButton.titleLabel?.font = FontType(size: 16).regular
+        smallButton.titleLabel?.font = FontType(size: 16).regular
         portion = .large
     }
+    
+//    func checkState() {
+//        if portion == .large {
+//            <#code#>
+//        }
+//    }
 }

@@ -193,10 +193,10 @@ extension MealCompositionCollectionViewCell {
     //Slider Function
     func setupSliderConstraint() {
         sliderView.translatesAutoresizingMaskIntoConstraints = false
-//        sliderView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
-        sliderView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+        sliderView.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor).isActive = true
+//        sliderView.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         sliderView.topAnchor.constraint(equalTo: self.titleLabel.bottomAnchor, constant: 60).isActive = true
-        sliderView.widthAnchor.constraint(equalToConstant: 263).isActive = true
+        sliderView.widthAnchor.constraint(equalToConstant: 284).isActive = true
         sliderView.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
