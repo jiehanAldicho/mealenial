@@ -8,5 +8,4 @@ target 'ngemeal' do
   # Pods for ngemeal
   pod 'Charts'
   pod 'MultiSlider'
-  
 end

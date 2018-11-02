@@ -147,8 +147,56 @@ class MealScheduleViewController: UIViewController {
     }
     
     @objc func navigateToMain() {
-        let mainTabBarCon = MainTabBarController() as UIViewController
-        self.present(mainTabBarCon, animated: true, completion: nil)
+        
+        sendSchedule {
+            DispatchQueue.main.sync {
+                let mainTabBarCon = MainTabBarController() as UIViewController
+                self.present(mainTabBarCon, animated: true, completion: nil)
+            }
+        }
+        
+        
+    }
+    
+    func sendSchedule(_ completion: @escaping () -> ()) {
+        let url = "https://mealenial.herokuapp.com/schedule/add"
+        let session = URLSession(configuration: .default)
+        let requestURL = URL(string: url)
+        
+        var request = URLRequest(url: requestURL!)
+        
+        let jsonBody: [String: Any] = [
+            "user" : "5bd9253ebcc45a6196a61369",
+            "meal_type": "breakslow",
+            "date": "23-23-23",
+            "state": true,
+            "repeat": [true,true,true,true,true,true,true]
+        ]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody, options: [])
+        
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData!
+        
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            if let err = error {
+                print(err)
+            } else if let receivedData = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: receivedData, options: [])
+                    if let dataTest = json as? [String: Any] {
+                        print("🍤Data", dataTest)
+                        //                        let journalArr = dataTest["journal"] as! [Any]
+                        //                        self.journalData = journalArr
+                    }
+                    completion()
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        dataTask.resume()
     }
     
     @objc func addMealScheduleCell() {

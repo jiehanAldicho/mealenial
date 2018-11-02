@@ -1,6 +1,7 @@
 import UIKit
 import MultiSlider
 
+
 class InputFoodCell: UICollectionViewCell {
     
     //MARK: Variables
@@ -151,6 +152,7 @@ class InputFoodCell: UICollectionViewCell {
         smallButton.addTarget(self, action: #selector(pushSmallButton), for: .touchUpInside)
         mediumButton.addTarget(self, action: #selector(pushMediumButton), for: .touchUpInside)
         largeButton.addTarget(self, action: #selector(pushLargeButton), for: .touchUpInside)
+        saveMealButton.addTarget(self, action: #selector(addFood), for: .touchUpInside)
     }
     
     override func layoutSubviews() {
@@ -189,6 +191,72 @@ extension InputFoodCell {
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 5).cgPath
     }
+    
+    @objc func addFood(_ completion: @escaping () -> ()) {
+        let url = "https://mealenial.herokuapp.com/journal/add"
+        let session = URLSession(configuration: .default)
+        let requestURL = URL(string: url)
+        
+        var request = URLRequest(url: requestURL!)
+        
+        let img = imageTarget.image
+        
+        
+        let resizedImg = resizeImage(image: img!, newWidth: 400)
+        let imgData = resizedImg.jpegData(compressionQuality: 0)
+        
+        let jsonBody: [String: Any] = [
+            "username" : "dary",
+            "meal_name": "milor",
+            "meal_type": "breakslow",
+            "nutritions": [
+                "carbs": 10,
+                "protein": 80,
+                "vegetable": 10
+            ],
+            "image_data" : imgData?.base64EncodedString()
+        ]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody, options: [])
+        
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData!
+        
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            if let err = error {
+                print(err)
+            } else if let receivedData = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: receivedData, options: [])
+                    if let dataTest = json as? [String: Any] {
+                        print("🍤Data", dataTest)
+//                        let journalArr = dataTest["journal"] as! [Any]
+//                        self.journalData = journalArr
+                    }
+//                    completion()
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        dataTask.resume()
+    }
+    
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newHeight, height: newHeight))
+        guard let newImage = UIGraphicsGetImageFromCurrentImageContext() else {
+            print("drawing error")
+            return UIImage()
+        }
+        UIGraphicsEndImageContext()
+        
+        return newImage
+    }
+
     
     //Save Button Setup
     func setupButtonConstraint() {
