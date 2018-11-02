@@ -15,7 +15,7 @@ class MealScheduleCell: UITableViewCell, UITextFieldDelegate {
         textf.text = "Meal 1"
         textf.placeholder = "Add meal"
         textf.textColor = Colors.textBlack
-        textf.font = UIFont(name: "Avenir-Black", size: 20)
+        textf.font = FontType(size: 20).bold
         return textf
     }()
     
@@ -24,7 +24,7 @@ class MealScheduleCell: UITableViewCell, UITextFieldDelegate {
         lbl.textColor = Colors.textGreen
         lbl.text = "00:00"
         lbl.placeholder = "Set time"
-        lbl.font = UIFont(name: "Avenir-Black", size: 20)
+        lbl.font = FontType(size: 20).bold
         return lbl
     }()
     

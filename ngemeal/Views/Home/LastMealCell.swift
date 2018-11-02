@@ -30,9 +30,11 @@ class LastMealCell: UICollectionViewCell {
     
     var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Your last meal"
+        let attributes = [NSAttributedString.Key.ligature: 0]
+        var title = NSAttributedString(string: "Your last meal", attributes: attributes)
+        lbl.attributedText = title
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Medium", size: 18)
+        lbl.font = FontType(size: 18).medium
         return lbl
     }()
     

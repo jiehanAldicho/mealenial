@@ -17,7 +17,7 @@ class WeekPickerView: UIView {
     var weekLabel: UILabel = {
         let lbl = UILabel()
         lbl.textColor = #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)
-        lbl.font = UIFont(name: "Avenir-Roman", size: 25) //Fontnya gak ada
+        lbl.font = FontType(size: 25).medium
         return lbl
     }()
     

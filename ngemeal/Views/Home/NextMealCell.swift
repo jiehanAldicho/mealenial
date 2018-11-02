@@ -38,7 +38,7 @@ class NextMealCell: UICollectionViewCell, UIImagePickerControllerDelegate, UINav
         let lbl = UILabel()
         lbl.text = "Your next meal"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Medium", size: 18)
+        lbl.font = FontType(size: 18).medium
         return lbl
     }()
     
@@ -47,7 +47,7 @@ class NextMealCell: UICollectionViewCell, UIImagePickerControllerDelegate, UINav
         btn.frame = CGRect(x: 0, y: 0, width: 198, height: 56)
         btn.setTitle("Add Meal", for: .normal)
         btn.setTitleColor(#colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "AvenirNext-Medium", size: 18)
+        btn.titleLabel?.font = FontType(size: 18).medium
         btn.backgroundColor = .white
         btn.layer.borderWidth = 3
         btn.layer.borderColor = #colorLiteral(red: 0, green: 0.662745098, blue: 0.4901960784, alpha: 1)

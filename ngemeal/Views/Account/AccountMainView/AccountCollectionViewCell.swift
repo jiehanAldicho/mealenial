@@ -24,7 +24,7 @@ class AccountCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Meal Composition"
 //        lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Heavy", size: 20)
+        lbl.font = FontType(size: 20).bold
         lbl.lineBreakMode = .byWordWrapping
         lbl.numberOfLines = 0
         return lbl
@@ -62,7 +62,7 @@ class AccountCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Your meal is composed of"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 16)
+        lbl.font = FontType(size: 16).italic
         
         return lbl
     }()
@@ -93,7 +93,7 @@ class AccountCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         
         lbl.text = "Meal Schedule"
-        lbl.font = UIFont(name: "Avenir-Heavy", size: 20)
+        lbl.font = FontType(size: 20).bold
         
         return lbl
     }()
@@ -123,7 +123,7 @@ class AccountCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         
         lbl.text = "Sign Out"
-        lbl.font = UIFont(name: "Avenir-Heavy", size: 20)
+        lbl.font = FontType(size: 20).bold
         
         return lbl
     }()

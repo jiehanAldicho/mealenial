@@ -51,7 +51,7 @@ class InputFoodCell: UICollectionViewCell {
         btn.frame = CGRect(x: 0, y: 0, width: 198, height: 56)
         
         btn.setTitle("Add Meal", for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
+        btn.titleLabel?.font = FontType(size: 20).bold
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = btn.bounds.size.width / 8
         btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
@@ -71,7 +71,7 @@ class InputFoodCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Monday, 15 Oct 2018"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Medium", size: 22)
+        lbl.font = FontType(size: 20).medium
         return lbl
     }()
     
@@ -83,7 +83,7 @@ class InputFoodCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Your meal is composed of"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 16)
+        lbl.font = FontType(size: 16).italic
         return lbl
     }()
     
@@ -103,7 +103,7 @@ class InputFoodCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Portion"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 16)
+        lbl.font = FontType(size: 16).italic
         return lbl
     }()
     
@@ -111,7 +111,7 @@ class InputFoodCell: UICollectionViewCell {
         let btn = UIButton()
         btn.setTitle("Small", for: .normal)
         btn.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
+        btn.titleLabel?.font = FontType(size: 16).medium
         return btn
     }()
     
@@ -119,7 +119,7 @@ class InputFoodCell: UICollectionViewCell {
         let btn = UIButton()
         btn.setTitle("Medium", for: .normal)
         btn.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
+        btn.titleLabel?.font = FontType(size: 16).medium
         return btn
     }()
     
@@ -127,7 +127,7 @@ class InputFoodCell: UICollectionViewCell {
         let btn = UIButton()
         btn.setTitle("Large", for: .normal)
         btn.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
+        btn.titleLabel?.font = FontType(size: 16).medium
         return btn
     }()
     

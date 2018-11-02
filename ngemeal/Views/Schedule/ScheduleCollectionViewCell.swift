@@ -14,7 +14,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "01:00" //Shoud be from date object
         lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir-Black", size: 35)
+        lbl.font = FontType(size: 35).bold
         return lbl
     }()
     
@@ -40,9 +40,12 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         var title = NSAttributedString(string: "Breakfast", attributes: attributes)
         lbl.attributedText = title
         lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir", size: 18)
+        lbl.font = UIFont(name: "TTNorms-Regular", size: 18)
         return lbl
     }()
+    
+    var daysCollectionView: UICollectionView!
+    var days = ["S", "M", "T", "W", "T", "F", "S"]
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -51,8 +54,18 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         
         popoverButton = MoreOptionButton.init(frame: CGRect.zero)
         
+        let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        daysCollectionView = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
+        daysCollectionView.dataSource = self
+        daysCollectionView.delegate = self
+        daysCollectionView.backgroundColor = .clear
+        daysCollectionView.register(DayCell.self, forCellWithReuseIdentifier: "dayCell")
+        
+        
         self.addSubview(bottomView)
         bottomView.addSubview(mealTypeLabel)
+        bottomView.addSubview(daysCollectionView)
         self.addSubview(timeLabel)
         self.addSubview(toggleButton)
         self.addSubview(popoverButton)
@@ -62,6 +75,7 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         setupToggleButtonConstraint()
         setupBottomViewConstraint()
         setupMealTypeLabelConstraint()
+        setupDaysConstraint()
         
         popoverButton.addTarget(self, action: #selector(handleButtonTapped), for: .touchUpInside)
     }
@@ -118,6 +132,14 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
         mealTypeLabel.leadingAnchor.constraint(equalTo: timeLabel.leadingAnchor).isActive = true
     }
     
+    func setupDaysConstraint() {
+        daysCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        daysCollectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
+        daysCollectionView.centerYAnchor.constraint(equalTo: mealTypeLabel.centerYAnchor).isActive = true
+        daysCollectionView.widthAnchor.constraint(equalToConstant: 140).isActive = true
+        daysCollectionView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+    }
+    
     func setupCellStyle() {
         self.backgroundColor = .white
         self.layer.cornerRadius = 10
@@ -139,4 +161,45 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+}
+
+extension ScheduleCollectionViewCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return days.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "dayCell", for: indexPath) as! DayCell
+        cell.dayLabel.text = days[indexPath.row]
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: 10, height: 20)
+    }
+}
+
+class DayCell: UICollectionViewCell {
+    var dayLabel: UILabel = {
+        let lbl = UILabel()
+        lbl.font = FontType(size: 14).medium
+        lbl.textColor = Colors.textBlack
+        return lbl
+    }()
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.addSubview(dayLabel)
+        setupLabelConstraint()
+    }
+    
+    func setupLabelConstraint() {
+        dayLabel.translatesAutoresizingMaskIntoConstraints = false
+        dayLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
+        dayLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
 }

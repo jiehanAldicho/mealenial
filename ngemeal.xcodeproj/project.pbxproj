@@ -40,6 +40,13 @@
 		B9C5D2ED218016CC003AFDB7 /* MealCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5D2EC218016CC003AFDB7 /* MealCell.swift */; };
 		B9C5D2F021801758003AFDB7 /* WeekPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5D2EF21801758003AFDB7 /* WeekPickerView.swift */; };
 		B9C5D2F221801777003AFDB7 /* TimeStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9C5D2F121801777003AFDB7 /* TimeStampView.swift */; };
+		B9CB63CA218BEC900028331C /* TTNorms-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9CB63C3218BEC8F0028331C /* TTNorms-Medium.otf */; };
+		B9CB63CB218BEC900028331C /* TTNorms-Italic.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9CB63C4218BEC8F0028331C /* TTNorms-Italic.otf */; };
+		B9CB63CC218BEC900028331C /* TTNorms-Light.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9CB63C5218BEC8F0028331C /* TTNorms-Light.otf */; };
+		B9CB63CD218BEC900028331C /* TTNorms-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9CB63C6218BEC900028331C /* TTNorms-Bold.otf */; };
+		B9CB63CE218BEC900028331C /* TTNorms-ExtraLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9CB63C7218BEC900028331C /* TTNorms-ExtraLight.otf */; };
+		B9CB63CF218BEC900028331C /* TTNorms-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = B9CB63C8218BEC900028331C /* TTNorms-Regular.otf */; };
+		B9CB63D0218BEC900028331C /* FontUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9CB63C9218BEC900028331C /* FontUtils.swift */; };
 		B9F5C375218701E000EF79B5 /* MealCompositionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F5C374218701E000EF79B5 /* MealCompositionViewCell.swift */; };
 		B9F5C3772187020400EF79B5 /* MealCompositionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B9F5C3762187020400EF79B5 /* MealCompositionViewController.swift */; };
 /* End PBXBuildFile section */
@@ -82,6 +89,13 @@
 		B9C5D2EC218016CC003AFDB7 /* MealCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCell.swift; sourceTree = "<group>"; };
 		B9C5D2EF21801758003AFDB7 /* WeekPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekPickerView.swift; sourceTree = "<group>"; };
 		B9C5D2F121801777003AFDB7 /* TimeStampView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeStampView.swift; sourceTree = "<group>"; };
+		B9CB63C3218BEC8F0028331C /* TTNorms-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNorms-Medium.otf"; sourceTree = "<group>"; };
+		B9CB63C4218BEC8F0028331C /* TTNorms-Italic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNorms-Italic.otf"; sourceTree = "<group>"; };
+		B9CB63C5218BEC8F0028331C /* TTNorms-Light.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNorms-Light.otf"; sourceTree = "<group>"; };
+		B9CB63C6218BEC900028331C /* TTNorms-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNorms-Bold.otf"; sourceTree = "<group>"; };
+		B9CB63C7218BEC900028331C /* TTNorms-ExtraLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNorms-ExtraLight.otf"; sourceTree = "<group>"; };
+		B9CB63C8218BEC900028331C /* TTNorms-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "TTNorms-Regular.otf"; sourceTree = "<group>"; };
+		B9CB63C9218BEC900028331C /* FontUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontUtils.swift; sourceTree = "<group>"; };
 		B9F5C374218701E000EF79B5 /* MealCompositionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCompositionViewCell.swift; sourceTree = "<group>"; };
 		B9F5C3762187020400EF79B5 /* MealCompositionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealCompositionViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +151,7 @@
 		94EACA68216B2EB0007A4539 /* ngemeal */ = {
 			isa = PBXGroup;
 			children = (
+				B9CB63C2218BEC7F0028331C /* Fonts */,
 				A17E02AF217601F300754ABB /* Controllers */,
 				A17E02AE217601ED00754ABB /* Views */,
 				A17E02AD217601E000754ABB /* Models */,
@@ -268,6 +283,20 @@
 			path = Reusables;
 			sourceTree = "<group>";
 		};
+		B9CB63C2218BEC7F0028331C /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B9CB63C9218BEC900028331C /* FontUtils.swift */,
+				B9CB63C6218BEC900028331C /* TTNorms-Bold.otf */,
+				B9CB63C7218BEC900028331C /* TTNorms-ExtraLight.otf */,
+				B9CB63C4218BEC8F0028331C /* TTNorms-Italic.otf */,
+				B9CB63C5218BEC8F0028331C /* TTNorms-Light.otf */,
+				B9CB63C3218BEC8F0028331C /* TTNorms-Medium.otf */,
+				B9CB63C8218BEC900028331C /* TTNorms-Regular.otf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
 		B9F5C372218701BF00EF79B5 /* InitialSetting */ = {
 			isa = PBXGroup;
 			children = (
@@ -364,10 +393,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9CB63CE218BEC900028331C /* TTNorms-ExtraLight.otf in Resources */,
 				94EACA74216B2EB1007A4539 /* LaunchScreen.storyboard in Resources */,
 				2529B71421784F5400C519B7 /* GoogleService-Info.plist in Resources */,
 				94EACA71216B2EB1007A4539 /* Assets.xcassets in Resources */,
+				B9CB63CF218BEC900028331C /* TTNorms-Regular.otf in Resources */,
+				B9CB63CA218BEC900028331C /* TTNorms-Medium.otf in Resources */,
+				B9CB63CD218BEC900028331C /* TTNorms-Bold.otf in Resources */,
 				94EACA6F216B2EB0007A4539 /* Main.storyboard in Resources */,
+				B9CB63CB218BEC900028331C /* TTNorms-Italic.otf in Resources */,
+				B9CB63CC218BEC900028331C /* TTNorms-Light.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -474,6 +509,7 @@
 				B96D2FA72180BC8C0049EC60 /* NutritionViewStack.swift in Sources */,
 				A1DE140A2177889C008F7DA8 /* Meal.swift in Sources */,
 				A17E02B12176021600754ABB /* MainTabBarController.swift in Sources */,
+				B9CB63D0218BEC900028331C /* FontUtils.swift in Sources */,
 				B9F5C375218701E000EF79B5 /* MealCompositionViewCell.swift in Sources */,
 				B99916D62187FAAE00C9EEB4 /* MealScheduleCell.swift in Sources */,
 				B9C5D2F021801758003AFDB7 /* WeekPickerView.swift in Sources */,
