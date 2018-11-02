@@ -16,14 +16,14 @@ class CalendarViewController: UIViewController {
         let lbl = UILabel()
         lbl.text = "Food Journal"
         lbl.textColor = #colorLiteral(red: 0.1554433703, green: 0.1518567502, blue: 0.150703907, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Heavy", size: 30)
+        lbl.font = FontType(size: 30).bold
         return lbl
     }()
     
     let dateLabel: UILabel = {
         let lbl = UILabel()
         lbl.text = "This Week"
-        lbl.font = UIFont(name: "Avenir-Medium", size: 20)
+        lbl.font = FontType(size: 20).bold
         lbl.textColor = #colorLiteral(red: 0.1866135001, green: 0.1866517365, blue: 0.1866084635, alpha: 1)
         lbl.frame = CGRect(x: 0, y: 0, width: 70, height: 30)
         lbl.backgroundColor = .clear

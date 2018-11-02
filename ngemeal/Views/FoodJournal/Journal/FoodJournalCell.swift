@@ -11,11 +11,15 @@ import UIKit
 class FoodJournalDateCell: UICollectionViewCell {
     
     var delegate: MealCellDelegate?
+    var journalData = [Any]()
+    
     
     var dateLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Momday, Oct 15, 2018" //Turn this to date later on
-        lbl.font = UIFont(name: "Avenir-Light", size: 20)
+        let attributes = [NSAttributedString.Key.ligature: 0]
+        var title = NSAttributedString(string: "Momday, Oct 15, 2018", attributes: attributes)
+        lbl.attributedText = title
+        lbl.font = FontType(size: 20).light
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
         return lbl
     }()
@@ -67,11 +71,18 @@ class FoodJournalDateCell: UICollectionViewCell {
 
 extension FoodJournalDateCell: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+        return journalData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let mealCell = collectionView.dequeueReusableCell(withReuseIdentifier: "mealCell", for: indexPath) as! MealCell
+        
+        let img = journalData[indexPath.row] as! [String: Any]
+        let imgURL = img["image_url"]
+        let url = URL(string: imgURL as! String)
+        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+        mealCell.imgBG.image = UIImage(data: data!)
+        
         return mealCell
     }
     
@@ -81,7 +92,7 @@ extension FoodJournalDateCell: UICollectionViewDelegateFlowLayout, UICollectionV
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if delegate != nil {
-            delegate?.navigateToDetail()
+            delegate?.navigateToDetail(indexPath: indexPath)
         } else {
             print("Delegate not found ☹️")
         }

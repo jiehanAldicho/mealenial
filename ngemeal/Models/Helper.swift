@@ -54,7 +54,7 @@ extension UIViewController {
     func addCustomNavbar(_ title: String) -> UIView {
         let fakeNavBar = UIView()
         let width = UIScreen.main.bounds.width
-        fakeNavBar.frame = CGRect(x: 0, y: 0, width: width, height: 120)
+        fakeNavBar.frame = CGRect(x: 0, y: 0, width: width, height: 88)
         
         //Navbar gradient BG
         let gradientBG = CAGradientLayer().primaryGradientLayer()
@@ -62,17 +62,17 @@ extension UIViewController {
         fakeNavBar.layer.addSublayer(gradientBG)
         
         //Navbar shadow
-        fakeNavBar.layer.masksToBounds = false
-        fakeNavBar.layer.shadowColor = UIColor.black.cgColor
-        fakeNavBar.layer.shadowOpacity = 0.5
-        fakeNavBar.layer.shadowOffset = CGSize(width: 0, height: 2)
-        fakeNavBar.layer.shadowRadius = 2
-        fakeNavBar.layer.shadowPath = UIBezierPath(rect: fakeNavBar.bounds).cgPath
+//        fakeNavBar.layer.masksToBounds = false
+//        fakeNavBar.layer.shadowColor = UIColor.black.cgColor
+//        fakeNavBar.layer.shadowOpacity = 0.2
+//        fakeNavBar.layer.shadowOffset = CGSize(width: 0, height: 2)
+//        fakeNavBar.layer.shadowRadius = 2
+//        fakeNavBar.layer.shadowPath = UIBezierPath(rect: fakeNavBar.bounds).cgPath
         
         let fakeNavbarLbl = UILabel()
         fakeNavbarLbl.text = title
         fakeNavbarLbl.textColor = .white
-        fakeNavbarLbl.font = UIFont(name: "Avenir-Heavy", size: 35)
+        fakeNavbarLbl.font = FontType.init(size: 28).bold
         fakeNavBar.addSubview(fakeNavbarLbl)
         
         view.addSubview(fakeNavBar)
@@ -80,7 +80,8 @@ extension UIViewController {
         //Navbar title constraints
         fakeNavbarLbl.translatesAutoresizingMaskIntoConstraints = false
         fakeNavbarLbl.bottomAnchor.constraint(equalTo: fakeNavBar.bottomAnchor, constant: -10).isActive = true
-        fakeNavbarLbl.leadingAnchor.constraint(equalTo: fakeNavBar.leadingAnchor, constant: 20).isActive = true
+//        fakeNavbarLbl.leadingAnchor.constraint(equalTo: fakeNavBar.leadingAnchor, constant: 20).isActive = true
+        fakeNavbarLbl.centerXAnchor.constraint(equalTo: fakeNavBar.centerXAnchor).isActive = true
         return fakeNavBar
     }
     

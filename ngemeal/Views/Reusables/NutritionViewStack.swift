@@ -18,9 +18,9 @@ class NutritionStackView2: UIStackView {
     convenience init() {
         self.init(frame: CGRect(x: 0, y: 0, width: 120, height: 65))
         
-        let veg = generateNutrition(Colors.veggie, "Veggie")
-        let pro = generateNutrition(Colors.protein, "Protein")
-        let stap = generateNutrition(Colors.staple, "Grains")
+        let veg = generateNutrition(Colors.veggie, "Veggies")
+        let pro = generateNutrition(Colors.protein, "Proteins")
+        let stap = generateNutrition(Colors.staple, "Carbs")
         
         self.addArrangedSubview(veg)
         self.addArrangedSubview(pro)
@@ -41,7 +41,7 @@ class NutritionStackView2: UIStackView {
         let typeLbl = UILabel()
         typeLbl.text = type
         typeLbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        typeLbl.font = UIFont(name: "AvenirNext-MediumItalic", size: 13)
+        typeLbl.font = FontType(size: 13).italic
         
         
         v.addSubview(colBox)
@@ -71,7 +71,7 @@ class NutritionView: UIView {
         let lbl = UILabel()
         lbl.text = "0"
         lbl.textColor = Colors.textGreen
-        lbl.font = UIFont(name: "Avenir-Black", size: 23)
+        lbl.font = FontType(size: 23).bold
         return lbl
     }()
     
@@ -79,7 +79,7 @@ class NutritionView: UIView {
         let lbl = UILabel()
         lbl.text = "0"
         lbl.textColor = Colors.textGreen
-        lbl.font = UIFont(name: "Avenir-Black", size: 23)
+        lbl.font = FontType(size: 23).bold
         return lbl
     }()
     
@@ -87,7 +87,7 @@ class NutritionView: UIView {
         let lbl = UILabel()
         lbl.text = "0"
         lbl.textColor = Colors.textGreen
-        lbl.font = UIFont(name: "Avenir-Black", size: 23)
+        lbl.font = FontType(size: 23).bold
         return lbl
     }()
     
@@ -112,7 +112,7 @@ class ChartNutritionStackView: UIStackView {
         let lbl = UILabel()
         lbl.text = "0%"
         lbl.textColor = Colors.textGreen
-        lbl.font = UIFont(name: "Avenir-Black", size: 20)
+        lbl.font = FontType(size: 20).bold
         return lbl
     }()
     
@@ -120,7 +120,7 @@ class ChartNutritionStackView: UIStackView {
         let lbl = UILabel()
         lbl.text = "0%"
         lbl.textColor = Colors.textGreen
-        lbl.font = UIFont(name: "Avenir-Black", size: 20)
+        lbl.font = FontType(size: 20).bold
         return lbl
     }()
     
@@ -128,7 +128,7 @@ class ChartNutritionStackView: UIStackView {
         let lbl = UILabel()
         lbl.text = "0%"
         lbl.textColor = Colors.textGreen
-        lbl.font = UIFont(name: "Avenir-Black", size: 20)
+        lbl.font = FontType(size: 20).bold
         return lbl
     }()
     
@@ -145,7 +145,7 @@ class ChartNutritionStackView: UIStackView {
         
         vegView = generateNutrition("Veggie")
         proView = generateNutrition("Protein")
-        stapView = generateNutrition("Grains")
+        stapView = generateNutrition("Carbs")
         
         self.addArrangedSubview(vegView)
         self.addArrangedSubview(proView)
@@ -189,7 +189,7 @@ class ChartNutritionStackView: UIStackView {
         let typeLbl = UILabel()
         typeLbl.text = type
         typeLbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        typeLbl.font = UIFont(name: "Avenir-Medium", size: 20)
+        typeLbl.font = FontType(size: 20).medium
         
 //        let percentLbl = UILabel()
 //        percentLbl.text = "\(value)%"
@@ -198,8 +198,8 @@ class ChartNutritionStackView: UIStackView {
         
         let bottomLine = UIView()
         let gradientBG = CAGradientLayer().primaryGradientLayer()
-        bottomLine.frame = CGRect(x: 0, y: 0, width: v.frame.width, height: 1)
-        gradientBG.frame = CGRect(x: 0, y: 0, width: v.frame.width-20, height: 1.5)
+        bottomLine.frame = CGRect(x: 0, y: 0, width: v.frame.width-50, height: 1)
+        gradientBG.frame = CGRect(x: 0, y: 0, width: v.frame.width-50, height: 1.5)
         bottomLine.layer.addSublayer(gradientBG)
         
         v.addSubview(nutritionImg)
@@ -223,8 +223,9 @@ class ChartNutritionStackView: UIStackView {
         
         bottomLine.translatesAutoresizingMaskIntoConstraints = false
         bottomLine.bottomAnchor.constraint(equalTo: v.bottomAnchor, constant: 0).isActive = true
-        bottomLine.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
-        bottomLine.widthAnchor.constraint(equalToConstant: v.frame.width - 20).isActive = true
+//        bottomLine.centerXAnchor.constraint(equalTo: v.centerXAnchor).isActive = true
+        bottomLine.widthAnchor.constraint(equalToConstant: v.frame.width - 60).isActive = true
+        bottomLine.centerXAnchor.constraint(equalTo: v.centerXAnchor, constant: -5).isActive = true
         bottomLine.heightAnchor.constraint(equalToConstant: 1.5).isActive = true
         
         return v

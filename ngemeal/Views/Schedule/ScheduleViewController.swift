@@ -17,6 +17,7 @@ class ScheduleViewController: UIViewController {
         
         super.viewDidLoad()
         self.setCustomNavbar()
+        self.title = "Meal Schedule"
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 0, right: 0)

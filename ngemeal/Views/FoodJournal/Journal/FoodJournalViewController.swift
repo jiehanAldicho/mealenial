@@ -14,8 +14,18 @@ class FoodJournalViewController: UIViewController {
     var weekPicker: WeekPickerView!
     var foodJournalCollectionView: UICollectionView!
     
+    var journalObj = [String: Any]()
+    var journalData = [Any]()
+    
+    var INDEXPATH: IndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestFood {
+            DispatchQueue.main.sync {
+                self.foodJournalCollectionView.reloadData()
+            }
+        }
         view.backgroundColor = Colors.backgroundColor
         fakeNavBar = addCustomNavbar("Food Journal")
         weekPicker = WeekPickerView()
@@ -64,27 +74,26 @@ class FoodJournalViewController: UIViewController {
         foodJournalCollectionView.heightAnchor.constraint(equalToConstant: 600).isActive = true
     }
     
-    func navigateToDetail() {
-//        let transition: CATransition = CATransition()
-//        transition.duration = 0.4
-//        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-//        transition.type = CATransitionType.fade
-//        self.navigationController!.view.layer.add(transition, forKey: nil)
-        
-        //Pass data to detailVC ya
+    func navigateToDetail(indexPath: IndexPath) {
+        //Pass data to detailVC
+        INDEXPATH = indexPath
         let detailVC = FoodDetailViewController()
+        detailVC.journalData = [journalData[INDEXPATH!.row]]
+        print("INI YAAAAAAA \(detailVC.journalData)")
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
 
 extension FoodJournalViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, MealCellDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return journalData.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let dateCell = collectionView.dequeueReusableCell(withReuseIdentifier: "dateCell", for: indexPath) as! FoodJournalDateCell
         dateCell.delegate = self
+        dateCell.journalData = journalData
         return dateCell
     }
     
@@ -92,5 +101,37 @@ extension FoodJournalViewController: UICollectionViewDelegateFlowLayout, UIColle
         return CGSize(width: self.view.frame.width - 40, height: 170)
     }
     
-    
+    func requestFood(_ completion: @escaping () -> ()) {
+        let url = "https://mealenial.herokuapp.com/journal/findbyuser"
+        let session = URLSession(configuration: .default)
+        let requestURL = URL(string: url)
+        
+        var request = URLRequest(url: requestURL!)
+        
+        let jsonBody = ["_id" : "5bd9253ebcc45a6196a61369"]
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody, options: [])
+        
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData!
+        
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            if let err = error {
+                print(err)
+            } else if let receivedData = data {
+                do {
+                    let json = try JSONSerialization.jsonObject(with: receivedData, options: [])
+                    if let dataTest = json as? [String: Any] {
+                        print("🍤Data", dataTest)
+                        let journalArr = dataTest["journal"] as! [Any]
+                        self.journalData = journalArr
+                    }
+                    completion()
+                } catch {
+                    print(error)
+                }
+            }
+        }
+        dataTask.resume()
+    }
 }

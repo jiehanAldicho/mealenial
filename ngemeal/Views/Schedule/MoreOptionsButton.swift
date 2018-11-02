@@ -174,7 +174,7 @@ class MenuCell: UITableViewCell {
         let lbl = UILabel()
         lbl.text = "Edit"
         lbl.textColor = Colors.textBlack
-        lbl.font = UIFont(name: "Avenir", size: 14)
+        lbl.font = FontType(size: 14).regular
         return lbl
     }()
     

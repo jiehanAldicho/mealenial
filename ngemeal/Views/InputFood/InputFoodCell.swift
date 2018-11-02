@@ -51,7 +51,7 @@ class InputFoodCell: UICollectionViewCell {
         btn.frame = CGRect(x: 0, y: 0, width: 198, height: 56)
         
         btn.setTitle("Add Meal", for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Black", size: 20)
+        btn.titleLabel?.font = FontType(size: 20).bold
         btn.setTitleColor(.white, for: .normal)
         btn.layer.cornerRadius = btn.bounds.size.width / 8
         btn.backgroundColor = UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1)
@@ -59,8 +59,8 @@ class InputFoodCell: UICollectionViewCell {
         //Shadow
         btn.layer.masksToBounds = false
         btn.layer.shadowColor = UIColor.black.cgColor
-        btn.layer.shadowOpacity = 0.5
-        btn.layer.shadowOffset = CGSize(width: 1, height: 1)
+        btn.layer.shadowOpacity = 0.25
+        btn.layer.shadowOffset = CGSize(width: 0, height: 1)
         btn.layer.shadowRadius = 2
         
         return btn
@@ -71,7 +71,7 @@ class InputFoodCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Monday, 15 Oct 2018"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Medium", size: 22)
+        lbl.font = FontType(size: 20).medium
         return lbl
     }()
     
@@ -83,7 +83,7 @@ class InputFoodCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Your meal is composed of"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 16)
+        lbl.font = FontType(size: 16).italic
         return lbl
     }()
     
@@ -103,7 +103,7 @@ class InputFoodCell: UICollectionViewCell {
         let lbl = UILabel()
         lbl.text = "Portion"
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
-        lbl.font = UIFont(name: "Avenir-Oblique", size: 16)
+        lbl.font = FontType(size: 16).italic
         return lbl
     }()
     
@@ -111,15 +111,15 @@ class InputFoodCell: UICollectionViewCell {
         let btn = UIButton()
         btn.setTitle("Small", for: .normal)
         btn.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
+        btn.titleLabel?.font = FontType(size: 16).regular
         return btn
     }()
     
     var mediumButton: UIButton = {
         let btn = UIButton()
-        btn.setTitle("Medium", for: .normal)
+        btn.setTitle("Regular", for: .normal)
         btn.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
+        btn.titleLabel?.font = FontType(size: 16).bold
         return btn
     }()
     
@@ -127,7 +127,7 @@ class InputFoodCell: UICollectionViewCell {
         let btn = UIButton()
         btn.setTitle("Large", for: .normal)
         btn.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
-        btn.titleLabel?.font = UIFont(name: "Avenir-Medium", size: 16)
+        btn.titleLabel?.font = FontType(size: 16).regular
         return btn
     }()
     
@@ -183,8 +183,8 @@ extension InputFoodCell {
         //Shadow
         self.layer.masksToBounds = false
         self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.5
-        self.layer.shadowOffset = CGSize(width: 1, height: 1)
+        self.layer.shadowOpacity = 0.2
+        self.layer.shadowOffset = CGSize(width: 0, height: 1)
         self.layer.shadowRadius = 2
         self.layer.shadowPath = UIBezierPath(rect: self.bounds).cgPath
         self.layer.shadowPath = UIBezierPath(roundedRect: self.bounds, cornerRadius: 5).cgPath
@@ -293,8 +293,9 @@ extension InputFoodCell {
     func setupSmallButton() {
         smallButton.translatesAutoresizingMaskIntoConstraints = false
         smallButton.centerXAnchor.constraint(equalTo: self.mediumButton.leadingAnchor, constant: -60).isActive = true
-        smallButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
-        smallButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+//        smallButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
+        smallButton.centerYAnchor.constraint(equalTo: mediumButton.centerYAnchor).isActive = true
+        smallButton.widthAnchor.constraint(equalToConstant: 65).isActive = true
         smallButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
@@ -302,15 +303,16 @@ extension InputFoodCell {
         mediumButton.translatesAutoresizingMaskIntoConstraints = false
         mediumButton.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
         mediumButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
-        mediumButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        mediumButton.widthAnchor.constraint(equalToConstant: 65).isActive = true
         mediumButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
     func setupLargeButton() {
         largeButton.translatesAutoresizingMaskIntoConstraints = false
         largeButton.centerXAnchor.constraint(equalTo: self.mediumButton.trailingAnchor, constant: 60).isActive = true
-        largeButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
-        largeButton.widthAnchor.constraint(equalToConstant: 60).isActive = true
+//        largeButton.topAnchor.constraint(equalTo: self.portionLabel.bottomAnchor, constant: 16).isActive = true
+        largeButton.centerYAnchor.constraint(equalTo: mediumButton.centerYAnchor).isActive = true
+        largeButton.widthAnchor.constraint(equalToConstant: 65).isActive = true
         largeButton.heightAnchor.constraint(equalToConstant: 20).isActive = true
     }
     
@@ -318,6 +320,9 @@ extension InputFoodCell {
         smallButton.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
         mediumButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
         largeButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        largeButton.titleLabel?.font = FontType(size: 16).regular
+        mediumButton.titleLabel?.font = FontType(size: 16).regular
+        smallButton.titleLabel?.font = FontType(size: 16).bold
         portion = .small
     }
     
@@ -325,6 +330,9 @@ extension InputFoodCell {
         smallButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
         mediumButton.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
         largeButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
+        largeButton.titleLabel?.font = FontType(size: 16).regular
+        mediumButton.titleLabel?.font = FontType(size: 16).bold
+        smallButton.titleLabel?.font = FontType(size: 16).regular
         portion = .medium
     }
     
@@ -332,6 +340,15 @@ extension InputFoodCell {
         smallButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
         mediumButton.setTitleColor(UIColor(displayP3Red: 155/255, green: 155/255, blue: 155/255, alpha: 1), for: .normal)
         largeButton.setTitleColor(UIColor(displayP3Red: 255/255, green: 160/255, blue: 71/255, alpha: 1), for: .normal)
+        largeButton.titleLabel?.font = FontType(size: 16).bold
+        mediumButton.titleLabel?.font = FontType(size: 16).regular
+        smallButton.titleLabel?.font = FontType(size: 16).regular
         portion = .large
     }
+    
+//    func checkState() {
+//        if portion == .large {
+//            <#code#>
+//        }
+//    }
 }

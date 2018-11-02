@@ -22,7 +22,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     homeView.tabBarItem.title = "Home"
     
     let accountView = createTabBarItem(AccountViewController(), "ghost")
-    accountView.tabBarItem.title = "Account"
+    accountView.tabBarItem.title = "Settings"
     
     //For testing
     let scheduleView = createTabBarItem(ScheduleViewController(), "calendar")

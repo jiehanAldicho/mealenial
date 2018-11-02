@@ -6,9 +6,6 @@ target 'ngemeal' do
   use_frameworks!
 
   # Pods for ngemeal
-  pod 'Firebase/Core'
-  pod 'Firebase/Auth'
-  pod 'GoogleSignIn'
   pod 'Charts'
   pod 'MultiSlider'
   
