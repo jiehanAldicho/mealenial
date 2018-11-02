@@ -13,6 +13,7 @@ class MealScheduleCell: UITableViewCell, UITextFieldDelegate {
     let mealTitleLabel: UITextField = {
         let textf = UITextField()
         textf.text = "Meal 1"
+        textf.isUserInteractionEnabled = false
         textf.placeholder = "Add meal"
         textf.textColor = Colors.textBlack
         textf.font = FontType(size: 20).bold
@@ -22,6 +23,7 @@ class MealScheduleCell: UITableViewCell, UITextFieldDelegate {
     var timeLabel: UITextField = {
         let lbl = UITextField()
         lbl.textColor = Colors.textGreen
+        lbl.isUserInteractionEnabled = false
         lbl.text = "00:00"
         lbl.placeholder = "Set time"
         lbl.font = FontType(size: 20).bold
@@ -93,7 +95,9 @@ class MealScheduleCell: UITableViewCell, UITextFieldDelegate {
     
     @objc func highlightTextField() {
         mealTitleLabel.text = ""
-        timeLabel.text = ""
+        timeLabel.text = "Picker🍤nantiya"
+        mealTitleLabel.isUserInteractionEnabled = true
+        timeLabel.isUserInteractionEnabled = true
 //        if isChoosen == true {
 //            isChoosen = !isChoosen
 //            let btnImg = UIImage(named: "Edit")?.withRenderingMode(.alwaysTemplate)
