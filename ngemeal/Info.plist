@@ -37,15 +37,15 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
-	<key>UIAppFonts</key>
-	<array>
-		<string>TTNorms-Medium.otf</string>
-		<string>TTNorms-Regular.otf</string>
-		<string>TTNorms-Light.otf</string>
-		<string>TTNorms-Italic.otf</string>
-		<string>TTNorms-ExtraLight.otf</string>
-		<string>TTNorms-Bold.otf</string>
-	</array>
+    <key>UIAppFonts</key>
+    <array>
+        <string>TTNorms-Medium.otf</string>
+        <string>TTNorms-Regular.otf</string>
+        <string>TTNorms-Light.otf</string>
+        <string>TTNorms-Italic.otf</string>
+        <string>TTNorms-ExtraLight.otf</string>
+        <string>TTNorms-Bold.otf</string>
+    </array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
