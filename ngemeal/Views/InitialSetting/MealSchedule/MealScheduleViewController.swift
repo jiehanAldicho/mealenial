@@ -150,9 +150,11 @@ class MealScheduleViewController: UIViewController {
         
         sendSchedule {
             DispatchQueue.main.sync {
+                self.dismiss(animated: false, completion: nil)
                 let mainTabBarCon = MainTabBarController() as UIViewController
                 self.present(mainTabBarCon, animated: true, completion: nil)
             }
+            
         }
         
         
@@ -188,6 +190,19 @@ class MealScheduleViewController: UIViewController {
             }
         }
         dataTask.resume()
+        showLoadingAlert()
+    }
+    
+    func showLoadingAlert() {
+        let alert = UIAlertController(title: "Be patient", message: "Let us curate your meal plan", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
     }
     
     @objc func addMealScheduleCell() {

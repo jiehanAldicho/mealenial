@@ -133,15 +133,6 @@ class MealScheduleCell: UITableViewCell, UITextFieldDelegate {
         timeLabel.text = ""
         mealTitleLabel.isUserInteractionEnabled = true
         timeLabel.isUserInteractionEnabled = true
-//        if isChoosen == true {
-//            isChoosen = !isChoosen
-//            let btnImg = UIImage(named: "Edit")?.withRenderingMode(.alwaysTemplate)
-//            editButton.setImage(btnImg, for: .normal)
-//        } else {
-//            isChoosen = !isChoosen
-//            let img = UIImage(named: "Delete")?.withRenderingMode(.alwaysTemplate)
-//            editButton.setImage(img, for: .normal)
-//        }
     }
     
     
