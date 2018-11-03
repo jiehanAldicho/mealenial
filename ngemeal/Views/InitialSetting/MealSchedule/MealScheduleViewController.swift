@@ -166,9 +166,9 @@ class MealScheduleViewController: UIViewController {
         var request = URLRequest(url: requestURL!)
         
         let jsonBody: [String: Any] = [
-            "user" : "5bd9253ebcc45a6196a61369",
-            "meal_type": "breakslow",
-            "date": "23-23-23",
+            "_id" : "5bd9253ebcc45a6196a61369",
+            "meal_type": "ini ngepost dary",
+            "date": "2010-10-10",
             "state": true,
             "repeat": [true,true,true,true,true,true,true]
         ]
@@ -183,17 +183,8 @@ class MealScheduleViewController: UIViewController {
             if let err = error {
                 print(err)
             } else if let receivedData = data {
-                do {
-                    let json = try JSONSerialization.jsonObject(with: receivedData, options: [])
-                    if let dataTest = json as? [String: Any] {
-                        print("🍤Data", dataTest)
-                        //                        let journalArr = dataTest["journal"] as! [Any]
-                        //                        self.journalData = journalArr
-                    }
-                    completion()
-                } catch {
-                    print(error)
-                }
+                print("Add success notif & add loading indicator")
+                completion()
             }
         }
         dataTask.resume()

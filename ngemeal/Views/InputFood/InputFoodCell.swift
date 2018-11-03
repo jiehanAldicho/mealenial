@@ -214,7 +214,7 @@ extension InputFoodCell {
                 "protein": 80,
                 "vegetable": 10
             ],
-            "image_data" : imgData?.base64EncodedString()
+            "image_data" : "data:image/jpeg:base64,\(imgData?.base64EncodedString())"
         ]
         
         let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody, options: [])
