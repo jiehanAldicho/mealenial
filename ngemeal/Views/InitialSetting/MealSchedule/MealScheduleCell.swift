@@ -38,6 +38,7 @@ class MealScheduleCell: UITableViewCell, UITextFieldDelegate {
         return btn
     }()
     
+    let timePicker = UIDatePicker()
     
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -66,6 +67,40 @@ class MealScheduleCell: UITableViewCell, UITextFieldDelegate {
         self.addSubview(bottomBorder)
         
         editButton.addTarget(self, action: #selector(highlightTextField), for: .touchUpInside)
+        
+        //Time picker settings
+        timePicker.frame = CGRect(x: 0, y: 0, width: self.frame.width, height: 200)
+        timePicker.datePickerMode = .time
+        timePicker.timeZone = NSTimeZone.local
+        timePicker.backgroundColor = .white
+        timePicker.setValue(Colors.textGreen, forKey: "textColor")
+        timePicker.addTarget(self, action: #selector(handlePickerChange), for: .editingDidEnd)
+        
+        let toolBar = UIToolbar()
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = true
+        toolBar.tintColor = Colors.textGreen
+        toolBar.sizeToFit()
+        
+        let doneButton = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(dismissPicker))
+        toolBar.setItems([doneButton], animated: true)
+        toolBar.isUserInteractionEnabled = true
+        
+        timeLabel.inputView = timePicker
+        timeLabel.inputAccessoryView = toolBar
+    }
+    
+    @objc func handlePickerChange(sender: UIDatePicker) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        timeLabel.text = dateFormatter.string(from: sender.date)
+    }
+    
+    @objc func dismissPicker() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "HH:mm"
+        timeLabel.text = dateFormatter.string(from: timePicker.date)
+        self.endEditing(true)
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -95,7 +130,7 @@ class MealScheduleCell: UITableViewCell, UITextFieldDelegate {
     
     @objc func highlightTextField() {
         mealTitleLabel.text = ""
-        timeLabel.text = "Picker🍤nantiya"
+        timeLabel.text = ""
         mealTitleLabel.isUserInteractionEnabled = true
         timeLabel.isUserInteractionEnabled = true
 //        if isChoosen == true {
