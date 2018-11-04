@@ -75,7 +75,9 @@ class MealCompositionCollectionViewCell: UICollectionViewCell {
     var otherLabel2: UILabel = {
         
         let lbl = UILabel()
-        lbl.text = "The ideal plate according to USDA consists of 50% veggies and fruits, 17% proteins, and 33% grains."
+        let attributes = [NSAttributedString.Key.ligature: 0]
+        var title = NSAttributedString(string: "The ideal plate according to USDA consists of 50% veggies and fruits, 17% proteins, and 33% grains.", attributes: attributes)
+        lbl.attributedText = title
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
         lbl.font = UIFont(name: "TTNorms-Italic", size: 14)
         lbl.lineBreakMode = .byWordWrapping

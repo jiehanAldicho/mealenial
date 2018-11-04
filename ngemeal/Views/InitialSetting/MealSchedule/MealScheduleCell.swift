@@ -12,7 +12,7 @@ class MealScheduleCell: UITableViewCell, UITextFieldDelegate {
     
     let mealTitleLabel: UITextField = {
         let textf = UITextField()
-        textf.text = "Meal 1"
+        textf.text = "Meal Name"
         textf.isUserInteractionEnabled = false
         textf.placeholder = "Add meal"
         textf.textColor = Colors.textBlack

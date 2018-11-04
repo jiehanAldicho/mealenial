@@ -15,6 +15,7 @@ class HomeViewController: UIViewController {
     var overviewCollectionView: UICollectionView!
     
     let currentMeal = Meal("08.00 AM", "Breakfast")
+    var isFromInput = false
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -36,6 +37,7 @@ class HomeViewController: UIViewController {
         overviewCollectionView.delegate = self
         overviewCollectionView.backgroundColor = Colors.backgroundColor
         overviewCollectionView.register(LastMealCell.self, forCellWithReuseIdentifier: "lastMealCell")
+        overviewCollectionView.register(QuoteCell.self, forCellWithReuseIdentifier: "quoteCell")
         overviewCollectionView.register(NextMealCell.self, forCellWithReuseIdentifier: "nextMealCell")
         
         fakeNavBar = addCustomNavbar("Overview")
@@ -53,6 +55,14 @@ class HomeViewController: UIViewController {
         overviewCollectionView.layer.zPosition = -1
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if self.isFromInput == true {
+            print("😁")
+            overviewCollectionView.reloadData()
+        }
+    }
+    
 }
 
 extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
@@ -62,9 +72,14 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if indexPath.row == 0 {
-            let lastMealCell = collectionView.dequeueReusableCell(withReuseIdentifier: "lastMealCell", for: indexPath) as! LastMealCell
-            lastMealCell.meal = currentMeal
-            return lastMealCell
+            if isFromInput == true {
+                let lastMealCell = collectionView.dequeueReusableCell(withReuseIdentifier: "lastMealCell", for: indexPath) as! LastMealCell
+                lastMealCell.meal = currentMeal
+                return lastMealCell
+            } else {
+                let quoteCell = collectionView.dequeueReusableCell(withReuseIdentifier: "quoteCell", for: indexPath) as! QuoteCell
+                return quoteCell
+            }
         } else {
             let nextMealCell = collectionView.dequeueReusableCell(withReuseIdentifier: "nextMealCell", for: indexPath) as! NextMealCell
             nextMealCell.meal = currentMeal

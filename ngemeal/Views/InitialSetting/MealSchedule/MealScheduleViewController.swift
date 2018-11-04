@@ -63,7 +63,7 @@ class MealScheduleViewController: UIViewController {
     }()
     
     var mealScheduleTableView: UITableView!
-    var jumlahCell: Int = 4
+    var jumlahCell: Int = 1
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -194,7 +194,7 @@ class MealScheduleViewController: UIViewController {
     }
     
     func showLoadingAlert() {
-        let alert = UIAlertController(title: "Be patient", message: "Let us curate your meal plan", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Be patient", message: "We are curating your meal plan", preferredStyle: .alert)
         
         let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
         loadingIndicator.hidesWhenStopped = true
@@ -221,8 +221,12 @@ extension MealScheduleViewController: UITableViewDataSource, UITableViewDelegate
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "mealSchedule")
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "mealSchedule") as! MealScheduleCell
+//        if indexPath.row == 0 {
+//            cell.mealTitleLabel.text = "Brunch"
+//            cell.timeLabel.text = "11:30"
+//        }
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

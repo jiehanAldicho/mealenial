@@ -25,6 +25,7 @@ class NextMealCell: UICollectionViewCell, UIImagePickerControllerDelegate, UINav
         p.translatesAutoresizingMaskIntoConstraints = false
         p.noDataText = "No date to display"
         p.legend.enabled = false
+        p.legend.font = FontType(size: 13).bold as NSUIFont
         p.chartDescription?.text = ""
         p.drawHoleEnabled = true
         
@@ -36,7 +37,9 @@ class NextMealCell: UICollectionViewCell, UIImagePickerControllerDelegate, UINav
     
     var titleLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Next meal suggestion"
+        let attributes = [NSAttributedString.Key.ligature: 0]
+        var title = NSAttributedString(string: "Next meal suggestion", attributes: attributes)
+        lbl.attributedText = title
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
         lbl.font = FontType(size: 18).medium
         return lbl
@@ -151,6 +154,11 @@ extension NextMealCell {
     }
     
     func setupTimeStampConstraint() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let dateString = formatter.string(from: Date())
+        timeStamp.timeLabel.text = dateString
+        
         timeStamp.translatesAutoresizingMaskIntoConstraints = false
         timeStamp.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
         timeStamp.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true
@@ -176,12 +184,11 @@ extension NextMealCell {
         let myColors: [UIColor] = [stapleColor, proteinColor, veggieColor ]
         
         
-        
         var dataEntries = [PieChartDataEntry]()
         
         for data in surveyDataCell {
             let percent = Double(data.1) / 100
-            let entry = PieChartDataEntry(value: percent, label: data.0)
+            let entry = PieChartDataEntry(value: percent)
             dataEntries.append(entry)
         }
         
@@ -198,6 +205,8 @@ extension NextMealCell {
         formatter.maximumFractionDigits = 0
         chartData.setValueFormatter(DefaultValueFormatter(formatter: formatter))
         
+        chartDataSet.entryLabelFont = FontType(size: 15).regular
         pieChart.data = chartData
+        
     }
 }

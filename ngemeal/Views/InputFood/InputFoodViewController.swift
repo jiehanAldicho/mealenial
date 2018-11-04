@@ -71,6 +71,7 @@ extension InputFoodViewController: UICollectionViewDelegateFlowLayout, UICollect
         inputCell.vegVal = vegVal
         inputCell.protVal = protVal
         inputCell.stapVal = stapVal
+        inputCell.delegate = self
         
         return inputCell
     }
@@ -79,4 +80,13 @@ extension InputFoodViewController: UICollectionViewDelegateFlowLayout, UICollect
         return CGSize(width: 342, height: 805)
     }
     
+}
+
+extension InputFoodViewController: InputCellDelegate {
+    func naviagateToHome() {
+        let homeVC = HomeViewController()
+        homeVC.isFromInput = true
+        
+        self.navigationController?.pushViewController(homeVC, animated: true)
+    }
 }

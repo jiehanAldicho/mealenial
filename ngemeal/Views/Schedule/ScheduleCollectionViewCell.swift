@@ -12,7 +12,10 @@ class ScheduleCollectionViewCell: UICollectionViewCell {
     
     var timeLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "01:00" //Shoud be from date object
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let dateString = formatter.string(from: Date())
+        lbl.text = dateString //Shoud be from date object
         lbl.textColor = #colorLiteral(red: 1, green: 0.6274509804, blue: 0.2784313725, alpha: 1)
         lbl.font = FontType(size: 35).bold
         return lbl
