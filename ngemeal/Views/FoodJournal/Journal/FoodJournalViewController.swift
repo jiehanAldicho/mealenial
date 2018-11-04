@@ -21,11 +21,11 @@ class FoodJournalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        requestFood {
-            DispatchQueue.main.sync {
-                self.foodJournalCollectionView.reloadData()
-            }
-        }
+//        requestFood {
+//            DispatchQueue.main.sync {
+//                self.foodJournalCollectionView.reloadData()
+//            }
+//        }
         view.backgroundColor = Colors.backgroundColor
         fakeNavBar = addCustomNavbar("Food Journal")
         weekPicker = WeekPickerView()
@@ -76,10 +76,10 @@ class FoodJournalViewController: UIViewController {
     
     func navigateToDetail(indexPath: IndexPath) {
         //Pass data to detailVC
-        INDEXPATH = indexPath
+//        INDEXPATH = indexPath
         let detailVC = FoodDetailViewController()
-        detailVC.journalData = [journalData[INDEXPATH!.row]]
-        print("INI YAAAAAAA \(detailVC.journalData)")
+//        detailVC.journalData = [journalData[INDEXPATH!.row]]
+//        print("INI YAAAAAAA \(detailVC.journalData)")
         self.navigationController?.pushViewController(detailVC, animated: true)
     }
 }
@@ -87,7 +87,7 @@ class FoodJournalViewController: UIViewController {
 extension FoodJournalViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource, MealCellDelegate {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return journalData.count
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

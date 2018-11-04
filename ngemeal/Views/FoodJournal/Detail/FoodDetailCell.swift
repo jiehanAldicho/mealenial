@@ -14,7 +14,7 @@ class FoodDetailCell: UICollectionViewCell {
     
     var mealTypeLabel: UILabel = {
         let lbl = UILabel()
-        lbl.text = "Breakfast"
+        lbl.text = "Lunch"
         lbl.font = FontType(size: 30).bold
         lbl.textColor = #colorLiteral(red: 0.2901960784, green: 0.2901960784, blue: 0.2901960784, alpha: 1)
         return lbl

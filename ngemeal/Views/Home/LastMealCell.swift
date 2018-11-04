@@ -12,7 +12,7 @@ import Charts
 class LastMealCell: UICollectionViewCell {
     
     //Pie Chart Variables
-    var surveyDataCell = [("Carbs", 50), ("Protein", 25), ("Veggies", 25)]
+    var surveyDataCell = [("Carbs", 40), ("Protein", 40), ("Veggies", 20)]
     
     lazy var pieChart: PieChartView = {
         let p = PieChartView()
@@ -104,6 +104,11 @@ extension LastMealCell {
     }
     
     func setupTimeStampConstraint() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let dateString = formatter.string(from: Date())
+        timeStamp.timeLabel.text = dateString
+        
         timeStamp.translatesAutoresizingMaskIntoConstraints = false
         timeStamp.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -10).isActive = true
         timeStamp.topAnchor.constraint(equalTo: self.topAnchor, constant: 10).isActive = true

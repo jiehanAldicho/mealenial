@@ -41,22 +41,23 @@ extension FoodDetailViewController: UICollectionViewDelegateFlowLayout, UICollec
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let foodCell = collectionView.dequeueReusableCell(withReuseIdentifier: "foodDetail", for: indexPath) as! FoodDetailCell
 
-        let JournalData = journalData[0] as! [String: Any]
-        let nutritions = JournalData["nutritions"] as! [String:Any]
-        let carbs = nutritions["carbs"]
-        let protein = nutritions["protein"]
-        let vegetable = nutritions["vegetable"]
-        let imgURL = JournalData["image_url"]
-        let date = JournalData["date"]
-        let url = URL(string: imgURL as! String)
-        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
-        foodCell.receivedImg = UIImage(data: data!)!
-        foodCell.nutritionStack.stapLabel.text = "\(carbs!)%"
-        foodCell.nutritionStack.proLabel.text = "\(protein!)%"
-        foodCell.nutritionStack.vegLabel.text = "\(vegetable!)%"
-        var Date = DateFormatter()
-        Date.dateFormat = ""
-        foodCell.timeStamp.timeLabel.text = "\(date!)" //Ini harus diformat dulu 💩
+//        let JournalData = journalData[0] as! [String: Any]
+//        let nutritions = JournalData["nutritions"] as! [String:Any]
+//        let carbs = nutritions["carbs"]
+//        let protein = nutritions["protein"]
+//        let vegetable = nutritions["vegetable"]
+//        let imgURL = JournalData["image_url"]
+//        let date = JournalData["date"]
+//        let url = URL(string: imgURL as! String)
+//        let data = try? Data(contentsOf: url!) //make sure your image in this url does exist, otherwise unwrap in a if let check / try-catch
+//        foodCell.receivedImg = UIImage(data: data!)!
+        foodCell.nutritionStack.stapLabel.text = "40%"
+        foodCell.nutritionStack.proLabel.text = "40%"
+        foodCell.nutritionStack.vegLabel.text = "20%"
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let dateString = formatter.string(from: Date())
+        foodCell.timeStamp.timeLabel.text = "\(dateString)" //Ini harus diformat dulu 💩
         
         return foodCell
     }

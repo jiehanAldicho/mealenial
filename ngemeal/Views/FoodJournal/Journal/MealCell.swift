@@ -41,6 +41,11 @@ class MealCell: UICollectionViewCell {
     }
     
     func setupTimeStampConstraint() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let dateString = formatter.string(from: Date())
+        timeLblView.timeLabel.text = dateString
+        
         timeLblView?.translatesAutoresizingMaskIntoConstraints = false
         timeLblView?.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -5).isActive = true
         timeLblView?.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5).isActive = true

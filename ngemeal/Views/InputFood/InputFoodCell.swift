@@ -80,7 +80,7 @@ class InputFoodCell: UICollectionViewCell {
     }()
     
     //Time Variables
-    var time: UIView = TimeStampView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), time: Date())
+    var time = TimeStampView(frame: CGRect(x: 0, y: 0, width: 0, height: 0), time: Date())
     
     //Text Label Variables
     var textLabel: UILabel = {
@@ -330,6 +330,11 @@ extension InputFoodCell {
     
     //Time Setup
     func setupTime() {
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm"
+        let dateString = formatter.string(from: Date())
+        time.timeLabel.text = dateString
+        
         time.translatesAutoresizingMaskIntoConstraints = false
         time.trailingAnchor.constraint(equalTo: imageTarget.trailingAnchor, constant: -16).isActive = true
         time.bottomAnchor.constraint(equalTo: imageTarget.bottomAnchor, constant: -16).isActive = true

@@ -81,10 +81,20 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout, UICollectionVi
                 return quoteCell
             }
         } else {
-            let nextMealCell = collectionView.dequeueReusableCell(withReuseIdentifier: "nextMealCell", for: indexPath) as! NextMealCell
-            nextMealCell.meal = currentMeal
-            nextMealCell.delegate = self
-            return nextMealCell
+            if isFromInput == true {
+                let nextMealCell = collectionView.dequeueReusableCell(withReuseIdentifier: "nextMealCell", for: indexPath) as! NextMealCell
+                nextMealCell.meal = currentMeal
+                nextMealCell.timeStamp.timeLabel.text = "18:50"
+                var newData = [("Carbs", 20), ("Protein", 20), ("Veggies", 60)]
+                nextMealCell.surveyDataCell = newData
+                nextMealCell.delegate = self
+                return nextMealCell
+            } else {
+                let nextMealCell = collectionView.dequeueReusableCell(withReuseIdentifier: "nextMealCell", for: indexPath) as! NextMealCell
+                nextMealCell.meal = currentMeal
+                nextMealCell.delegate = self
+                return nextMealCell
+            }
         }
     }
     
