@@ -147,8 +147,62 @@ class MealScheduleViewController: UIViewController {
     }
     
     @objc func navigateToMain() {
-        let mainTabBarCon = MainTabBarController() as UIViewController
-        self.present(mainTabBarCon, animated: true, completion: nil)
+        
+        sendSchedule {
+            DispatchQueue.main.sync {
+                self.dismiss(animated: false, completion: nil)
+                let mainTabBarCon = MainTabBarController() as UIViewController
+                self.present(mainTabBarCon, animated: true, completion: nil)
+            }
+            
+        }
+        
+        
+    }
+    
+    func sendSchedule(_ completion: @escaping () -> ()) {
+        let url = "https://mealenial.herokuapp.com/schedule/add"
+        let session = URLSession(configuration: .default)
+        let requestURL = URL(string: url)
+        
+        var request = URLRequest(url: requestURL!)
+        
+        let jsonBody: [String: Any] = [
+            "_id" : "5bd9253ebcc45a6196a61369",
+            "meal_type": "ini ngepost dary",
+            "date": "2010-10-10",
+            "state": true,
+            "repeat": [true,true,true,true,true,true,true]
+        ]
+        
+        let jsonData = try? JSONSerialization.data(withJSONObject: jsonBody, options: [])
+        
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpBody = jsonData!
+        
+        let dataTask = session.dataTask(with: request) { (data, response, error) in
+            if let err = error {
+                print(err)
+            } else if let receivedData = data {
+                print("Add success notif & add loading indicator")
+                completion()
+            }
+        }
+        dataTask.resume()
+        showLoadingAlert()
+    }
+    
+    func showLoadingAlert() {
+        let alert = UIAlertController(title: "Be patient", message: "Let us curate your meal plan", preferredStyle: .alert)
+        
+        let loadingIndicator = UIActivityIndicatorView(frame: CGRect(x: 10, y: 5, width: 50, height: 50))
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.style = UIActivityIndicatorView.Style.gray
+        loadingIndicator.startAnimating();
+        
+        alert.view.addSubview(loadingIndicator)
+        present(alert, animated: true, completion: nil)
     }
     
     @objc func addMealScheduleCell() {

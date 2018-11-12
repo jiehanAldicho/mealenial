@@ -37,6 +37,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
     tabBarGradientTest.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height)
     self.tabBar.layer.addSublayer(tabBarGradientTest)
     self.tabBar.tintColor = .white
+    self.tabBar.unselectedItemTintColor = UIColor(displayP3Red: 0/255, green: 146/255, blue: 144/255, alpha: 1)
     
     //Add tab bar views
     self.setViewControllers([foodJournalView, homeView, accountView], animated: true)

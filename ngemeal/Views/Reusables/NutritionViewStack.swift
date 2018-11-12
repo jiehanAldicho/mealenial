@@ -143,8 +143,8 @@ class ChartNutritionStackView: UIStackView {
         self.proVal = proPercent
         self.stapVal = stapPercent
         
-        vegView = generateNutrition("Veggie")
-        proView = generateNutrition("Protein")
+        vegView = generateNutrition("Veggies")
+        proView = generateNutrition("Proteins")
         stapView = generateNutrition("Carbs")
         
         self.addArrangedSubview(vegView)
